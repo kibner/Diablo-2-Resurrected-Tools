@@ -69,6 +69,7 @@
       const resultsHtml = searchResults.reduce((previousValue, currentValue) => {
         const name = `<div>${currentValue.name}</div>`;
         const runes = `<div>${currentValue.runes.toString()}</div>`;
+        const equipment = `<div>${currentValue.equipment.toString()}</div>`;
         const character_level = `<div>${currentValue.character_level}</div>`;
         const stats = currentValue.stats.reduce((previousStat, currentStat) => previousStat.concat(`<div>${currentStat}</div>`), '');
 
@@ -76,7 +77,7 @@
         const rowEndHtml = '</tr>';
 
         return previousValue.concat(rowStartHtml,
-          `<td>${String.prototype.concat(name, runes, character_level)}</td>`,
+          `<td>${String.prototype.concat(name, runes, equipment, character_level)}</td>`,
           `<td>${stats}</td>`,
           rowEndHtml);
       }, '');
@@ -93,7 +94,7 @@
         {
           name: 'Steel',
           runes: ['Tir', 'El'],
-          equipment: ['sword', 'axe', 'mace'],
+          equipment: ['axe', 'mace', 'sword'],
           character_level: 13,
           stats: ['+25% Increased Attack Speed', '+20% Enhanced Damage', '+3 to Minimum Damage', '+3 to Maximum Damage', '+50 to Attack Rating', '50% Chance of Open Wounds', '+2 to Mana after each Kill', '+1 to Light Radius']
         }
