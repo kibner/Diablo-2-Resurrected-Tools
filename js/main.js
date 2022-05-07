@@ -1,5 +1,6 @@
 (function () {
   let _runewordForm;
+  let _runewordFormOutput;
   const _runewords = _getAllRunewords();
 
   // readystatechange as event listener to insert or modify the DOM before DOMContentLoaded
@@ -13,10 +14,18 @@
 
   function _initLoader() {
     _runewordForm = document.getElementById('runeword-form');
+    _runewordFormOutput = _runewordForm.querySelector('output[name=runeword-result]');
     _runewordForm.addEventListener('input', _handleFormInputChange);
   }
 
   function _initApp() {
+    const searchParams = {
+      sockets: [],
+      equipment: []
+    };
+
+    const searchResults = _search(searchParams);
+    _runewordFormOutput.innerHTML = _getSearchResultsHtml(searchResults);
   }
 
   function _handleFormInputChange(event) {
@@ -36,15 +45,13 @@
     };
 
     const searchResults = _search(searchParams);
-    const searchResultsHtml = _getSearchResultsHtml(searchResults);
-
-    const resultElement = _runewordForm.querySelector('output[name=runeword-result]');
-    resultElement.innerHTML = searchResultsHtml;
+    _runewordFormOutput.innerHTML = _getSearchResultsHtml(searchResults);
   }
 
   function _search(searchParams) {
     return _runewords.runewords.reduce((previousValue, currentValue) => {
-      if (searchParams.sockets.includes(currentValue.runes.length)) {
+      if ((searchParams.sockets.length === 0 || searchParams.sockets.includes(currentValue.runes.length))
+        && (searchParams.equipment.length === 0 || searchParams.equipment.some(equipment => currentValue.equipment.includes(equipment)))) {
         return previousValue.concat(currentValue);
       }
 
