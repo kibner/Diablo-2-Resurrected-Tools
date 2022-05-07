@@ -1,10 +1,16 @@
 {
-  "name": " ",
+  "name": "diablo-2-remastered-tools",
   "version": "0.0.1",
-  "description": "",
-  "keywords": "",
+  "description": "Tools to help with information in the game Diablo 2: Remastered",
+  "keywords": [
+    "d2r",
+    "diablo2",
+    "diablo",
+    "diablo2remastered",
+    "runeword"
+  ],
   "license": "",
-  "author": "",
+  "author": "John D'Oriocourt",
   "scripts": {
     "build": "parcel build index.html",
     "dev": "parcel index.html --open",
