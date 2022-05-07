@@ -20,10 +20,10 @@
       return;
     }
 
-    const sockets = Array.from(document.querySelectorAll('input[name="sockets"]:checked'))
+    const sockets = Array.from(document.querySelectorAll('#runeword-form input[name="sockets"]:checked'))
       .reduce((previousValue, currentValue) => previousValue.concat(currentValue.value), []);
 
-    const equipment = Array.from(document.querySelectorAll('input[name="equipment"]:checked'))
+    const equipment = Array.from(document.querySelectorAll('#runeword-form input[name="equipment"]:checked'))
       .reduce((previousValue, currentValue) => previousValue.concat(currentValue.value), []);
 
     const searchParams = {
@@ -31,10 +31,13 @@
       equipment: equipment
     };
 
-    _search(searchParams);
+    const searchResults = _search(searchParams);
+    const resultElement = document.querySelector('#runeword-form output[name=runeword-result]');
+    resultElement.innerHTML = searchResults;
   }
 
   function _search(searchParams) {
     console.log(searchParams);
+    return '<div style="color: red">successful search</div>';
   }
 }());
