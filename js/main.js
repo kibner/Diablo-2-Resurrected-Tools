@@ -70,7 +70,7 @@
         const name = `<div>${currentValue.name}</div>`;
         const runes = `<div>${currentValue.runes.toString()}</div>`;
         const equipment = `<div>${currentValue.equipment.toString()}</div>`;
-        const character_level = `<div>${currentValue.character_level}</div>`;
+        const character_level = `<div><span>CLevel: </span><span>${currentValue.character_level}</span></div>`;
         const stats = currentValue.stats.reduce((previousStat, currentStat) => previousStat.concat(`<div>${currentStat}</div>`), '');
 
         const rowStartHtml = '<tr>';
