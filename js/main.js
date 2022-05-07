@@ -1,4 +1,6 @@
 (function () {
+  let _runewordForm;
+
   // readystatechange as event listener to insert or modify the DOM before DOMContentLoaded
   document.addEventListener('readystatechange', event => {
     if (event.target.readyState === 'interactive') {
@@ -9,7 +11,8 @@
   });
 
   function _initLoader() {
-    document.getElementById('runeword-form').addEventListener('input', _handleFormInputChange);
+    _runewordForm = document.getElementById('runeword-form');
+    _runewordForm.addEventListener('input', _handleFormInputChange);
   }
 
   function _initApp() {
@@ -20,10 +23,10 @@
       return;
     }
 
-    const sockets = Array.from(document.querySelectorAll('#runeword-form input[name="sockets"]:checked'))
+    const sockets = Array.from(_runewordForm.querySelectorAll('input[name="sockets"]:checked'))
       .reduce((previousValue, currentValue) => previousValue.concat(currentValue.value), []);
 
-    const equipment = Array.from(document.querySelectorAll('#runeword-form input[name="equipment"]:checked'))
+    const equipment = Array.from(_runewordForm.querySelectorAll('input[name="equipment"]:checked'))
       .reduce((previousValue, currentValue) => previousValue.concat(currentValue.value), []);
 
     const searchParams = {
@@ -32,7 +35,7 @@
     };
 
     const searchResults = _search(searchParams);
-    const resultElement = document.querySelector('#runeword-form output[name=runeword-result]');
+    const resultElement = _runewordForm.querySelector('output[name=runeword-result]');
     resultElement.innerHTML = searchResults;
   }
 
