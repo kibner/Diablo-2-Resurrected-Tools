@@ -17,7 +17,8 @@
     {
       id: 'amazon-bow',
       name: 'Amazon Bow'
-    }, {
+    },
+    {
       id: 'amazon-spear',
       name: 'Amazon Spear'
     },
