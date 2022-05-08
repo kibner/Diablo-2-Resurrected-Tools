@@ -1,7 +1,7 @@
 {
-  "name": "diablo-2-remastered-tools",
+  "name": "diablo-2-resurrected-tools",
   "version": "0.0.1",
-  "description": "Tools to help with information in the game Diablo 2: Remastered",
+  "description": "Tools to help with information in the game Diablo 2: Resurrected",
   "keywords": [
     "d2r",
     "diablo2",
@@ -19,5 +19,10 @@
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "equipment": "file:js/modules/equipment",
+    "runes": "file:js/modules/runes",
+    "runewords": "file:js/modules/runewords"
   }
 }
