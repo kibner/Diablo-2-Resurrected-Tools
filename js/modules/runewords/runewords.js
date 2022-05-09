@@ -573,6 +573,46 @@
       equipment: ['barbarian-helmet', 'circlet', 'druid-pelt', 'helmet'],
       character_level: 45,
       stats: ['+33% Piercing Attack', '+15-25% Bonus to Attack Rating', '4-8% Mana Stolen Per Hit', '+30% Enhanced Defense', '+10 Energy', '15% Slower Stamina Drain', 'Cannot Be Frozen', '+5 Mana After Each Kill', '15% Damage Taken Goes to Mana']
+    },
+    {
+      id: 'body-armor-bone',
+      name: 'Bone',
+      runes: ['sol', 'um', 'um'],
+      equipment: ['body-armor'],
+      character_level: 47,
+      stats: ['15% Chance to cast Level 10 Bone Armor when struck', '15% Chance to cast Level 10 Bone Spear on striking', '+2 to Necromancer Skill Levels', '+100-150 to Mana', 'All Resistances +30', 'Damage Reduced by 7']
+    },
+    {
+      id: 'body-armor-bramble',
+      name: 'Bramble',
+      runes: ['ral', 'ohm', 'sur', 'eth'],
+      equipment: ['body-armor'],
+      character_level: 61,
+      stats: ['Level 15-21 Thorns Aura When Equipped', '+50% Faster Hit Recovery', '+25-50% to Poison Skill Damage', '+300 Defense', 'Increase Maximum Mana 5%', 'Regenerate Mana 15%', '5% to Maximum Cold Resist', 'Fire Resist +30%', 'Poison Resist +100%', '+13 Life after each Kill', 'Level 13 Spirit of Barbs (33/33 Charges)']
+    },
+    {
+      id: 'body-armor-chains-of-honor',
+      name: 'Chains of Honor',
+      runes: ['dol', 'um', 'ber', 'ist'],
+      equipment: ['body-armor'],
+      character_level: 63,
+      stats: ['+2 to All Skills', '+200% Damage to Demons', '+100% Damage to Undead', '8% Life stolen per hit', '70% Enhanced Defense', '+20 to Strength', 'Replenish Life +7', 'All Resistances +65', 'Damage Reduced by 8%', '25% Better Chance of Getting Magic Items']
+    },
+    {
+      id: 'body-armor-dragon',
+      name: 'Dragon',
+      runes: ['sur', 'lo', 'sol'],
+      equipment: ['body-armor'],
+      character_level: 61,
+      stats: ['20% Chance to cast Level 18 Venom when struck', '12% Chance to cast Level 15 Hydra on striking', 'Level 14 Holy Fire Aura When Equipped', '+360 Defense', '+230 Defense vs. Missile', '+0.375 to Strength (Based on Character Level)', '3-5 to all Attributes', 'Increase Maximum Mana 5%', '+5% to Maximum Lightning Resist', 'Damage Reduced by 7']
+    },
+    {
+      id: 'body-armor-duress',
+      name: 'Duress',
+      runes: ['shael', 'um', 'thul'],
+      equipment: ['body-armor'],
+      character_level: 47,
+      stats: ['+40% Faster Hit Recovery', '+10-20% Enhanced Damage', 'Adds 37-133 Cold Damage', '15% Chance of Crushing Blow', '33% Chance of Open Wounds', '+150-200% Enhanced Defense', '-20% Slower Stamina Drain', 'Cold Resist +45%', 'Lightning Resist +15%', 'Fire Resist +15%', 'Poison Resist +15%']
     }
   ];
 }));
