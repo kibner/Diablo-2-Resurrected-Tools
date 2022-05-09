@@ -517,6 +517,62 @@
       equipment: ['necromancer-shrunken-head', 'paladin-shield', 'shield'],
       character_level: 37,
       stats: ['+1 to All Skills', '+10% Faster Cast Rate', '+20% Faster Block Rate', '+60-100% Enhanced Defense', '+10 to Energy', 'Regenerate Mana 15%', '50% Extra Gold from Monsters', '20% Better Chance of Getting Magic Items', '+3 to Light Radius']
+    },
+    {
+      id: 'helmet-dream',
+      name: 'Dream',
+      runes: ['io', 'jah', 'pul'],
+      equipment: ['barbarian-helmet', 'circlet', 'druid-pelt', 'helmet'],
+      character_level: 65,
+      stats: ['10% Chance to cast Level 15 Confuse when struck', 'Level 15 Holy Shock Aura When Equipped', '+20-30% Faster Hit Recovery', '+30% Enhanced Defense', '+150-220 Defense', '+10 to Vitality', 'Increase Maximum Life 5%', '+0.625 to Mana (Based on Character Level)', 'All Resistances +5-20', '12-25% Better Chance of Getting Magic Items']
+    },
+    {
+      id: 'helmet-delirium',
+      name: 'Delirium',
+      runes: ['lem', 'ist', 'io'],
+      equipment: ['barbarian-helmet', 'circlet', 'druid-pelt', 'helmet'],
+      character_level: 51,
+      stats: ['1% Chance to cast Level 50 Delirium when struck', '6% Chance to cast Level 14 Mind Blast when struck', '14% Chance to cast Level 13 Terror when struck', '11% Chance to cast Level 18 Confuse on striking', '+2 to All Skills', '+261 Defense', '+10 to Vitality', '50% Extra Gold from Monsters', '25% Better Chance of Getting Magic Items', 'Level 17 Attract (60/60 Charges)']
+    },
+    {
+      id: 'helmet-flickering-flame',
+      name: 'Flickering Flame',
+      runes: ['nef', 'pul', 'vex'],
+      equipment: ['barbarian-helmet', 'circlet', 'druid-pelt', 'helmet'],
+      character_level: 55,
+      stats: ['Level 4-8 Resist Fire Aura When Equipped', '+3 To Fire Skills', '-10-15% to Enemy Fire Resistance', '+30% Enhanced Defense', '+30 Defense Vs. Missile', '+50-75 to Mana', 'Half Freeze Duration', '+5% to Maximum Fire Resist', 'Poison Length Reduced by 50%']
+    },
+    {
+      id: 'helmet-lore',
+      name: 'Lore',
+      runes: ['ort', 'sol'],
+      equipment: ['barbarian-helmet', 'circlet', 'druid-pelt', 'helmet'],
+      character_level: 27,
+      stats: ['+1 to All Skills', '+10 to Energy', 'Lightning Resist +30%', 'Damage Reduced by 7', '+2 to Mana after each Kill', '+2 to Light Radius']
+    },
+    {
+      id: 'helmet-nadir',
+      name: 'Nadir',
+      runes: ['nef', 'tir'],
+      equipment: ['barbarian-helmet', 'circlet', 'druid-pelt', 'helmet'],
+      character_level: 13,
+      stats: ['+50% Enhanced Defense', '+10 Defense', '+30 Defense vs. Missile', '+5 Strength', '+2 to Mana after each Kill', '-33% Extra Gold from Monsters', '-3 to Light Radius', 'Level 13 Cloak of Shadows (9/9 Charges)']
+    },
+    {
+      id: 'helmet-radiance',
+      name: 'Radiance',
+      runes: ['nef', 'sol', 'ith'],
+      equipment: ['barbarian-helmet', 'circlet', 'druid-pelt', 'helmet'],
+      character_level: 27,
+      stats: ['+75% Enhanced Defense', '+30 Defense vs. Missile', '+10 to Vitality', '+10 to Energy', '+33 to Mana', 'Damage Reduced by 7', 'Magic Damage Reduced by 3', '15% Damage Taken Goes To Mana', '+5 to Light Radius']
+    },
+    {
+      id: 'helmet-wisdom',
+      name: 'Wisdom',
+      runes: ['pul', 'ith', 'eld'],
+      equipment: ['barbarian-helmet', 'circlet', 'druid-pelt', 'helmet'],
+      character_level: 45,
+      stats: ['+33% Piercing Attack', '+15-25% Bonus to Attack Rating', '4-8% Mana Stolen Per Hit', '+30% Enhanced Defense', '+10 Energy', '15% Slower Stamina Drain', 'Cannot Be Frozen', '+5 Mana After Each Kill', '15% Damage Taken Goes to Mana']
     }
   ];
 }));
