@@ -127,13 +127,10 @@
         const character_level = `<div><span>CLevel: </span><span>${currentValue.character_level}</span></div>`;
         const stats = currentValue.stats.reduce((previousStat, currentStat) => previousStat.concat(`<div>${currentStat}</div>`), '');
 
-        const rowStartHtml = '<tr>';
-        const rowEndHtml = '</tr>';
-
-        return previousValue.concat(rowStartHtml,
+        return previousValue.concat('<tr>',
           `<td>${String.prototype.concat(name, runes, equipment, character_level)}</td>`,
           `<td>${stats}</td>`,
-          rowEndHtml);
+          '</tr>');
       }, '');
 
       html = html.concat(tableStartHtml, resultsHtml, tableEndHtml);
