@@ -613,6 +613,126 @@
       equipment: ['body-armor'],
       character_level: 47,
       stats: ['+40% Faster Hit Recovery', '+10-20% Enhanced Damage', 'Adds 37-133 Cold Damage', '15% Chance of Crushing Blow', '33% Chance of Open Wounds', '+150-200% Enhanced Defense', '-20% Slower Stamina Drain', 'Cold Resist +45%', 'Lightning Resist +15%', 'Fire Resist +15%', 'Poison Resist +15%']
+    },
+    {
+      id: 'body-armor-enigma',
+      name: 'Enigma',
+      runes: ['jah', 'ith', 'ber'],
+      equipment: ['body-armor'],
+      character_level: 65,
+      stats: ['+2 to All Skills', '+45% Faster Run/Walk', '+1 to Teleport', '750-775 Defense', '+0.75 to Strength (Based on Character Level)', 'Increase Maximum Life 5%', 'Damage Reduced by 8%', '+14 Life after each Kill', '15% Damage Taken Goes To Mana', '1% Better Chance of Getting Magic Items (Based on Character Level)']
+    },
+    {
+      id: 'body-armor-enlightenment',
+      name: 'Enlightenment',
+      runes: ['pul', 'ral', 'sol'],
+      equipment: ['body-armor'],
+      character_level: 45,
+      stats: ['5% Chance to cast Level 15 Blaze when struck', '5% Chance to cast Level 15 Fire Ball on striking', '+2 to Sorceress Skill Levels', '+1 to Warmth', '+30% Enhanced Defense', 'Fire Resist +30%', 'Damage Reduced by 7']
+    },
+    {
+      id: 'body-armor-fortitude',
+      name: 'Fortitude',
+      runes: ['el', 'sol', 'dol', 'lo'],
+      equipment: ['body-armor'],
+      character_level: 47,
+      stats: ['20% Chance to cast Level 15 Chilling Armor when struck', '+25% Faster Cast Rate', '+300% Enhanced Damage', '+200% Enhanced Defense', '+15 Defense', '+1-1.5 to Life (Based on Character Level)', 'Replenish Life +7', '+5% to Maximum Lightning Resist', 'All Resistances +25-30', 'Damage Reduced by 7', '12% Damage Taken Goes To Mana', '+1 to Light Radius']
+    },
+    {
+      id: 'body-armor-gloom',
+      name: 'Gloom',
+      runes: ['fal', 'um', 'pul'],
+      equipment: ['body-armor'],
+      character_level: 47,
+      stats: ['15% Chance to cast Level 3 Dim Vision when struck', '+10% Faster Hit Recovery', '+200-260% Enhanced Defense', '+10 to Strength', 'All Resistances +45', 'Half Freeze Duration', '5% Damage Taken Goes To Mana', '-3 to Light Radius']
+    },
+    {
+      id: 'body-armor-lionheart',
+      name: 'Lionheart',
+      runes: ['hel', 'lum', 'fal'],
+      equipment: ['body-armor'],
+      character_level: 41,
+      stats: ['+20% Enhanced Damage', '+25 to Strength', '+15 to Dexterity', '+20 to Vitality', '+10 to Energy', '+50 to Life', 'All Resistances +30', 'Requirements -15%']
+    },
+    {
+      id: 'body-armor-myth',
+      name: 'Myth',
+      runes: ['hel', 'amn', 'nef'],
+      equipment: ['body-armor'],
+      character_level: 41,
+      stats: ['3% Chance to cast Level 1 Howl when struck', '10% Chance to cast Level 1 Taunt on striking', '+2 to Barbarian Skill Levels', '+30 Defense vs. Missile', 'Replenish Life +10', 'Attacker Takes Damage of 14', 'Requirements -15%']
+    },
+    {
+      id: 'body-armor-peace',
+      name: 'Peace',
+      runes: ['shael', 'thul', 'amn'],
+      equipment: ['body-armor'],
+      character_level: 29,
+      stats: ['4% Chance to cast Level 5 Slow Missiles when struck', '2% Chance to cast Level 15 Valkyrie on striking', '+2 to Amazon Skill Levels', '+20% Faster Hit Recovery', '+2 to Critical Strike', 'Cold Resist +30%', 'Attacker Takes Damage of 14']
+    },
+    {
+      id: 'body-armor-principle',
+      name: 'principle',
+      runes: ['ral', 'gul', 'eld'],
+      equipment: ['body-armor'],
+      character_level: 55,
+      stats: ['100% Chance to cast Level 5 Holy Bolt on striking', '+2 to Paladin Skill Levels', '+50% Damage to Undead', '+100-150 to Life', '15% Slower Stamina Drain', '+5% Maximum Poison Resist', 'Fire Resist +30%']
+    },
+    {
+      id: 'body-armor-prudence',
+      name: 'Prudence',
+      runes: ['mal', 'tir'],
+      equipment: ['body-armor'],
+      character_level: 49,
+      stats: ['+25% Faster Hit Recovery', '+140-170% Enhanced Defense', 'All Resistances +25-35', 'Damage Reduced by 3', 'Magic Damage Reduced by 17', '+2 to Mana after each Kill', '+1 to Light Radius', 'Repairs Durability in 4 seconds']
+    },
+    {
+      id: 'body-armor-rain',
+      name: 'Rain',
+      runes: ['ort', 'mal', 'ith'],
+      equipment: ['body-armor'],
+      character_level: 49,
+      stats: ['5% Chance to cast Level 15 Cyclone Armor when struck', '5% Chance to cast Level 15 Twister on striking', '+2 to Druid Skill Levels', '+100-150 to Mana', 'Lightning Resist +30%', 'Magic Damage Reduced by 7', '15% Damage Taken Goes To Mana']
+    },
+    {
+      id: 'body-armor-smoke',
+      name: 'Smoke',
+      runes: ['nef', 'lum'],
+      equipment: ['body-armor'],
+      character_level: 37,
+      stats: ['+20% Faster Hit Recovery', '+75% Enhanced Defense', '+280 Defense vs. Missile', '+10 to Energy', 'All Resistances +50', '-1 to Light Radius']
+    },
+    {
+      id: 'body-armor-stealth',
+      name: 'Stealth',
+      runes: ['tal', 'eth'],
+      equipment: ['body-armor'],
+      character_level: 17,
+      stats: ['+25% Faster Run/Walk', '+25% Faster Cast Rate', '+25% Faster Hit Recovery', '+6 to Dexterity', 'Regenerate Mana 15%', '+15 Maximum Stamina', 'Poison Resist +30%', 'Magic Damage Reduced by 3']
+    },
+    {
+      id: 'body-armor-stone',
+      name: 'Stone',
+      runes: ['shael', 'um', 'pul', 'lum'],
+      equipment: ['body-armor'],
+      character_level: 47,
+      stats: ['+60% Faster Hit Recovery', '+250-290% Enhanced Defense', '+300 Defense vs. Missile', '+16 to Strength', '+16 to Vitality', '+10 to Energy', 'All Resistances +15', 'Level 16 Molten Boulder (80/80 Charges)', 'Level 16 Clay Golem (16/16 Charges)']
+    },
+    {
+      id: 'body-armor-treachery',
+      name: 'Treachery',
+      runes: ['shael', 'thul', 'lem'],
+      equipment: ['body-armor'],
+      character_level: 43,
+      stats: ['5% Chance to cast Level 15 Fade when struck', '25% Chance to cast Level 15  Venom on striking', '+2 to Assassin Skill Levels', '+45% Increased Attack Speed', '+20% Faster Hit Recovery', 'Cold Resist +30%', '50% Extra Gold from Monsters']
+    },
+    {
+      id: 'body-armor-wealth',
+      name: 'Wealth',
+      runes: ['lem', 'ko', 'tir'],
+      equipment: ['body-armor'],
+      character_level: 43,
+      stats: ['+10 to Dexterity', '+2 to Mana after each Kill', '300% Extra Gold from Monsters', '100% Better Chance of Getting Magic Items']
     }
   ];
 }));
