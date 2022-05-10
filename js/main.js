@@ -15,6 +15,8 @@
   // Just return a value to define the module export.
   let _runewordForm;
   let _runewordFormOutput;
+  let _socketFieldset;
+  let _equipmentFieldset
 
   // readystatechange as event listener to insert or modify the DOM before DOMContentLoaded
   document.addEventListener('readystatechange', event => {
@@ -28,8 +30,14 @@
   function _initLoader() {
     _runewordForm = document.getElementById('runeword-form');
     _runewordFormOutput = _runewordForm.querySelector('output[name=runeword-result]');
+    _socketFieldset = _runewordForm.querySelector('fieldset[name=sockets]');
+    _equipmentFieldset = _runewordForm.querySelector('fieldset[name=equipment]');
 
-    // const socketFieldsetHtml = _getSocketFieldsetHtml();
+    const socketFieldsetHtml = _getSocketFieldsetHtml();
+    _socketFieldset.insertAdjacentHTML('beforeend', socketFieldsetHtml);
+
+    const equipmentFielsetHtml = _getEquipmentFieldsetHtml();
+    _equipmentFieldset.insertAdjacentHTML('beforeend', equipmentFielsetHtml);
 
     _runewordForm.addEventListener('input', _handleFormInputChange);
   }
@@ -75,8 +83,38 @@
     }, []);
   }
 
+  function _getSocketFieldsetHtml() {
+    const minSocketCount = 2;
+    const maxSocketCount = 6;
+    const socketFieldsetName = 'sockets';
+
+    let html = '';
+
+    for (let i = minSocketCount; i <= maxSocketCount; i++) {
+      const inputHtml = `<input type="checkbox" id="${socketFieldsetName}-${i}" name="${socketFieldsetName}" value="${i}"/>`;
+      const labelHtml = `<label for="${socketFieldsetName}-${i}">${i}</label>`;
+      html = `${html}${inputHtml}${labelHtml}`;
+    }
+
+    return html;
+  }
+
+  function _getEquipmentFieldsetHtml() {
+    const equipmentFieldsetName = 'equipment';
+
+    let html = '';
+
+    for (let i = 0; i < equipment.length; i++) {
+      const inputHtml = `<input type="checkbox" id="${equipmentFieldsetName}-${equipment[i].id}" name="${equipmentFieldsetName}" value="${equipment[i].id}"/>`;
+      const labelHtml = `<label for="${equipmentFieldsetName}-${equipment[i].id}">${equipment[i].name}</label>`;
+      html = `${html}${inputHtml}${labelHtml}`;
+    }
+
+    return html;
+  }
+
   function _getSearchResultsHtml(searchResults) {
-    let html = ''
+    let html = '';
 
     if (searchResults && searchResults.length > 0) {
       const tableStartHtml = '<table><thead><tr><th>Runeword</th><th>Stats</th></tr></thead><tbody>';
