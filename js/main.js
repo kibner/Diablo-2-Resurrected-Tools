@@ -11,7 +11,7 @@
     // Browser globals (root is window)
     root.diablo_2_resurrected_tools = factory(root.runes, root.equipment, root.runewords);
   }
-}(typeof self !== 'undefined' ? self : this, function (runes, equipment, runewords) {
+}(typeof self !== 'undefined' ? self : this, function (Runes, Equipment, Runewords) {
   // Just return a value to define the module export.
   let _runewordForm;
   let _runewordFormOutput;
@@ -73,7 +73,7 @@
   }
 
   function _search(searchParams) {
-    return runewords.reduce((previousValue, currentValue) => {
+    return Runewords.reduce((previousValue, currentValue) => {
       if ((searchParams.sockets.length === 0 || searchParams.sockets.includes(currentValue.runes.length))
         && (searchParams.equipment.length === 0 || searchParams.equipment.some(equipment => currentValue.equipment.includes(equipment)))) {
         return previousValue.concat(currentValue);
@@ -104,9 +104,9 @@
 
     let html = '';
 
-    for (let i = 0; i < equipment.length; i++) {
-      const inputHtml = `<input type="checkbox" id="${equipmentFieldsetName}-${equipment[i].id}" name="${equipmentFieldsetName}" value="${equipment[i].id}"/>`;
-      const labelHtml = `<label for="${equipmentFieldsetName}-${equipment[i].id}">${equipment[i].name}</label>`;
+    for (let i = 0; i < Equipment.length; i++) {
+      const inputHtml = `<input type="checkbox" id="${equipmentFieldsetName}-${Equipment[i].id}" name="${equipmentFieldsetName}" value="${Equipment[i].id}"/>`;
+      const labelHtml = `<label for="${equipmentFieldsetName}-${Equipment[i].id}">${Equipment[i].name}</label>`;
       html = `${html}${inputHtml}${labelHtml}`;
     }
 
@@ -122,10 +122,33 @@
 
       const resultsHtml = searchResults.reduce((previousValue, currentValue) => {
         const name = `<div>${currentValue.name}</div>`;
-        const runes = `<div>${currentValue.runes.toString()}</div>`;
-        const equipment = `<div>${currentValue.equipment.toString()}</div>`;
-        const character_level = `<div><span>CLevel: </span><span>${currentValue.character_level}</span></div>`;
-        const stats = currentValue.stats.reduce((previousStat, currentStat) => previousStat.concat(`<div>${currentStat}</div>`), '');
+
+        const runes = `<div>${currentValue.runes.reduce((previousRunes, currentRune, currentIndex, array) => {
+          const rune = Runes.find(value => value.id === currentRune);
+
+          if (rune) {
+            const separator = currentIndex < array.length - 1 ? `<span>, </span>` : '';
+
+            return previousRunes.concat(`<span>${rune.name}</span>`, separator);
+          } else {
+            return previousRunes;
+          }
+        }, '')}</div>`;
+
+        const equipment = `<div>${currentValue.equipment.reduce((previousEquipment, currentEquipment, currentIndex, array) => {
+          const equipment = Equipment.find(value => value.id === currentEquipment);
+
+          if (equipment) {
+            const separator = currentIndex < array.length - 1 ? `<span>, </span>` : '';
+
+            return previousEquipment.concat(`<span>${equipment.name}</span>`, separator);
+          } else {
+            return previousEquipment;
+          }
+        }, '')}</div>`;
+
+        const character_level = `<div><span>Required level: </span><span>${currentValue.character_level}</span></div>`;
+        const stats = currentValue.stats.reduce((previousStats, currentStat) => previousStats.concat(`<div>${currentStat}</div>`), '');
 
         return previousValue.concat('<tr>',
           `<td>${String.prototype.concat(name, runes, equipment, character_level)}</td>`,
