@@ -1,17 +1,17 @@
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['modules/data/rune_data', 'modules/data/equipment_data', 'modules/data/runeword_data'], factory);
+    define(['modules/data/rune_data', 'modules/data/equipment_data', 'modules/services/search_service'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
-    module.exports = factory(require('./modules/data/rune_data/rune_data'), require('./modules/data/equipment_data/equipment_data'), require('./modules/data/runeword_data/runeword_data'));
+    module.exports = factory(require('./modules/data/rune_data/rune_data'), require('./modules/data/equipment_data/equipment_data'), require('./modules/services/search_service/search_service'));
   } else {
     // Browser globals (root is window)
-    root.diablo_2_resurrected_tools = factory(root.rune_data, root.equipment_data, root.runeword_data);
+    root.diablo_2_resurrected_tools = factory(root.rune_data, root.equipment_data, root.search_service);
   }
-}(typeof self !== 'undefined' ? self : this, function (rune_data, equipment_data, runeword_data) {
+}(typeof self !== 'undefined' ? self : this, function (rune_data, equipment_data, search_service) {
   // Just return a value to define the module export.
   let isInitialLoadComplete = false;
   let _runewordForm;
@@ -57,7 +57,7 @@
       equipment: []
     };
 
-    const searchResults = _search(searchParams);
+    const searchResults = search_service.searchRunewords(searchParams);
     _runewordFormOutput.innerHTML = _getSearchResultsHtml(searchResults);
   }
 
@@ -77,19 +77,8 @@
       equipment: equipment
     };
 
-    const searchResults = _search(searchParams);
+    const searchResults = search_service.searchRunewords(searchParams);
     _runewordFormOutput.innerHTML = _getSearchResultsHtml(searchResults);
-  }
-
-  function _search(searchParams) {
-    return runeword_data.reduce((previousValue, currentValue) => {
-      if ((searchParams.sockets.length === 0 || searchParams.sockets.includes(currentValue.runes.length))
-        && (searchParams.equipment.length === 0 || searchParams.equipment.some(equipment => currentValue.equipment.includes(equipment)))) {
-        return previousValue.concat(currentValue);
-      }
-
-      return previousValue;
-    }, []);
   }
 
   function _getSocketFieldsetHtml() {

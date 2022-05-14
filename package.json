@@ -25,6 +25,7 @@
   "dependencies": {
     "equipment_data": "file:js/modules/data/equipment_data",
     "runes_data": "file:js/modules/data/rune_data",
-    "runewords_data": "file:js/modules/data/runeword_data"
+    "runewords_data": "file:js/modules/data/runeword_data",
+    "search_service": "file:js/modules/services/search_service"
   }
 }
