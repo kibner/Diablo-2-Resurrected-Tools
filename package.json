@@ -1,6 +1,6 @@
 {
   "name": "diablo-2-resurrected-tools",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Tools to help with information in the game Diablo 2: Resurrected",
   "keywords": [
     "d2r",
@@ -9,7 +9,7 @@
     "diablo2resurrected",
     "runeword"
   ],
-  "license": "",
+  "license": "ISC",
   "author": "John D'Oriocourt",
   "scripts": {
     "build": "parcel build index.html",
@@ -26,6 +26,8 @@
     "equipment_data": "file:js/modules/data/equipment_data",
     "runes_data": "file:js/modules/data/rune_data",
     "runewords_data": "file:js/modules/data/runeword_data",
-    "search_service": "file:js/modules/services/search_service"
+    "search_service": "file:js/modules/services/search_service",
+    "socket_fieldset": "file:js/modules/html_parts/socket_fieldset",
+    "equipment_fieldset": "file:js/modules/html_parts/equipment_fieldset"
   }
 }
