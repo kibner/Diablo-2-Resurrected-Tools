@@ -1,18 +1,19 @@
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['runes', 'equipment', 'runewords'], factory);
+    define(['modules/data/rune_data', 'modules/data/equipment_data', 'modules/data/runeword_data'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
-    module.exports = factory(require('runes'), require('equipment'), require('runewords'));
+    module.exports = factory(require('./modules/data/rune_data/rune_data'), require('./modules/data/equipment_data/equipment_data'), require('./modules/data/runeword_data/runeword_data'));
   } else {
     // Browser globals (root is window)
-    root.diablo_2_resurrected_tools = factory(root.runes, root.equipment, root.runewords);
+    root.diablo_2_resurrected_tools = factory(root.rune_data, root.equipment_data, root.runeword_data);
   }
-}(typeof self !== 'undefined' ? self : this, function (Runes, Equipment, Runewords) {
+}(typeof self !== 'undefined' ? self : this, function (rune_data, equipment_data, runeword_data) {
   // Just return a value to define the module export.
+  let isInitialLoadComplete = false;
   let _runewordForm;
   let _runewordFormOutput;
   let _socketFieldset;
@@ -23,6 +24,10 @@
     if (event.target.readyState === 'interactive') {
       _initLoader();
     } else if (event.target.readyState === 'complete') {
+      if (isInitialLoadComplete === false) {
+        _initLoader();
+      }
+
       _initApp();
     }
   });
@@ -40,6 +45,8 @@
     _equipmentFieldset.insertAdjacentHTML('beforeend', equipmentFielsetHtml);
 
     _runewordForm.addEventListener('input', _handleFormInputChange);
+
+    isInitialLoadComplete = true;
   }
 
   function _initApp() {
@@ -73,7 +80,7 @@
   }
 
   function _search(searchParams) {
-    return Runewords.reduce((previousValue, currentValue) => {
+    return runeword_data.reduce((previousValue, currentValue) => {
       if ((searchParams.sockets.length === 0 || searchParams.sockets.includes(currentValue.runes.length))
         && (searchParams.equipment.length === 0 || searchParams.equipment.some(equipment => currentValue.equipment.includes(equipment)))) {
         return previousValue.concat(currentValue);
@@ -104,9 +111,9 @@
 
     let html = '';
 
-    for (let i = 0; i < Equipment.length; i++) {
-      const inputHtml = `<input type="checkbox" id="${equipmentFieldsetName}-${Equipment[i].id}" name="${equipmentFieldsetName}" value="${Equipment[i].id}"/>`;
-      const labelHtml = `<label for="${equipmentFieldsetName}-${Equipment[i].id}">${Equipment[i].name}</label>`;
+    for (let i = 0; i < equipment_data.length; i++) {
+      const inputHtml = `<input type="checkbox" id="${equipmentFieldsetName}-${equipment_data[i].id}" name="${equipmentFieldsetName}" value="${equipment_data[i].id}"/>`;
+      const labelHtml = `<label for="${equipmentFieldsetName}-${equipment_data[i].id}">${equipment_data[i].name}</label>`;
       html = `${html}${inputHtml}${labelHtml}`;
     }
 
@@ -124,7 +131,7 @@
         const name = `<div>${currentValue.name}</div>`;
 
         const runes = `<div>${currentValue.runes.reduce((previousRunes, currentRune, currentIndex, array) => {
-          const rune = Runes.find(value => value.id === currentRune);
+          const rune = rune_data.find(value => value.id === currentRune);
 
           if (rune) {
             const separator = currentIndex < array.length - 1 ? `<span>, </span>` : '';
@@ -136,7 +143,7 @@
         }, '')}</div>`;
 
         const equipment = `<div>${currentValue.equipment.reduce((previousEquipment, currentEquipment, currentIndex, array) => {
-          const equipment = Equipment.find(value => value.id === currentEquipment);
+          const equipment = equipment_data.find(value => value.id === currentEquipment);
 
           if (equipment) {
             const separator = currentIndex < array.length - 1 ? `<span>, </span>` : '';

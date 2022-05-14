@@ -9,7 +9,7 @@
     module.exports = factory();
   } else {
     // Browser globals (root is window)
-    root.runewords = factory();
+    root.runeword_data = factory();
   }
 }(typeof self !== 'undefined' ? self : this, function () {
   // Just return a value to define the module export.

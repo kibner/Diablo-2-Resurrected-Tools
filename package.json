@@ -18,11 +18,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.12.4"
+    "parcel": "^2.5.0",
+    "@parcel/transformer-webmanifest": "^2.5.0",
+    "@parcel/packager-raw-url": "^2.5.0"
   },
   "dependencies": {
-    "equipment": "file:js/modules/equipment",
-    "runes": "file:js/modules/runes",
-    "runewords": "file:js/modules/runewords"
+    "equipment_data": "file:js/modules/data/equipment_data",
+    "runes_data": "file:js/modules/data/rune_data",
+    "runewords_data": "file:js/modules/data/runeword_data"
   }
 }
