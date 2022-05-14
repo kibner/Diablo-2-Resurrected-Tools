@@ -6,7 +6,7 @@
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
-    module.exports = factory(require('../../data/runeword_data/runeword_data'));
+    module.exports = factory(require('../../data/runeword_data'));
   } else {
     // Browser globals (root is window)
     root.search_service = factory(root.runeword_data);

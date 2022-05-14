@@ -1,12 +1,12 @@
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['modules/data/rune_data', 'modules/data/equipment_data', 'modules/services/search_service'], factory);
+    define(['./modules/data/rune_data', './modules/data/equipment_data', './modules/services/search_service'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
-    module.exports = factory(require('./modules/data/rune_data/rune_data'), require('./modules/data/equipment_data/equipment_data'), require('./modules/services/search_service/search_service'));
+    module.exports = factory(require('./modules/data/rune_data'), require('./modules/data/equipment_data'), require('./modules/services/search_service'));
   } else {
     // Browser globals (root is window)
     root.diablo_2_resurrected_tools = factory(root.rune_data, root.equipment_data, root.search_service);
