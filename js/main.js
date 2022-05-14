@@ -24,7 +24,7 @@
     if (event.target.readyState === 'interactive') {
       _initLoader();
     } else if (event.target.readyState === 'complete') {
-      // loading while in new version of parcel seems to only trigger the 'complete' ready state, so I added a check to
+      // loading with new version of Parcel seems to only trigger the 'complete' ready state, so I added a check to
       // make sure that initialization still went through
       if (isInitialLoadComplete === false) {
         _initLoader();
