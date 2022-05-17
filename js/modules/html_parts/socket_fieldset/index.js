@@ -21,8 +21,8 @@
 
     for (let i = minSocketCount; i <= maxSocketCount; i++) {
       const inputHtml = `<input type="checkbox" id="${socketFieldsetName}-${i}" name="${socketFieldsetName}" value="${i}"/>`;
-      const labelHtml = `<label for="${socketFieldsetName}-${i}">${i}</label>`;
-      html = `${html}${inputHtml}${labelHtml}`;
+      const labelHtml = `<label for="${socketFieldsetName}-${i}">${inputHtml}${i}</label>`;
+      html = `${html}${labelHtml}`;
     }
 
     return html;
