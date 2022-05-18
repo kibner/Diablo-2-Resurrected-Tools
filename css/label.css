@@ -1,0 +1,8 @@
+label {
+  display: inline-block;
+}
+
+label:focus-within {
+  outline: 2px solid;
+  outline-offset: 2px;
+}
