@@ -1,6 +1,7 @@
-label:focus-within {
-  outline: 2px solid;
-  outline-offset: 2px;
+fieldset {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 8px 8px;
 }
 
 /* ==========================================================================
@@ -10,6 +11,9 @@ label:focus-within {
    ========================================================================== */
 @media only screen and (min-width: 35em) {
   /* Style adjustments for viewports that meet the condition */
+  fieldset {
+    flex-flow: row wrap;
+  }
 }
 
 @media print,
