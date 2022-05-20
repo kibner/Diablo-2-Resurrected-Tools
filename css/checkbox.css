@@ -6,8 +6,9 @@ input[type=checkbox] {
   width: 1.5em;
   display: inline-block;
   border-radius: 100%;
-  vertical-align: text-bottom;
+  vertical-align: bottom;
   position: relative;
+  margin-right: 2px;
 }
 
 input[type=checkbox][disabled],
