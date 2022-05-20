@@ -1,5 +1,5 @@
 label {
-  margin: 4px;
+  margin: 4px; /* based off outline for checkboxes */
 }
 
 label:focus-within {
