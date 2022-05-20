@@ -1,3 +1,7 @@
+label {
+  margin: 4px;
+}
+
 label:focus-within {
   outline: 2px solid;
   outline-offset: 2px;
