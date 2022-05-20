@@ -33,7 +33,7 @@
       const tableEndHtml = '</tbody></table>'
       const resultsHtml = _getSearchResultsRowHtml(searchResults);
 
-      html = html.concat(tableStartHtml, resultsHtml, tableEndHtml);
+      html += `${tableStartHtml}${resultsHtml}${tableEndHtml}`;
     }
 
     return html;
@@ -47,10 +47,10 @@
       const character_level = _getCharacterLevelHtml(currentValue);
       const stats = _getStatsHtml(currentValue);
 
-      return previousValue.concat('<tr>',
-        `<td>${String.prototype.concat(name, runes, equipment, character_level)}</td>`,
-        `<td>${stats}</td>`,
-        '</tr>');
+      return `${previousValue}<tr>` +
+        `<td>${String.prototype.concat(name, runes, equipment, character_level)}</td>` +
+        `<td>${stats}</td>` +
+        '</tr>';
     }, '');
   }
 
@@ -65,7 +65,7 @@
       if (rune) {
         const separator = currentIndex < array.length - 1 ? `<span>, </span>` : '';
 
-        return previousRunes.concat(`<span>${rune.name}</span>`, separator);
+        return `${previousRunes}<span>${rune.name}</span>${separator}`;
       } else {
         return previousRunes;
       }
@@ -79,7 +79,7 @@
       if (equipment) {
         const separator = currentIndex < array.length - 1 ? `<span>, </span>` : '';
 
-        return previousEquipment.concat(`<span>${equipment.name}</span>`, separator);
+        return `${previousEquipment}<span>${equipment.name}</span>${separator}`;
       } else {
         return previousEquipment;
       }
@@ -91,10 +91,38 @@
   }
 
   const _getStatsHtml = function (value) {
-    return value.stats.reduce((previousStats, currentStat) => previousStats.concat(`<div>${currentStat}</div>`), '');
+    return value.stats.reduce((previousStats, currentStat) => `${previousStats}<div>${currentStat}</div>`, '');
+  }
+
+  const _getForAttributeValue = function (socketFieldsetName, equipmentFieldsetName) {
+    return `${_getForAttributeValueForSockets(socketFieldsetName)} ${_getForAttributeValueForEquipment(equipmentFieldsetName)}`;
+  }
+
+  const _getForAttributeValueForSockets = function (socketFieldsetName) {
+    const minSocketCount = 2;
+    const maxSocketCount = 6;
+
+    let forAttributeValue = []
+
+    for (let i = minSocketCount; i <= maxSocketCount; i++) {
+      forAttributeValue.push(`${socketFieldsetName}-${i}`);
+    }
+
+    return forAttributeValue.join(' ');
+  }
+
+  const _getForAttributeValueForEquipment = function (equipmentFieldsetName) {
+    let forAttributeValue = [];
+
+    for (let i = 0; i < equipment_data.length; i++) {
+      forAttributeValue.push(`${equipmentFieldsetName}-${equipment_data[i].id}`);
+    }
+
+    return forAttributeValue.join(' ');
   }
 
   return {
-    getInnerHtml: _getInnerHtml
+    getInnerHtml: _getInnerHtml,
+    getForAttributeValue: _getForAttributeValue
   }
 }));

@@ -72,6 +72,10 @@
   }
 
   function _initApp() {
+    const socketFieldsetName = _socketFieldset.getAttribute('name');
+    const equipmentFieldsetName = _equipmentFieldset.getAttribute('name');
+    _runewordFormOutput.setAttribute('for', search_results_output.getForAttributeValue(socketFieldsetName, equipmentFieldsetName));
+
     const searchParams = {
       sockets: [],
       equipment: []
