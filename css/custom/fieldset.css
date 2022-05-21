@@ -1,6 +1,7 @@
 fieldset {
   display: flex;
   flex-flow: column wrap;
+  gap: 0.25em;
 }
 
 fieldset + fieldset {
