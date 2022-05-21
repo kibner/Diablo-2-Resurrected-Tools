@@ -1,3 +1,8 @@
+form > output {
+  display: block;
+  margin-top: 1em;
+}
+
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
