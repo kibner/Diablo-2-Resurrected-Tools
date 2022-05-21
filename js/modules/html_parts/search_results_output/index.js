@@ -29,7 +29,7 @@
     let html = '';
 
     if (searchResults && searchResults.length > 0) {
-      const tableStartHtml = '<table><thead><tr><th>Runeword</th><th>Stats</th></tr></thead><tbody>';
+      const tableStartHtml = '<table><thead><tr><th class="text-align-left">Runeword</th><th class="text-align-left">Stats</th></tr></thead><tbody>';
       const tableEndHtml = '</tbody></table>'
       const resultsHtml = _getSearchResultsRowHtml(searchResults);
 
