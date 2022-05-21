@@ -46,6 +46,10 @@ input[type=checkbox]:checked::before {
   transform: rotate(45deg) translateY(-20%) translateX(-10%);
 }
 
+input[type=checkbox]:hover {
+  background: #bdf;
+}
+
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
