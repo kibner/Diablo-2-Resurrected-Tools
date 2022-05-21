@@ -8,7 +8,7 @@
   main {
     margin-left: auto;
     margin-right: auto;
-    width: 50em; /* 50-75 is optimal range */
+    max-width: 50em; /* 50-75 is optimal range */
   }
 }
 
