@@ -42,56 +42,64 @@
   const _getSearchResultsRowHtml = function (searchResults) {
     return searchResults.reduce((previousValue, currentValue) => {
       const name = _getNameHtml(currentValue);
-      const runes = _getRunesHtml(currentValue);
-      const equipment = _getEquipmentHtml(currentValue);
-      const character_level = _getCharacterLevelHtml(currentValue);
+      const description = _getRunewordDescription(currentValue);
       const stats = _getStatsHtml(currentValue);
 
       return `${previousValue}<tr>` +
-        `<td>${String.prototype.concat(name, runes, equipment, character_level)}</td>` +
+        `<td>${name}${description}</td>` +
         `<td>${stats}</td>` +
         '</tr>';
     }, '');
   }
 
   const _getNameHtml = function (value) {
-    return `<div>${value.name}</div>`;
+    return `<div><strong>${value.name}</strong></div>`;
+  }
+
+  const _getRunewordDescription = function (value) {
+    const runes = _getRunesHtml(value);
+    const equipment = _getEquipmentHtml(value);
+    const character_level = _getCharacterLevelHtml(value);
+
+    return `<dl>${runes}${equipment}${character_level}</dl>`;
   }
 
   const _getRunesHtml = function (value) {
-    return `<div>${value.runes.reduce((previousRunes, currentRune, currentIndex, array) => {
+    const runes = value.runes.reduce((previousRunes, currentRune) => {
       const rune = rune_data.find(value => value.id === currentRune);
 
       if (rune) {
-        const separator = currentIndex < array.length - 1 ? `<span>, </span>` : '';
-
-        return `${previousRunes}<span>${rune.name}</span>${separator}`;
+        return `${previousRunes}<li>${rune.name}</li>`;
       } else {
         return previousRunes;
       }
-    }, '')}</div>`;
+    }, '');
+
+    return `<dt>Runes</dt><dd><ol>${runes}</ol></dd>`;
   }
 
   const _getEquipmentHtml = function (value) {
-    return `<div>${value.equipment.reduce((previousEquipment, currentEquipment, currentIndex, array) => {
+    const equipment = value.equipment.reduce((previousEquipment, currentEquipment) => {
       const equipment = equipment_data.find(value => value.id === currentEquipment);
 
       if (equipment) {
-        const separator = currentIndex < array.length - 1 ? `<span>, </span>` : '';
-
-        return `${previousEquipment}<span>${equipment.name}</span>${separator}`;
+        return `${previousEquipment}<li>${equipment.name}</li>`;
       } else {
         return previousEquipment;
       }
-    }, '')}</div>`;
+    }, '');
+
+    return `<dt>Equipment</dt><dd><ul>${equipment}</ul></dd>`;
   }
 
   const _getCharacterLevelHtml = function (value) {
-    return `<div><span>Required level: </span><span>${value.character_level}</span></div>`;
+    return `<dt>Required level</dt><dd>${value.character_level}</dd>`;
   }
 
   const _getStatsHtml = function (value) {
-    return value.stats.reduce((previousStats, currentStat) => `${previousStats}<div>${currentStat}</div>`, '');
+    const statItems = value.stats.reduce((previousStats, currentStat) => `${previousStats}<li>${currentStat}</li>`, '');
+
+    return `<div><ul>${statItems}</ul></div>`;
   }
 
   const _getForAttributeValue = function (socketFieldsetName, equipmentFieldsetName) {
