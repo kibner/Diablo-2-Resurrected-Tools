@@ -3,6 +3,46 @@
   text-align: left;
 }
 
+table.table-first-column-max-width-50-pct > thead > tr > th,
+table.table-first-column-max-width-50-pct > tbody > tr > td {
+  width: 50%;
+  max-width: 25%;
+}
+
+.padding-left-0 {
+  padding-left: 0;
+}
+
+.font-size-larger {
+  font-size: larger;
+}
+
+.font-weight-normal {
+  font-weight: normal;
+}
+
+ol.list-inline,
+ul.list-inline {
+  list-style-type: none;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.list-style-position-inside {
+  list-style-position: inside;
+}
+
+.list-inline > li::after {
+  content: ', ';
+  white-space: pre-wrap;
+}
+
+.list-inline > li:last-child::after {
+  content: none;
+}
+
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.

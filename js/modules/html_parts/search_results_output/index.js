@@ -29,7 +29,7 @@
     let html = '';
 
     if (searchResults && searchResults.length > 0) {
-      const tableStartHtml = '<table><thead><tr><th class="text-align-left">Runeword</th><th class="text-align-left">Stats</th></tr></thead><tbody>';
+      const tableStartHtml = '<table class="table-first-column-max-width-50-pct"><thead><tr><th class="text-align-left">Runeword</th><th class="text-align-left">Stats</th></tr></thead><tbody>';
       const tableEndHtml = '</tbody></table>'
       const resultsHtml = _getSearchResultsRowHtml(searchResults);
 
@@ -53,7 +53,7 @@
   }
 
   const _getNameHtml = function (value) {
-    return `<strong>${value.name}</strong>`;
+    return `<strong class="font-size-larger font-weight-normal">${value.name}</strong>`;
   }
 
   const _getRunewordDescription = function (value) {
@@ -75,7 +75,7 @@
       }
     }, '');
 
-    return `<dt>Runes</dt><dd><ol>${runes}</ol></dd>`;
+    return `<dt>Runes</dt><dd><ol class="list-inline">${runes}</ol></dd>`;
   }
 
   const _getEquipmentHtml = function (value) {
@@ -89,7 +89,7 @@
       }
     }, '');
 
-    return `<dt>Equipment</dt><dd><ul>${equipment}</ul></dd>`;
+    return `<dt>Equipment</dt><dd><ul class="list-inline">${equipment}</ul></dd>`;
   }
 
   const _getCharacterLevelHtml = function (value) {
@@ -99,7 +99,7 @@
   const _getStatsHtml = function (value) {
     const statItems = value.stats.reduce((previousStats, currentStat) => `${previousStats}<li>${currentStat}</li>`, '');
 
-    return `<ul>${statItems}</ul>`;
+    return `<ul class="padding-left-0 list-style-position-inside">${statItems}</ul>`;
   }
 
   const _getForAttributeValue = function (socketFieldsetName, equipmentFieldsetName) {
