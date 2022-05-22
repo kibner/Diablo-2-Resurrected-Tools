@@ -53,7 +53,7 @@
   }
 
   const _getNameHtml = function (value) {
-    return `<div><strong>${value.name}</strong></div>`;
+    return `<strong>${value.name}</strong>`;
   }
 
   const _getRunewordDescription = function (value) {
@@ -99,7 +99,7 @@
   const _getStatsHtml = function (value) {
     const statItems = value.stats.reduce((previousStats, currentStat) => `${previousStats}<li>${currentStat}</li>`, '');
 
-    return `<div><ul>${statItems}</ul></div>`;
+    return `<ul>${statItems}</ul>`;
   }
 
   const _getForAttributeValue = function (socketFieldsetName, equipmentFieldsetName) {
