@@ -30,8 +30,9 @@ ul.list-inline {
   padding: 0;
 }
 
-.list-style-position-inside {
-  list-style-position: inside;
+ol.list-inline > li,
+ul.list-inline > li {
+  margin-top: 0;
 }
 
 .list-inline > li::after {
@@ -41,6 +42,10 @@ ul.list-inline {
 
 .list-inline > li:last-child::after {
   content: none;
+}
+
+.list-style-position-inside {
+  list-style-position: inside;
 }
 
 /* ==========================================================================
