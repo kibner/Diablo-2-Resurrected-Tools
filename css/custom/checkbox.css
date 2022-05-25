@@ -47,7 +47,13 @@ input[type=checkbox]:checked::before {
 }
 
 input[type=checkbox]:hover {
-  background: #bdf;
+  background: #6e4d25;
+}
+
+@media (prefers-color-scheme: light) {
+  input[type=checkbox]:hover {
+    background: #b3d4fc;
+  }
 }
 
 /* ==========================================================================

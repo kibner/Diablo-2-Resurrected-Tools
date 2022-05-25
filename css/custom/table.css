@@ -27,7 +27,14 @@ tbody tr:nth-child(odd) {
 
 table > tr:hover,
 tbody tr:hover {
-  background: #bdf;
+  background: #6e4d25;
+}
+
+@media (prefers-color-scheme: light) {
+  table > tr:hover,
+  tbody tr:hover {
+    background: #b3d4fc;
+  }
 }
 
 /* ==========================================================================
