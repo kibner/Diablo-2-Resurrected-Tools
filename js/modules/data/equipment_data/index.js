@@ -16,103 +16,133 @@
   return [
     {
       id: 'amazon-bow',
-      name: 'Amazon Bow'
+      name: 'Amazon Bow',
+      max_sockets: 5
     },
     {
       id: 'amazon-spear',
-      name: 'Amazon Spear'
+      name: 'Amazon Spear',
+      max_sockets: 6
     },
     {
       id: 'assassin-katar',
-      name: 'Assassin Katar'
+      name: 'Assassin Katar',
+      max_sockets: 3
     },
     {
       id: 'axe',
-      name: 'Axe'
+      name: 'Axe',
+      max_sockets: 6
     },
     {
       id: 'barbarian-helmet',
-      name: 'Barbarian Helmet'
+      name: 'Barbarian Helmet',
+      max_sockets: 3
     },
     {
       id: 'body-armor',
-      name: 'Body Armor'
+      name: 'Body Armor',
+      max_sockets: 4
     },
     {
       id: 'bow',
-      name: 'Bow'
+      name: 'Bow',
+      max_sockets: 6
     },
     {
       id: 'circlet',
-      name: 'Circlet'
+      name: 'Circlet',
+      max_sockets: 3
     },
     {
       id: 'club',
-      name: 'Club'
+      name: 'Club',
+      max_sockets: 3
     },
     {
       id: 'crossbow',
-      name: 'Crossbow'
+      name: 'Crossbow',
+      max_sockets: 6
     },
     {
       id: 'dagger',
-      name: 'Dagger'
+      name: 'Dagger',
+      max_sockets: 3
     },
     {
       id: 'druid-pelt',
-      name: 'Druid Pelt'
+      name: 'Druid Pelt',
+      max_sockets: 3
     },
     {
-      id: 'hammer',
-      name: 'Hammer'
+      id: 'hammer-1',
+      name: 'Hammer (1H)',
+      max_sockets: 4
+    },
+    {
+      id: 'hammer-2',
+      name: 'Hammer (2H)',
+      max_sockets: 4
     },
     {
       id: 'helmet',
-      name: 'Helmet'
+      name: 'Helmet',
+      max_sockets: 3
     },
     {
       id: 'mace',
-      name: 'Mace'
+      name: 'Mace',
+      max_sockets: 6
     },
     {
       id: 'necromancer-shrunken-head',
-      name: 'Necromancer Shrunken Head'
+      name: 'Necromancer Shrunken Head',
+      max_sockets: 2
     },
     {
       id: 'paladin-shield',
-      name: 'Paladin Shield'
+      name: 'Paladin Shield',
+      max_sockets: 4
     },
     {
       id: 'polearm',
-      name: 'Polearm'
+      name: 'Polearm',
+      max_sockets: 6
     },
     {
       id: 'scepter',
-      name: 'Scepter'
+      name: 'Scepter',
+      max_sockets: 5
     },
     {
       id: 'shield',
-      name: 'Shield'
+      name: 'Shield',
+      max_sockets: 4
     },
     {
       id: 'sorceress-orb',
-      name: 'Sorceress Orb'
+      name: 'Sorceress Orb',
+      max_sockets: 3
     },
     {
       id: 'spear',
-      name: 'Spear'
+      name: 'Spear',
+      max_sockets: 6
     },
     {
       id: 'staff',
-      name: 'Staff'
+      name: 'Staff',
+      max_sockets: 6
     },
     {
       id: 'sword',
-      name: 'Sword'
+      name: 'Sword',
+      max_sockets: 6
     },
     {
       id: 'wand',
-      name: 'Wand'
+      name: 'Wand',
+      max_sockets: 2
     }
   ];
 }));

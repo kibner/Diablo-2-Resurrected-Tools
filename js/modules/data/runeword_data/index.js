@@ -18,8 +18,8 @@
   const _HELMET_PREFIX = 'helmet';
   const _BODY_ARMOR_PREFIX = 'body-armor';
 
-  const _ALL_WEAPONS = ['amazon-bow', 'amazon-spear', 'assassin-katar', 'axe', 'bow', 'club', 'crossbow', 'dagger', 'hammer', 'mace', 'polearm', 'scepter', 'sorceress-orb', 'spear', 'staff', 'sword', 'wand'];
-  const _ALL_MELEE_WEAPONS = ['amazon-spear', 'assassin-katar', 'axe', 'club', 'dagger', 'hammer', 'mace', 'polearm', 'scepter', 'sorceress-orb', 'spear', 'staff', 'sword', 'wand'];
+  const _ALL_WEAPONS = ['amazon-bow', 'amazon-spear', 'assassin-katar', 'axe', 'bow', 'club', 'crossbow', 'dagger', 'hammer-1', 'hammer-2', 'mace', 'polearm', 'scepter', 'sorceress-orb', 'spear', 'staff', 'sword', 'wand'];
+  const _ALL_MELEE_WEAPONS = ['amazon-spear', 'assassin-katar', 'axe', 'club', 'dagger', 'hammer-1', 'hammer-2', 'mace', 'polearm', 'scepter', 'sorceress-orb', 'spear', 'staff', 'sword', 'wand'];
   const _ALL_MISSILE_WEAPONS = ['amazon-bow', 'bow', 'crossbow'];
   const _ALL_SHIELDS = ['necromancer-shrunken-head', 'paladin-shield', 'shield'];
   const _ALL_HELMETS = ['barbarian-helmet', 'circlet', 'druid-pelt', 'helmet'];
@@ -30,7 +30,7 @@
       id: `${_WEAPON_PREFIX}-beast`,
       name: 'Beast',
       runes: ['ber', 'tir', 'um', 'mal', 'lum'],
-      equipment: ['axe', 'hammer', 'scepter'],
+      equipment: ['axe', 'hammer-1', 'hammer-2', 'scepter'],
       character_level: 63,
       stats: ['Level 9 Fanaticism Aura When Equipped', '+40% Increased Attack Speed', '+240-270% Enhanced Damage', '20% Chance of Crushing Blow', '25% Chance of Open Wounds', '+3 to Werebear', '+3 to Lycanthropy', 'Prevent Monster Heal', '+25-40 to Strength', '+10 to Energy', '+2 to Mana after each Kill', 'Level 13 Summon Grizzly (5/5 Charges)']
     },
@@ -38,7 +38,7 @@
       id: `${_WEAPON_PREFIX}-black`,
       name: 'Black',
       runes: ['thul', 'io', 'nef'],
-      equipment: ['club', 'hammer', 'mace'],
+      equipment: ['club', 'hammer-1', 'hammer-2', 'mace'],
       character_level: 35,
       stats: ['+15% Increased Attack Speed', '+120% Enhanced Damage', '+200 to Attack Rating', 'Adds 3-14 Cold Damage', '40% Chance of Crushing Blow', 'Knockback', '+10 to Vitality', 'Magic Damage Reduced by 2', 'Level 4 Corpse Explosion (12/12 Charges)']
     },
@@ -102,7 +102,7 @@
       id: `${_WEAPON_PREFIX}-doom`,
       name: 'Doom',
       runes: ['hel', 'ohm', 'um', 'lo', 'cham'],
-      equipment: ['axe', 'hammer', 'polearm'],
+      equipment: ['axe', 'hammer-1', 'hammer-2', 'polearm'],
       character_level: 67,
       stats: ['5% Chance to cast Level 18 Volcano on striking', 'Level 12 Holy Freeze Aura When Equipped', '+2 to All Skills', '+45% Increased Attack Speed', '+330-370% Enhanced Damage', '-40-60% to Enemy Cold Resistance', '20% Deadly Strike', '25% Chance of Open Wounds', 'Prevent Monster Heal', 'Freezes target +3', 'Requirements -20%']
     },
@@ -134,7 +134,7 @@
       id: `${_WEAPON_PREFIX}-famine`,
       name: 'Famine',
       runes: ['fal', 'ohm', 'ort', 'jah'],
-      equipment: ['axe', 'hammer'],
+      equipment: ['axe', 'hammer-1', 'hammer-2'],
       character_level: 65,
       stats: ['+30% Increased Attack Speed', '+320-370% Enhanced Damage', 'Ignore Target\'s Defense', 'Adds 180-200 Magic Damage', 'Adds 50-200 Fire Damage', 'Adds 51-250 Lightning Damage', 'Adds 50-200 Cold Damage', '12% Life stolen per hit', 'Prevent Monster Heal', '+10 to Strength']
     },
@@ -246,7 +246,7 @@
       id: `${_WEAPON_PREFIX}-last-wish`,
       name: 'Last Wish',
       runes: ['jah', 'mal', 'jah', 'sur', 'jah', 'ber'],
-      equipment: ['axe', 'hammer', 'sword'],
+      equipment: ['axe', 'hammer-1', 'hammer-2', 'sword'],
       character_level: 65,
       stats: ['6% Chance to cast Level 11 Fade when struck', '10% Chance to cast Level 18 Life Tap on striking', '20% Chance to cast Level 20 Charged Bolt on attack', 'Level 17 Might Aura When Equipped', '+330-375% Enhanced Damage', 'Ignores Target\'s Defense', '60-70% Chance of Crushing Blow', 'Prevent Monster Heal', 'Hit Blinds Target', '0.5% Better Chance of Getting Magic Items (Based on Character Level)']
     },
@@ -254,7 +254,7 @@
       id: `${_WEAPON_PREFIX}-lawbringer`,
       name: 'Lawbringer',
       runes: ['amn', 'lem', 'ko'],
-      equipment: ['hammer', 'scepter', 'sword'],
+      equipment: ['hammer-1', 'hammer-2', 'scepter', 'sword'],
       character_level: 43,
       stats: ['20% Chance to cast Level 15 Decrepify on striking', 'Level 16-18 Sanctuary Aura When Equipped', '-50% Target Defense', 'Adds 150-210 Fire Damage', 'Adds 130-180 Cold Damage', '7% Life stolen per hit', 'Slain Monsters Rest in Peace', '+200-250 Defense vs. Missile', '+10 to Dexterity', '75% Extra Gold from Monsters']
     },
