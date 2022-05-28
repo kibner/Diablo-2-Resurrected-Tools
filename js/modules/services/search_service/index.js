@@ -40,7 +40,7 @@
 
         const equipment = equipment_data.find(value => value.id === equipmentId);
 
-        return equipment && runeword.runes.length <= equipment.max_sockets;
+        return equipment && equipment.max_sockets >= runeword.runes.length;
       });
   };
 

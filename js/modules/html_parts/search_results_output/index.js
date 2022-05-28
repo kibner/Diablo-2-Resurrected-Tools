@@ -82,7 +82,7 @@
     const equipment = value.equipment.reduce((previousEquipment, currentEquipment) => {
       const equipment = equipment_data.find(value => value.id === currentEquipment);
 
-      if (equipment) {
+      if (equipment && equipment.max_sockets >= value.runes.length) {
         return `${previousEquipment}<li>${equipment.name}</li>`;
       } else {
         return previousEquipment;

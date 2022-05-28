@@ -82,7 +82,7 @@
     {
       id: 'hammer-2',
       name: 'Hammer (2H)',
-      max_sockets: 4
+      max_sockets: 6
     },
     {
       id: 'helmet',
