@@ -9,10 +9,10 @@
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
-    module.exports = factory(require(
-      '../../data/runeword_data',
-      '../../data/equipment_data'
-    ));
+    module.exports = factory(
+      require('../../data/runeword_data'),
+      require('../../data/equipment_data')
+    );
   } else {
     // Browser globals (root is window)
     root.search_service = factory(
@@ -26,19 +26,21 @@
 ) {
   // Just return a value to define the module export.
   const _hasMatchingSocket = function (searchParamSockets, runeword) {
-    return searchParamSockets.length === 0 || searchParamSockets.sockets.includes(runeword.runes.length);
+    return searchParamSockets.length === 0 || searchParamSockets.includes(runeword.runes.length);
   };
 
   const _hasMatchingEquipment = function (searchParamEquipment, runeword) {
     return searchParamEquipment.length === 0
-      || searchParamEquipment.some(equipment => {
-        // console.log({
-        //   runeword: runeword,
-        //   equipment: equipment_data[equipment]
-        // });
+      || searchParamEquipment.some(equipmentId => {
+        const doesIncludeEquipment = runeword.equipment.includes(equipmentId);
 
-        return runeword.equipment.includes(equipment);
-          // && runeword.runes.length <= equipment_data[equipment].max_sockets;
+        if (doesIncludeEquipment === false) {
+          return false;
+        }
+
+        const equipment = equipment_data.find(value => value.id === equipmentId);
+
+        return equipment && runeword.runes.length <= equipment.max_sockets;
       });
   };
 
