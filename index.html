@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/custom/_bundle.css">
-  <link rel="stylesheet" href="css/custom/collapsible.css">
 
   <meta name="theme-color" content="#fafafa">
   <meta name="color-scheme" content="dark light">
@@ -28,24 +27,15 @@
 <body>
 <main>
   <form id="runeword-form">
-    <div class="wrap-collapsible">
-      <input id="collapsible" class="toggle" type="checkbox">
-      <label for="collapsible" class="lbl-toggle">More Info</label>
-      <div class="collapsible-content">
-        <div class="content-inner">
-          <p>
-            QUnit is by calling one of the object that are embedded in JavaScript, and faster JavaScript program could
-            also used with its elegant, well documented, and functional programming using JS, HTML pages Modernizr is a
-            popular browsers without plug-ins. Test-Driven Development.
-          </p>
-        </div>
-      </div>
-    </div>
     <fieldset name="sockets">
-      <legend>Sockets</legend>
+      <input id="sockets-collapsible" type="checkbox" checked="" class="toggle">
+      <legend><label for="sockets-collapsible">Sockets</label></legend>
+      <div class="collapsible-content"></div>
     </fieldset>
     <fieldset name="equipment">
-      <legend>Equipment</legend>
+      <input id="equipment-collapsible" type="checkbox" checked="" class="toggle">
+      <legend><label for="equipment-collapsible">Equipment</label></legend>
+      <div class="collapsible-content"></div>
     </fieldset>
     <output name="runeword-result"></output>
   </form>

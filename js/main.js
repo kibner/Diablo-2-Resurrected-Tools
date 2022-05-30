@@ -60,11 +60,8 @@
     _socketFieldset = _runewordForm.querySelector('fieldset[name=sockets]');
     _equipmentFieldset = _runewordForm.querySelector('fieldset[name=equipment]');
 
-    const socketFieldsetHtml = socket_fieldset.getInnerHtml('sockets');
-    _socketFieldset.insertAdjacentHTML('beforeend', socketFieldsetHtml);
-
-    const equipmentFielsetHtml = equipment_fieldset.getInnerHtml('equipment');
-    _equipmentFieldset.insertAdjacentHTML('beforeend', equipmentFielsetHtml);
+    _socketFieldset.querySelector('.collapsible-content').innerHTML = socket_fieldset.getInnerHtml('sockets');
+    _equipmentFieldset.querySelector('.collapsible-content').innerHTML = equipment_fieldset.getInnerHtml('equipment');
 
     _runewordForm.addEventListener('input', _handleFormInputChange);
 

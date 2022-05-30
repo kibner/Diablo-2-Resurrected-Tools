@@ -1,0 +1,58 @@
+/* inspiration from: */
+/* - https://www.digitalocean.com/community/tutorials/css-collapsible */
+/* - https://stackoverflow.com/a/58648331 */
+
+input[type='checkbox'].toggle {
+  display: none;
+}
+
+legend > label::before {
+  content: '';
+  display: inline-block;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid currentColor;
+  vertical-align: middle;
+  margin-right: .7rem;
+  transform: translateY(-2px);
+}
+
+.collapsible-content {
+  max-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 0.25em;
+}
+
+.toggle:checked + legend + .collapsible-content {
+  max-height: 100%;
+}
+
+.toggle:checked + legend > label::before {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.toggle:checked + legend > label {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+  .collapsible-content {
+    flex-flow: row wrap;
+  }
+}
+
+@media print,
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}

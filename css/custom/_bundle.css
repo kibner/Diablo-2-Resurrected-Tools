@@ -11,5 +11,6 @@
 @import 'dl.css';
 @import 'list.css';
 
+@import 'collapsible-legend.css';
 /* always import helpers.css last */
 @import 'helpers.css';
