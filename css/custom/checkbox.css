@@ -50,6 +50,12 @@ input[type=checkbox]:hover {
   background-color: #6e4d25;
 }
 
+input[type=checkbox]:focus,
+input[type=checkbox]:focus-visible,
+input[type=checkbox]:focus-within {
+  outline: none;
+}
+
 @media (prefers-color-scheme: light) {
   input[type=checkbox]:hover {
     background-color: #b3d4fc;
