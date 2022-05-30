@@ -2,6 +2,8 @@ label {
   margin: 4px; /* based off outline for checkboxes */
 }
 
+label:focus,
+label:focus-visible,
 label:focus-within {
   outline: 2px solid;
   outline-offset: 2px;
