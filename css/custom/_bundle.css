@@ -11,6 +11,6 @@
 @import 'dl.css';
 @import 'list.css';
 
-@import 'collapsible-legend.css';
+@import 'collapsible-fieldset.css';
 /* always import helpers.css last */
 @import 'helpers.css';
