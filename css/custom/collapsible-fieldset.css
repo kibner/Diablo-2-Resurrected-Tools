@@ -2,7 +2,7 @@
 /* - https://www.digitalocean.com/community/tutorials/css-collapsible */
 /* - https://stackoverflow.com/a/58648331 */
 
-input[type='checkbox'].toggle {
+input[type='checkbox'].toggle-collapsible {
   display: none;
 }
 
@@ -17,23 +17,17 @@ legend > label::before {
   transform: translateY(-2px);
 }
 
-.collapsible-content {
-  max-height: 0;
-  overflow: hidden;
+.toggle-collapsible:checked + legend + .collapsible-content {
   display: flex;
   flex-flow: column wrap;
   gap: 0.25em;
 }
 
-.toggle:checked + legend + .collapsible-content {
-  max-height: 100%;
-}
-
-.toggle:checked + legend > label::before {
+.toggle-collapsible:checked + legend > label::before {
   transform: rotate(90deg) translateX(-3px);
 }
 
-.toggle:checked + legend > label {
+.toggle-collapsible:checked + legend > label {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -45,7 +39,7 @@ legend > label::before {
    ========================================================================== */
 @media only screen and (min-width: 35em) {
   /* Style adjustments for viewports that meet the condition */
-  .collapsible-content {
+  .toggle-collapsible:checked + legend + .collapsible-content {
     flex-flow: row wrap;
   }
 }

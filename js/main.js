@@ -83,10 +83,28 @@
   }
 
   function _handleFormInputChange(event) {
-    if (event.target.tagName !== 'INPUT' || event.target.classList.contains('toggle')) {
+    if (event.target.tagName !== 'INPUT') {
       return;
     }
 
+    if (event.target.classList.contains('toggle')) {
+      _toggleCollapsibleContent(event);
+    } else {
+      _executeSearch();
+    }
+  }
+
+  function _toggleCollapsibleContent(event) {
+    const collapsibleContent = event.target.parentNode.querySelector('.collapsible-content');
+
+    if (event.target.checked) {
+      collapsibleContent.classList.remove('sr-only');
+    } else {
+      collapsibleContent.classList.add('sr-only');
+    }
+  }
+
+  function _executeSearch() {
     const sockets = Array.from(_runewordForm.querySelectorAll('input[name="sockets"]:checked'))
       .reduce((previousValue, currentValue) => previousValue.concat(parseInt(currentValue.value)), []);
 
