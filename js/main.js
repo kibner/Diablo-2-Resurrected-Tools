@@ -33,7 +33,7 @@
   search_results_output
 ) {
   // Just return a value to define the module export.
-  let isInitialLoadComplete = false;
+  let _isInitialLoadComplete = false;
   let _runewordForm;
   let _runewordFormOutput;
   let _socketFieldset;
@@ -42,44 +42,60 @@
   // readystatechange as event listener to insert or modify the DOM before DOMContentLoaded
   document.addEventListener('readystatechange', event => {
     if (event.target.readyState === 'interactive') {
-      _initLoader();
+      _initializeLoader();
     } else if (event.target.readyState === 'complete') {
       // loading with new version of Parcel seems to only trigger the 'complete' ready state, so I added a check to
       // make sure that initialization still went through
-      if (isInitialLoadComplete === false) {
-        _initLoader();
+      if (_isInitialLoadComplete === false) {
+        _initializeLoader();
       }
 
-      _initApp();
+      _initializeApp();
     }
   });
 
-  function _initLoader() {
+  function _initializeLoader() {
+    _isInitialLoadComplete = false;
+    _initializeGlobals();
+    _isInitialLoadComplete = true;
+  }
+
+  function _initializeApp() {
+    _initializeFormInputs();
+    _initializeFormOutput();
+    _initializeListeners();
+
+    _executeSearch();
+  }
+
+  function _initializeGlobals() {
     _runewordForm = document.getElementById('runeword-form');
     _runewordFormOutput = _runewordForm.querySelector('output[name=runeword-result]');
     _socketFieldset = _runewordForm.querySelector('fieldset[name=sockets]');
     _equipmentFieldset = _runewordForm.querySelector('fieldset[name=equipment]');
-
-    _socketFieldset.querySelector('.collapsible-content').innerHTML = socket_fieldset.getInnerHtml('sockets');
-    _equipmentFieldset.querySelector('.collapsible-content').innerHTML = equipment_fieldset.getInnerHtml('equipment');
-
-    _runewordForm.addEventListener('input', _handleFormInputChange);
-
-    isInitialLoadComplete = true;
   }
 
-  function _initApp() {
+  function _initializeFormInputs() {
+    _initializeSocketFieldSet();
+    _initializeEquipmentFieldSet();
+  }
+
+  function _initializeSocketFieldSet() {
+    _socketFieldset.querySelector('.collapsible-content').innerHTML = socket_fieldset.getInnerHtml('sockets');
+  }
+
+  function _initializeEquipmentFieldSet() {
+    _equipmentFieldset.querySelector('.collapsible-content').innerHTML = equipment_fieldset.getInnerHtml('equipment');
+  }
+
+  function _initializeFormOutput() {
     const socketFieldsetName = _socketFieldset.getAttribute('name');
     const equipmentFieldsetName = _equipmentFieldset.getAttribute('name');
     _runewordFormOutput.setAttribute('for', search_results_output.getForAttributeValue(socketFieldsetName, equipmentFieldsetName));
+  }
 
-    const searchParams = {
-      sockets: [],
-      equipment: []
-    };
-
-    const searchResults = search_service.searchRunewords(searchParams);
-    _runewordFormOutput.innerHTML = search_results_output.getInnerHtml(searchResults);
+  function _initializeListeners() {
+    _runewordForm.addEventListener('input', _handleFormInputChange);
   }
 
   function _handleFormInputChange(event) {
@@ -87,7 +103,7 @@
       return;
     }
 
-    if (event.target.classList.contains('toggle')) {
+    if (event.target.classList.contains('toggle-collapsible')) {
       _toggleCollapsibleContent(event);
     } else {
       _executeSearch();
@@ -104,19 +120,33 @@
     }
   }
 
-  function _executeSearch() {
-    const sockets = Array.from(_runewordForm.querySelectorAll('input[name="sockets"]:checked'))
+  function _getSocketParameters() {
+    return Array.from(_runewordForm.querySelectorAll('input[name="sockets"]:checked'))
       .reduce((previousValue, currentValue) => previousValue.concat(parseInt(currentValue.value)), []);
+  }
 
-    const equipment = Array.from(_runewordForm.querySelectorAll('input[name="equipment"]:checked'))
+  function _getEquipmentParameters() {
+    return Array.from(_runewordForm.querySelectorAll('input[name="equipment"]:checked'))
       .reduce((previousValue, currentValue) => previousValue.concat(currentValue.value), []);
+  }
 
-    const searchParams = {
+  function _getSearchParameters() {
+    const sockets = _getSocketParameters();
+    const equipment = _getEquipmentParameters();
+
+    return {
       sockets: sockets,
       equipment: equipment
     };
+  }
 
-    const searchResults = search_service.searchRunewords(searchParams);
-    _runewordFormOutput.innerHTML = search_results_output.getInnerHtml(searchResults);
+  function _executeSearch() {
+    const searchParameters = _getSearchParameters();
+    const searchResults = search_service.searchRunewords(searchParameters);
+    _displaySearchResults(searchResults);
+  }
+
+  function _displaySearchResults(searchResults) {
+    return _runewordFormOutput.innerHTML = search_results_output.getInnerHtml(searchResults);
   }
 }));
