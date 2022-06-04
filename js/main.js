@@ -113,13 +113,23 @@
   }
 
   function _toggleCollapsibleContent(event) {
-    const collapsibleContent = event.target.parentNode.querySelector('.collapsible-content');
+    const collapsibleContent = _getCollapsibleContentFromFormInput(event.target);
 
     if (event.target.checked) {
       collapsibleContent.classList.remove('sr-only');
     } else {
       collapsibleContent.classList.add('sr-only');
     }
+  }
+
+  function _getCollapsibleContentFromFormInput(input) {
+    return input.parentNode.querySelector('.collapsible-content');
+  }
+
+  function _executeSearch() {
+    const searchParameters = _getSearchParameters();
+    const searchResults = search_service.searchRunewords(searchParameters);
+    _displaySearchResults(searchResults);
   }
 
   function _getSocketParameters() {
@@ -140,12 +150,6 @@
       sockets: sockets,
       equipment: equipment
     };
-  }
-
-  function _executeSearch() {
-    const searchParameters = _getSearchParameters();
-    const searchResults = search_service.searchRunewords(searchParameters);
-    _displaySearchResults(searchResults);
   }
 
   function _displaySearchResults(searchResults) {
