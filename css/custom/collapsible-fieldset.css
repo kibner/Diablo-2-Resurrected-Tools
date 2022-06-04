@@ -2,10 +2,6 @@
 /* - https://www.digitalocean.com/community/tutorials/css-collapsible */
 /* - https://stackoverflow.com/a/58648331 */
 
-input[type='checkbox'].toggle-collapsible {
-  display: none;
-}
-
 legend > label::before {
   content: '';
   display: inline-block;

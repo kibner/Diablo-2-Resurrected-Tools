@@ -33,6 +33,10 @@
   search_results_output
 ) {
   // Just return a value to define the module export.
+  const _SOCKET_FIELDSET_NAME = 'sockets';
+  const _EQUIPMENT_FIELDSET_NAME = 'equipment';
+  const _SCREEN_READER_ONLY_CLASS_NAME = 'sr-only';
+
   let _isInitialLoadComplete = false;
   let _runewordForm;
   let _runewordFormOutput;
@@ -71,8 +75,8 @@
   function _initializeGlobals() {
     _runewordForm = document.getElementById('runeword-form');
     _runewordFormOutput = _runewordForm.querySelector('output[name=runeword-result]');
-    _socketFieldset = _runewordForm.querySelector('fieldset[name=sockets]');
-    _equipmentFieldset = _runewordForm.querySelector('fieldset[name=equipment]');
+    _socketFieldset = _runewordForm.querySelector(`fieldset[name=${_SOCKET_FIELDSET_NAME}]`);
+    _equipmentFieldset = _runewordForm.querySelector(`fieldset[name=${_EQUIPMENT_FIELDSET_NAME}]`);
   }
 
   function _initializeFormInputs() {
@@ -81,23 +85,22 @@
   }
 
   function _initializeSocketFieldSet() {
-    _socketFieldset.querySelector('.collapsible-content').innerHTML = socket_fieldset.getInnerHtml('sockets');
+    _socketFieldset.querySelector('.collapsible-content').innerHTML = socket_fieldset.getInnerHtml(_SOCKET_FIELDSET_NAME);
   }
 
   function _initializeEquipmentFieldSet() {
-    _equipmentFieldset.querySelector('.collapsible-content').innerHTML = equipment_fieldset.getInnerHtml('equipment');
+    _equipmentFieldset.querySelector('.collapsible-content').innerHTML = equipment_fieldset.getInnerHtml(_EQUIPMENT_FIELDSET_NAME);
   }
 
   function _initializeFormOutput() {
-    const socketFieldsetName = _socketFieldset.getAttribute('name');
-    const equipmentFieldsetName = _equipmentFieldset.getAttribute('name');
-    const formOutputForAttribute = search_results_output.getForAttributeValue(socketFieldsetName, equipmentFieldsetName);
+    const formOutputForAttribute = search_results_output.getForAttributeValue(_SOCKET_FIELDSET_NAME, _EQUIPMENT_FIELDSET_NAME);
 
     _runewordFormOutput.setAttribute('for', formOutputForAttribute);
   }
 
   function _initializeListeners() {
     _runewordForm.addEventListener('input', _handleFormInputChange);
+    _runewordForm.addEventListener('focusin', _handleFormFocus);
   }
 
   function _handleFormInputChange(event) {
@@ -106,24 +109,29 @@
     }
 
     if (event.target.classList.contains('toggle-collapsible')) {
-      _toggleCollapsibleContent(event);
+      _toggleCollapsibleContent(event.target);
     } else {
       _executeSearch();
     }
   }
 
-  function _toggleCollapsibleContent(event) {
-    const collapsibleContent = _getCollapsibleContentFromFormInput(event.target);
+  function _toggleCollapsibleContent(input) {
+    const collapsibleContent = _getCollapsibleContent(input);
 
-    if (event.target.checked) {
-      collapsibleContent.classList.remove('sr-only');
+    if (collapsibleContent.classList.contains(_SCREEN_READER_ONLY_CLASS_NAME)) {
+      collapsibleContent.classList.remove(_SCREEN_READER_ONLY_CLASS_NAME);
     } else {
-      collapsibleContent.classList.add('sr-only');
+      collapsibleContent.classList.add(_SCREEN_READER_ONLY_CLASS_NAME);
     }
   }
 
-  function _getCollapsibleContentFromFormInput(input) {
-    return input.parentNode.querySelector('.collapsible-content');
+  function _getCollapsibleContent(input) {
+    const rootFieldset = _getRootFieldset(input);
+    return rootFieldset.querySelector('.collapsible-content');
+  }
+
+  function _getRootFieldset(input) {
+    return input.closest('fieldset');
   }
 
   function _executeSearch() {
@@ -133,12 +141,12 @@
   }
 
   function _getSocketParameters() {
-    return Array.from(_runewordForm.querySelectorAll('input[name="sockets"]:checked'))
+    return Array.from(_runewordForm.querySelectorAll(`input[name=${_SOCKET_FIELDSET_NAME}]:checked`))
       .reduce((previousValue, currentValue) => previousValue.concat(parseInt(currentValue.value)), []);
   }
 
   function _getEquipmentParameters() {
-    return Array.from(_runewordForm.querySelectorAll('input[name="equipment"]:checked'))
+    return Array.from(_runewordForm.querySelectorAll(`input[name=${_EQUIPMENT_FIELDSET_NAME}]:checked`))
       .reduce((previousValue, currentValue) => previousValue.concat(currentValue.value), []);
   }
 
@@ -154,5 +162,36 @@
 
   function _displaySearchResults(searchResults) {
     return _runewordFormOutput.innerHTML = search_results_output.getInnerHtml(searchResults);
+  }
+
+  function _handleFormFocus(event) {
+    if (event.target.tagName !== 'INPUT') {
+      return;
+    }
+
+    _showCollapsibleFieldset(event.target);
+  }
+
+  function _showCollapsibleFieldset(input) {
+    _checkCollapsibleCheckbox(input)
+    _showCollapsibleContent(input);
+  }
+
+  function _checkCollapsibleCheckbox(input) {
+    const collapsibleCheckbox = _getCollapsibleCheckbox(input)
+    collapsibleCheckbox.checked = true;
+  }
+
+  function _getCollapsibleCheckbox(input) {
+    const rootFieldset = _getRootFieldset(input);
+    return rootFieldset.querySelector('.toggle-collapsible');
+  }
+
+  function _showCollapsibleContent(input) {
+    const collapsibleContent = _getCollapsibleContent(input);
+
+    if (collapsibleContent.classList.contains(_SCREEN_READER_ONLY_CLASS_NAME)) {
+      collapsibleContent.classList.remove(_SCREEN_READER_ONLY_CLASS_NAME);
+    }
   }
 }));
