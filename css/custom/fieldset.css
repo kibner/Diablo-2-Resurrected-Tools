@@ -1,9 +1,3 @@
-fieldset {
-  display: flex;
-  flex-flow: column wrap;
-  gap: 0.25em;
-}
-
 fieldset + fieldset {
   margin-top: 1em;
 }
@@ -15,9 +9,6 @@ fieldset + fieldset {
    ========================================================================== */
 @media only screen and (min-width: 35em) {
   /* Style adjustments for viewports that meet the condition */
-  fieldset {
-    flex-flow: row wrap;
-  }
 }
 
 @media print,

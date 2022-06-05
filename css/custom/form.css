@@ -1,13 +1,5 @@
-label {
-  padding: 1px;
-}
-
-label:focus,
-label:focus-visible,
-label:focus-within,
-label:hover {
-  outline: 2px solid;
-  outline-offset: 2px;
+form {
+  margin: 0.25em;
 }
 
 /* ==========================================================================

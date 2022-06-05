@@ -2,6 +2,25 @@
 /* - https://www.digitalocean.com/community/tutorials/css-collapsible */
 /* - https://stackoverflow.com/a/58648331 */
 
+legend {
+  width: 100%;
+}
+
+legend:focus,
+legend:focus-visible,
+legend:focus-within,
+legend:hover {
+  outline: 2px solid;
+  outline-offset: 2px;
+}
+
+legend > label:focus,
+legend > label:focus-visible,
+legend > label:focus-within,
+legend > label:hover {
+  outline: none;
+}
+
 legend > label::before {
   content: '';
   display: inline-block;
@@ -9,6 +28,7 @@ legend > label::before {
   border-bottom: 5px solid transparent;
   border-left: 5px solid currentColor;
   vertical-align: middle;
+  margin-left: .25em;
   margin-right: .7rem;
   transform: translateY(-2px);
 }
@@ -16,7 +36,7 @@ legend > label::before {
 .toggle-collapsible:checked + legend + .collapsible-content {
   display: flex;
   flex-flow: column wrap;
-  gap: 0.25em;
+  gap: 0.75em;
 }
 
 .toggle-collapsible:checked + legend > label::before {
@@ -28,6 +48,10 @@ legend > label::before {
   border-bottom-left-radius: 0;
 }
 
+.collapsible-content {
+  margin-top: 0.5em;
+}
+
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
@@ -35,6 +59,10 @@ legend > label::before {
    ========================================================================== */
 @media only screen and (min-width: 35em) {
   /* Style adjustments for viewports that meet the condition */
+  legend {
+    width: auto;
+  }
+
   .toggle-collapsible:checked + legend + .collapsible-content {
     flex-flow: row wrap;
   }
