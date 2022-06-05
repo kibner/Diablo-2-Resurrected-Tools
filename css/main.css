@@ -109,6 +109,7 @@ textarea {
  *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
  */
 
+input[type="checkbox"].sr-only, /* added because lack of specificity was preventing this style from taking effect */
 .sr-only {
   border: 0;
   clip: rect(0, 0, 0, 0);
@@ -180,9 +181,9 @@ textarea {
 }
 
 @media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
   /* Style adjustments for high resolution devices */
 }
 

@@ -6,6 +6,10 @@ legend {
   width: 100%;
 }
 
+.toggle-collapsible:focus + legend,
+.toggle-collapsible:focus-visible + legend,
+.toggle-collapsible:focus-within + legend,
+.toggle-collapsible:hover + legend,
 legend:focus,
 legend:focus-visible,
 legend:focus-within,

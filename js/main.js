@@ -165,7 +165,7 @@
   }
 
   function _handleFormFocus(event) {
-    if (event.target.tagName !== 'INPUT') {
+    if (event.target.tagName !== 'INPUT' || event.target.classList.contains('toggle-collapsible')) {
       return;
     }
 
