@@ -167,11 +167,11 @@
   }
 
   function _handleFormFocus(event) {
-    if (event.target.tagName !== 'INPUT' || event.target.classList.contains(_TOGGLE_COLLAPSIBLE_CLASS_NAME)) {
+    if (event.target.tagName !== 'INPUT' || event.target.classList.contains(_TOGGLE_COLLAPSIBLE_CLASS_NAME) === false) {
       return;
     }
 
-    _showCollapsibleFieldset(event.target);
+    // todo: create a focus trap. if current target is collapsed, then move to next collapsible element. else, do nothing.
   }
 
   function _showCollapsibleFieldset(input) {
