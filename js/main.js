@@ -36,6 +36,8 @@
   const _SOCKET_FIELDSET_NAME = 'sockets';
   const _EQUIPMENT_FIELDSET_NAME = 'equipment';
   const _SCREEN_READER_ONLY_CLASS_NAME = 'sr-only';
+  const _TOGGLE_COLLAPSIBLE_CLASS_NAME = 'toggle-collapsible';
+  const _COLLAPSIBLE_CONTENT_CLASS_NAME = 'collapsible-content'
 
   let _isInitialLoadComplete = false;
   let _runewordForm;
@@ -85,11 +87,11 @@
   }
 
   function _initializeSocketFieldSet() {
-    _socketFieldset.querySelector('.collapsible-content').innerHTML = socket_fieldset.getInnerHtml(_SOCKET_FIELDSET_NAME);
+    _socketFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`).innerHTML = socket_fieldset.getInnerHtml(_SOCKET_FIELDSET_NAME);
   }
 
   function _initializeEquipmentFieldSet() {
-    _equipmentFieldset.querySelector('.collapsible-content').innerHTML = equipment_fieldset.getInnerHtml(_EQUIPMENT_FIELDSET_NAME);
+    _equipmentFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`).innerHTML = equipment_fieldset.getInnerHtml(_EQUIPMENT_FIELDSET_NAME);
   }
 
   function _initializeFormOutput() {
@@ -108,7 +110,7 @@
       return;
     }
 
-    if (event.target.classList.contains('toggle-collapsible')) {
+    if (event.target.classList.contains(_TOGGLE_COLLAPSIBLE_CLASS_NAME)) {
       _toggleCollapsibleContent(event.target);
     } else {
       _executeSearch();
@@ -127,7 +129,7 @@
 
   function _getCollapsibleContent(input) {
     const rootFieldset = _getRootFieldset(input);
-    return rootFieldset.querySelector('.collapsible-content');
+    return rootFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`);
   }
 
   function _getRootFieldset(input) {
@@ -165,7 +167,7 @@
   }
 
   function _handleFormFocus(event) {
-    if (event.target.tagName !== 'INPUT' || event.target.classList.contains('toggle-collapsible')) {
+    if (event.target.tagName !== 'INPUT' || event.target.classList.contains(_TOGGLE_COLLAPSIBLE_CLASS_NAME)) {
       return;
     }
 
@@ -184,7 +186,7 @@
 
   function _getCollapsibleCheckbox(input) {
     const rootFieldset = _getRootFieldset(input);
-    return rootFieldset.querySelector('.toggle-collapsible');
+    return rootFieldset.querySelector(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
   }
 
   function _showCollapsibleContent(input) {
