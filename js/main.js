@@ -167,11 +167,30 @@
   }
 
   function _handleFormFocus(event) {
-    if (event.target.tagName !== 'INPUT' || event.target.classList.contains(_TOGGLE_COLLAPSIBLE_CLASS_NAME) === false) {
+    // todo: call preventDefault() when inner inputs of collapsed fieldset
+    // todo: figure out how to determine if next node is going backwards or forwards (may require separate event)
+    if (
+      event.target.tagName !== 'INPUT'
+      || typeof event.target.checked !== 'boolean'
+      || event.target.checked
+      || event.target.classList.contains(_TOGGLE_COLLAPSIBLE_CLASS_NAME) === false
+    ) {
       return;
     }
 
-    // todo: create a focus trap. if current target is collapsed, then move to next collapsible element. else, do nothing.
+    event.target.blur();
+    const toggleCollapsibleNodeList = _runewordForm.querySelectorAll(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
+    const toggleCollapsibleArray = Array.from(toggleCollapsibleNodeList);
+    const focusedIndex = toggleCollapsibleArray.indexOf(event.target);
+
+    // go backwards
+    if (event.shiftKey && focusedIndex > 0) {
+      toggleCollapsibleArray[focusedIndex - 1].focus();
+    }
+    // go forwards
+    else if (event.shiftKey === false && focusedIndex < toggleCollapsibleArray.length - 1) {
+      toggleCollapsibleArray[focusedIndex + 1].focus();
+    }
   }
 
   function _showCollapsibleFieldset(input) {
