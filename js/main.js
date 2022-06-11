@@ -103,6 +103,7 @@
   function _initializeListeners() {
     _runewordForm.addEventListener('input', _handleFormInputChange);
     _runewordForm.addEventListener('focusin', _handleFormFocus);
+    // _runewordForm.addEventListener('onblur', _handleFormFocus);
   }
 
   function _handleFormInputChange(event) {
@@ -167,29 +168,36 @@
   }
 
   function _handleFormFocus(event) {
-    // todo: call preventDefault() when inner inputs of collapsed fieldset
-    // todo: figure out how to determine if next node is going backwards or forwards (may require separate event)
     if (
       event.target.tagName !== 'INPUT'
       || typeof event.target.checked !== 'boolean'
       || event.target.checked
-      || event.target.classList.contains(_TOGGLE_COLLAPSIBLE_CLASS_NAME) === false
+      || event.target.classList.contains(_TOGGLE_COLLAPSIBLE_CLASS_NAME)
     ) {
       return;
     }
 
-    event.target.blur();
-    const toggleCollapsibleNodeList = _runewordForm.querySelectorAll(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
-    const toggleCollapsibleArray = Array.from(toggleCollapsibleNodeList);
-    const focusedIndex = toggleCollapsibleArray.indexOf(event.target);
+    const focusedNode = event.relatedTarget && event.relatedTarget.classList.contains(_TOGGLE_COLLAPSIBLE_CLASS_NAME)
+      ? event.relatedTarget
+      : event.target.closest(`fieldset`).querySelector(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
+
+    const nodeList = _runewordForm.querySelectorAll(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
+    const nodeArray = Array.from(nodeList);
+    const focusedNodeIndex = nodeArray.indexOf(focusedNode);
+
+    let nextFocusedToggleCollapsibleElement;
 
     // go backwards
-    if (event.shiftKey && focusedIndex > 0) {
-      toggleCollapsibleArray[focusedIndex - 1].focus();
+    if (focusedNodeIndex > 0) {
+      nextFocusedToggleCollapsibleElement = nodeArray[focusedNodeIndex - 1];
     }
     // go forwards
-    else if (event.shiftKey === false && focusedIndex < toggleCollapsibleArray.length - 1) {
-      toggleCollapsibleArray[focusedIndex + 1].focus();
+    else if (focusedNodeIndex < nodeArray.length - 1) {
+      nextFocusedToggleCollapsibleElement = nodeArray[focusedNodeIndex + 1];
+    }
+
+    if (nextFocusedToggleCollapsibleElement) {
+      nextFocusedToggleCollapsibleElement.focus();
     }
   }
 
