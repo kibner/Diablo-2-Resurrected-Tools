@@ -171,15 +171,21 @@
     if (
       event.target.tagName !== 'INPUT'
       || typeof event.target.checked !== 'boolean'
-      || event.target.checked
+      // || event.target.checked
       || event.target.classList.contains(_TOGGLE_COLLAPSIBLE_CLASS_NAME)
     ) {
       return;
     }
 
-    const focusedNode = event.relatedTarget && event.relatedTarget.classList.contains(_TOGGLE_COLLAPSIBLE_CLASS_NAME)
-      ? event.relatedTarget
-      : event.target.closest(`fieldset`).querySelector(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
+    // determine which way focus is changing
+    const isFocusGoingForward = event.relatedTarget.compareDocumentPosition(event.target) & Node.DOCUMENT_POSITION_FOLLOWING;
+
+    // get target fieldset's toggle control
+    const focusedNode = event.target.closest(`fieldset`).querySelector(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
+
+    // const focusedNode = event.relatedTarget && event.relatedTarget.classList.contains(_TOGGLE_COLLAPSIBLE_CLASS_NAME)
+    //   ? event.relatedTarget
+    //   : event.target.closest(`fieldset`).querySelector(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
 
     const nodeList = _runewordForm.querySelectorAll(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
     const nodeArray = Array.from(nodeList);
@@ -187,12 +193,12 @@
 
     let nextFocusedToggleCollapsibleElement;
 
-    // go backwards
-    if (focusedNodeIndex > 0) {
+    // // go backwards
+    if (isFocusGoingForward === false && focusedNodeIndex > 0) {
       nextFocusedToggleCollapsibleElement = nodeArray[focusedNodeIndex - 1];
     }
     // go forwards
-    else if (focusedNodeIndex < nodeArray.length - 1) {
+    else if (isFocusGoingForward && focusedNodeIndex < nodeArray.length - 1) {
       nextFocusedToggleCollapsibleElement = nodeArray[focusedNodeIndex + 1];
     }
 
