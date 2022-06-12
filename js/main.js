@@ -168,43 +168,35 @@
   }
 
   function _handleFormFocus(event) {
+    // limit to just inputs within the content area of fieldsets
     if (
       event.target.tagName !== 'INPUT'
-      || typeof event.target.checked !== 'boolean'
-      // || event.target.checked
-      || event.target.classList.contains(_TOGGLE_COLLAPSIBLE_CLASS_NAME)
+      || !event.target.closest(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`)
     ) {
       return;
     }
 
+    // get focusout element's fieldset toggle control
+    const focusoutToggleNode = event.relatedTarget.closest(`fieldset`).querySelector(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
+
+    // do nothing if fieldset is expanded
+    if (typeof focusoutToggleNode.checked === 'boolean' && focusoutToggleNode.checked) {
+      return;
+    }
+
+    const fieldsetToggleNodeList = _runewordForm.querySelectorAll(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
+    const fieldsetToggleNodeArray = Array.from(fieldsetToggleNodeList);
+    const focusoutToggleNodeIndex = fieldsetToggleNodeArray.indexOf(focusoutToggleNode);
+
     // determine which way focus is changing
     const isFocusGoingForward = event.relatedTarget.compareDocumentPosition(event.target) & Node.DOCUMENT_POSITION_FOLLOWING;
 
-    // get target fieldset's toggle control
-    const focusedNode = event.target.closest(`fieldset`).querySelector(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
-
-    // const focusedNode = event.relatedTarget && event.relatedTarget.classList.contains(_TOGGLE_COLLAPSIBLE_CLASS_NAME)
-    //   ? event.relatedTarget
-    //   : event.target.closest(`fieldset`).querySelector(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
-
-    const nodeList = _runewordForm.querySelectorAll(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
-    const nodeArray = Array.from(nodeList);
-    const focusedNodeIndex = nodeArray.indexOf(focusedNode);
-
-    let nextFocusedToggleCollapsibleElement;
-
-    // // go backwards
-    if (isFocusGoingForward === false && focusedNodeIndex > 0) {
-      nextFocusedToggleCollapsibleElement = nodeArray[focusedNodeIndex - 1];
-    }
-    // go forwards
-    else if (isFocusGoingForward && focusedNodeIndex < nodeArray.length - 1) {
-      nextFocusedToggleCollapsibleElement = nodeArray[focusedNodeIndex + 1];
-    }
-
-    if (nextFocusedToggleCollapsibleElement) {
-      nextFocusedToggleCollapsibleElement.focus();
-    }
+    // todo: follow steps below
+    // 1) get list of all active and visible focusable elements
+    // 2) get index of focusOutToggleNode in list from step 1
+    // 3.a) if going forward and there is no next toggle node in toggle node list, then go to next element in global node list
+    // 3.b) if going backward and there is no previous toggle node in toggle node list, then go to previous element in global node list
+    // 3.c) find some way to handle going beyond the global node list (just call blur(), maybe?)
   }
 
   function _showCollapsibleFieldset(input) {
