@@ -144,9 +144,14 @@ import {tabbable} from "tabbable";
     if (
       event.target.tagName !== 'INPUT'
       || !event.target.closest(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`)
+      || !event.relatedTarget
     ) {
       return;
     }
+
+    // determine which way focus is changing
+    const isFocusGoingForward = event.relatedTarget.compareDocumentPosition(event.target) & Node.DOCUMENT_POSITION_FOLLOWING;
+    let nodeToFocus;
 
     // get focusout element's fieldset toggle control
     const focusoutToggleNode = event.relatedTarget.closest(`fieldset`).querySelector(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
@@ -158,19 +163,43 @@ import {tabbable} from "tabbable";
 
     const fieldsetToggleNodeList = _runewordForm.querySelectorAll(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
     const fieldsetToggleNodeArray = Array.from(fieldsetToggleNodeList);
-    const focusoutToggleNodeIndex = fieldsetToggleNodeArray.indexOf(focusoutToggleNode);
+    const focusoutFieldsetToggleNodeIndex = fieldsetToggleNodeArray.indexOf(focusoutToggleNode);
 
-    // determine which way focus is changing
-    const isFocusGoingForward = event.relatedTarget.compareDocumentPosition(event.target) & Node.DOCUMENT_POSITION_FOLLOWING;
+    if (isFocusGoingForward) {
+      const nodeToFocusFieldsetToggleIndex = focusoutFieldsetToggleNodeIndex + 1;
 
-    // todo: follow steps below
-    // 1) get list of all active and visible focusable elements
-    const tabbaleElements = tabbable(document);
-    console.log(tabbaleElements);
-    // 2) get index of focusOutToggleNode in list from step 1
-    // 3.a) if going forward and there is no next toggle node in toggle node list, then go to next element in global node list
-    // 3.b) if going backward and there is no previous toggle node in toggle node list, then go to previous element in global node list
-    // 3.c) find some way to handle going beyond the global node list (just call blur(), maybe?)
+      if (nodeToFocusFieldsetToggleIndex >= fieldsetToggleNodeArray.length) {
+        const tabbableElements = tabbable(document);
+        const tabbableElementIndex = tabbableElements.indexOf(focusoutToggleNode);
+        const nodeToFocusTabbableIndex = tabbableElementIndex + 1;
+
+        if (tabbableElementIndex >= tabbableElements.length) {
+          nodeToFocus = document.querySelector('body');
+        } else {
+          nodeToFocus = tabbableElements[nodeToFocusTabbableIndex]
+        }
+      } else {
+        nodeToFocus = fieldsetToggleNodeArray[nodeToFocusFieldsetToggleIndex]
+      }
+    } else {
+      const nodeToFocusFieldsetToggleIndex = focusoutFieldsetToggleNodeIndex - 1;
+
+      if (nodeToFocusFieldsetToggleIndex < 0) {
+        const tabbableElements = tabbable(document);
+        const tabbableElementIndex = tabbableElements.indexOf(focusoutToggleNode);
+        const nodeToFocusTabbableIndex = tabbableElementIndex - 1;
+
+        if (tabbableElementIndex < 0) {
+          nodeToFocus = document.querySelector('body');
+        } else {
+          nodeToFocus = tabbableElements[nodeToFocusTabbableIndex]
+        }
+      } else {
+        nodeToFocus = fieldsetToggleNodeArray[nodeToFocusFieldsetToggleIndex]
+      }
+    }
+
+    nodeToFocus.focus();
   }
 
   function _showCollapsibleFieldset(input) {
