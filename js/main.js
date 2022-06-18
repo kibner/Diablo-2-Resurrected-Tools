@@ -170,10 +170,11 @@ import {tabbable} from "tabbable";
 
       if (nodeToFocusFieldsetToggleIndex >= fieldsetToggleNodeArray.length) {
         const tabbableElements = tabbable(document);
+        const focusoutTabbableElements = tabbable(focusoutToggleNode.parentElement);
         const tabbableElementIndex = tabbableElements.indexOf(focusoutToggleNode);
-        const nodeToFocusTabbableIndex = tabbableElementIndex + 1;
+        const nodeToFocusTabbableIndex = tabbableElementIndex + focusoutTabbableElements.length;
 
-        if (tabbableElementIndex >= tabbableElements.length) {
+        if (nodeToFocusTabbableIndex >= tabbableElements.length) {
           nodeToFocus = document.querySelector('body');
         } else {
           nodeToFocus = tabbableElements[nodeToFocusTabbableIndex]
@@ -189,7 +190,7 @@ import {tabbable} from "tabbable";
         const tabbableElementIndex = tabbableElements.indexOf(focusoutToggleNode);
         const nodeToFocusTabbableIndex = tabbableElementIndex - 1;
 
-        if (tabbableElementIndex < 0) {
+        if (nodeToFocusTabbableIndex < 0) {
           nodeToFocus = document.querySelector('body');
         } else {
           nodeToFocus = tabbableElements[nodeToFocusTabbableIndex]
