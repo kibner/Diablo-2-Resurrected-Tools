@@ -28,6 +28,8 @@
     "runewords_data": "file:js/modules/data/runeword_data",
     "search_service": "file:js/modules/services/search_service",
     "socket_fieldset": "file:js/modules/html_parts/socket_fieldset",
-    "equipment_fieldset": "file:js/modules/html_parts/equipment_fieldset"
+    "equipment_fieldset": "file:js/modules/html_parts/equipment_fieldset",
+    "search_results_output": "file:js/modules/html_parts/search_results_output",
+    "tabbable": "^5.3.3"
   }
 }

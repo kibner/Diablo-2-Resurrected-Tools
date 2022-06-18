@@ -1,37 +1,10 @@
-(function (root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define([
-      './modules/services/search_service',
-      './modules/html_parts/socket_fieldset',
-      './modules/html_parts/equipment_fieldset',
-      './modules/html_parts/search_results_output'
-    ], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // Node. Does not work with strict CommonJS, but
-    // only CommonJS-like environments that support module.exports,
-    // like Node.
-    module.exports = factory(
-      require('./modules/services/search_service'),
-      require('./modules/html_parts/socket_fieldset'),
-      require('./modules/html_parts/equipment_fieldset'),
-      require('./modules/html_parts/search_results_output')
-    );
-  } else {
-    // Browser globals (root is window)
-    root.diablo_2_resurrected_tools = factory(
-      root.search_service,
-      root.socket_fieldset,
-      root.equipment_fieldset,
-      root.search_results_output
-    );
-  }
-}(typeof self !== 'undefined' ? self : this, function (
-  search_service,
-  socket_fieldset,
-  equipment_fieldset,
-  search_results_output
-) {
+import socket_fieldset from "socket_fieldset";
+import equipment_fieldset from "equipment_fieldset";
+import search_service from "search_service";
+import search_results_output from "search_results_output";
+import {tabbable} from "tabbable";
+
+(function () {
   // Just return a value to define the module export.
   const _SOCKET_FIELDSET_NAME = 'sockets';
   const _EQUIPMENT_FIELDSET_NAME = 'equipment';
@@ -103,7 +76,6 @@
   function _initializeListeners() {
     _runewordForm.addEventListener('input', _handleFormInputChange);
     _runewordForm.addEventListener('focusin', _handleFormFocus);
-    // _runewordForm.addEventListener('onblur', _handleFormFocus);
   }
 
   function _handleFormInputChange(event) {
@@ -193,6 +165,8 @@
 
     // todo: follow steps below
     // 1) get list of all active and visible focusable elements
+    const tabbaleElements = tabbable(document);
+    console.log(tabbaleElements);
     // 2) get index of focusOutToggleNode in list from step 1
     // 3.a) if going forward and there is no next toggle node in toggle node list, then go to next element in global node list
     // 3.b) if going backward and there is no previous toggle node in toggle node list, then go to previous element in global node list
@@ -221,4 +195,4 @@
       collapsibleContent.classList.remove(_SCREEN_READER_ONLY_CLASS_NAME);
     }
   }
-}));
+})();
