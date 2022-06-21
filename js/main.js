@@ -140,67 +140,74 @@ import {tabbable} from "tabbable";
   }
 
   function _handleFormFocus(event) {
-    // limit to just inputs within the content area of fieldsets
+    // limit to just inputs with a previous target
     if (
       event.target.tagName !== 'INPUT'
-      || !event.target.closest(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`)
       || !event.relatedTarget
     ) {
       return;
     }
 
-    // determine which way focus is changing
-    const isFocusGoingForward = event.relatedTarget.compareDocumentPosition(event.target) & Node.DOCUMENT_POSITION_FOLLOWING;
-    let nodeToFocus;
+    const targetCollapsibleToggle = event.target.closest(`fieldset > .${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
 
-    // get focusout element's fieldset toggle control
-    const focusoutToggleNode = event.relatedTarget.closest(`fieldset`).querySelector(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
-
-    // do nothing if fieldset is expanded
-    if (typeof focusoutToggleNode.checked === 'boolean' && focusoutToggleNode.checked) {
+    // limit to targets that are part of a collapsible fieldset that is collapsed
+    if (!targetCollapsibleToggle
+      || typeof targetCollapsibleToggle.checked === 'boolean' && targetCollapsibleToggle.checked) {
       return;
     }
 
-    const fieldsetToggleNodeList = _runewordForm.querySelectorAll(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
-    const fieldsetToggleNodeArray = Array.from(fieldsetToggleNodeList);
-    const focusoutFieldsetToggleNodeIndex = fieldsetToggleNodeArray.indexOf(focusoutToggleNode);
+    // determine which way focus is changing
+    const isFocusGoingForward = event.relatedTarget.compareDocumentPosition(event.target) & Node.DOCUMENT_POSITION_FOLLOWING;
 
-    if (isFocusGoingForward) {
-      const nodeToFocusFieldsetToggleIndex = focusoutFieldsetToggleNodeIndex + 1;
+    // todo:
+    //   if (goingForward) {
+    //     hasNextFieldset ? focusNextFieldset : focusNextTabbableAfterCurrentFieldset (blur() if none)
+    //   } elseif (goingBackward) {
+    //     hasPreviousFieldset ? focusPreviousFieldset : focusPreviousTabbableBeforeCurrentFieldset (there is always a previous)
+    //   }
 
-      if (nodeToFocusFieldsetToggleIndex >= fieldsetToggleNodeArray.length) {
-        const tabbableElements = tabbable(document);
-        const focusoutTabbableElements = tabbable(focusoutToggleNode.parentElement);
-        const tabbableElementIndex = tabbableElements.indexOf(focusoutToggleNode);
-        const nodeToFocusTabbableIndex = tabbableElementIndex + focusoutTabbableElements.length;
-
-        if (nodeToFocusTabbableIndex >= tabbableElements.length) {
-          nodeToFocus = document.querySelector('body');
-        } else {
-          nodeToFocus = tabbableElements[nodeToFocusTabbableIndex]
-        }
-      } else {
-        nodeToFocus = fieldsetToggleNodeArray[nodeToFocusFieldsetToggleIndex]
-      }
-    } else {
-      const nodeToFocusFieldsetToggleIndex = focusoutFieldsetToggleNodeIndex - 1;
-
-      if (nodeToFocusFieldsetToggleIndex < 0) {
-        const tabbableElements = tabbable(document);
-        const tabbableElementIndex = tabbableElements.indexOf(focusoutToggleNode);
-        const nodeToFocusTabbableIndex = tabbableElementIndex - 1;
-
-        if (nodeToFocusTabbableIndex < 0) {
-          nodeToFocus = document.querySelector('body');
-        } else {
-          nodeToFocus = tabbableElements[nodeToFocusTabbableIndex]
-        }
-      } else {
-        nodeToFocus = fieldsetToggleNodeArray[nodeToFocusFieldsetToggleIndex]
-      }
-    }
-
-    nodeToFocus.focus();
+    // let nodeToFocus;
+    //
+    // const fieldsetToggleNodeList = _runewordForm.querySelectorAll(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
+    // const fieldsetToggleNodeArray = Array.from(fieldsetToggleNodeList);
+    // const focusoutFieldsetToggleNodeIndex = fieldsetToggleNodeArray.indexOf(targetCollapsibleToggle);
+    //
+    // if (isFocusGoingForward) {
+    //   const nodeToFocusFieldsetToggleIndex = focusoutFieldsetToggleNodeIndex + 1;
+    //
+    //   if (nodeToFocusFieldsetToggleIndex >= fieldsetToggleNodeArray.length) {
+    //     const tabbableElements = tabbable(document);
+    //     const focusoutTabbableElements = tabbable(targetCollapsibleToggle.parentElement);
+    //     const tabbableElementIndex = tabbableElements.indexOf(targetCollapsibleToggle);
+    //     const nodeToFocusTabbableIndex = tabbableElementIndex + focusoutTabbableElements.length;
+    //
+    //     if (nodeToFocusTabbableIndex >= tabbableElements.length) {
+    //       nodeToFocus = document.querySelector('body');
+    //     } else {
+    //       nodeToFocus = tabbableElements[nodeToFocusTabbableIndex]
+    //     }
+    //   } else {
+    //     nodeToFocus = fieldsetToggleNodeArray[nodeToFocusFieldsetToggleIndex]
+    //   }
+    // } else {
+    //   const nodeToFocusFieldsetToggleIndex = focusoutFieldsetToggleNodeIndex - 1;
+    //
+    //   if (nodeToFocusFieldsetToggleIndex < 0) {
+    //     const tabbableElements = tabbable(document);
+    //     const tabbableElementIndex = tabbableElements.indexOf(targetCollapsibleToggle);
+    //     const nodeToFocusTabbableIndex = tabbableElementIndex - 1;
+    //
+    //     if (nodeToFocusTabbableIndex < 0) {
+    //       nodeToFocus = document.querySelector('body');
+    //     } else {
+    //       nodeToFocus = tabbableElements[nodeToFocusTabbableIndex]
+    //     }
+    //   } else {
+    //     nodeToFocus = fieldsetToggleNodeArray[nodeToFocusFieldsetToggleIndex]
+    //   }
+    // }
+    //
+    // nodeToFocus.focus();
   }
 
   function _showCollapsibleFieldset(input) {
