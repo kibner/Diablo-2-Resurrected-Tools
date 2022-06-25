@@ -91,20 +91,12 @@ import {focusable} from "tabbable";
 
   function _toggleCollapsibleContent(input) {
     const collapsibleContent = _getCollapsibleContent(input);
-    const tabbableCollapsibleContent = focusable(collapsibleContent);
 
     if (collapsibleContent.classList.contains(_SCREEN_READER_ONLY_CLASS_NAME)) {
       collapsibleContent.classList.remove(_SCREEN_READER_ONLY_CLASS_NAME);
-
-      tabbableCollapsibleContent.forEach((tabbableElement) => {
-        tabbableElement.setAttribute('tabindex', '0');
-      });
-
+      _setTabindexAttributeForAllFocusableNodes(collapsibleContent, 0);
     } else {
-      tabbableCollapsibleContent.forEach((tabbableElement) => {
-        tabbableElement.setAttribute('tabindex', '-1');
-      });
-
+      _setTabindexAttributeForAllFocusableNodes(collapsibleContent, -1);
       collapsibleContent.classList.add(_SCREEN_READER_ONLY_CLASS_NAME);
     }
   }
@@ -116,6 +108,14 @@ import {focusable} from "tabbable";
 
   function _getRootFieldset(input) {
     return input.closest('fieldset');
+  }
+
+  function _setTabindexAttributeForAllFocusableNodes(rootNode, tabindexValue) {
+    const focusableContent = focusable(rootNode);
+
+    focusableContent.forEach((tabbableElement) => {
+      tabbableElement.setAttribute('tabindex', tabindexValue);
+    });
   }
 
   function _executeSearch() {
