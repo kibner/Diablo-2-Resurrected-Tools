@@ -2,7 +2,7 @@ import socket_fieldset from "socket_fieldset";
 import equipment_fieldset from "equipment_fieldset";
 import search_service from "search_service";
 import search_results_output from "search_results_output";
-import {tabbable} from "tabbable";
+import {focusable} from "tabbable";
 
 (function () {
   // Just return a value to define the module export.
@@ -75,7 +75,6 @@ import {tabbable} from "tabbable";
 
   function _initializeListeners() {
     _runewordForm.addEventListener('input', _handleFormInputChange);
-    _runewordForm.addEventListener('focusin', _handleFormFocus);
   }
 
   function _handleFormInputChange(event) {
@@ -92,10 +91,20 @@ import {tabbable} from "tabbable";
 
   function _toggleCollapsibleContent(input) {
     const collapsibleContent = _getCollapsibleContent(input);
+    const tabbableCollapsibleContent = focusable(collapsibleContent);
 
     if (collapsibleContent.classList.contains(_SCREEN_READER_ONLY_CLASS_NAME)) {
       collapsibleContent.classList.remove(_SCREEN_READER_ONLY_CLASS_NAME);
+
+      tabbableCollapsibleContent.forEach((tabbableElement) => {
+        tabbableElement.setAttribute('tabindex', '0');
+      });
+
     } else {
+      tabbableCollapsibleContent.forEach((tabbableElement) => {
+        tabbableElement.setAttribute('tabindex', '-1');
+      });
+
       collapsibleContent.classList.add(_SCREEN_READER_ONLY_CLASS_NAME);
     }
   }
@@ -137,99 +146,5 @@ import {tabbable} from "tabbable";
 
   function _displaySearchResults(searchResults) {
     return _runewordFormOutput.innerHTML = search_results_output.getInnerHtml(searchResults);
-  }
-
-  function _handleFormFocus(event) {
-    // limit to just inputs with a previous target
-    if (
-      event.target.tagName !== 'INPUT'
-      || !event.relatedTarget
-    ) {
-      return;
-    }
-
-    const targetCollapsibleToggle = event.target.closest(`fieldset > .${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
-
-    // limit to targets that are part of a collapsible fieldset that is collapsed
-    if (!targetCollapsibleToggle
-      || typeof targetCollapsibleToggle.checked === 'boolean' && targetCollapsibleToggle.checked) {
-      return;
-    }
-
-    // determine which way focus is changing
-    const isFocusGoingForward = event.relatedTarget.compareDocumentPosition(event.target) & Node.DOCUMENT_POSITION_FOLLOWING;
-
-    // todo:
-    //   if (goingForward) {
-    //     hasNextFieldset ? focusNextFieldset : focusNextTabbableAfterCurrentFieldset (blur() if none)
-    //   } elseif (goingBackward) {
-    //     hasPreviousFieldset ? focusPreviousFieldset : focusPreviousTabbableBeforeCurrentFieldset (there is always a previous)
-    //   }
-
-    // let nodeToFocus;
-    //
-    // const fieldsetToggleNodeList = _runewordForm.querySelectorAll(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
-    // const fieldsetToggleNodeArray = Array.from(fieldsetToggleNodeList);
-    // const focusoutFieldsetToggleNodeIndex = fieldsetToggleNodeArray.indexOf(targetCollapsibleToggle);
-    //
-    // if (isFocusGoingForward) {
-    //   const nodeToFocusFieldsetToggleIndex = focusoutFieldsetToggleNodeIndex + 1;
-    //
-    //   if (nodeToFocusFieldsetToggleIndex >= fieldsetToggleNodeArray.length) {
-    //     const tabbableElements = tabbable(document);
-    //     const focusoutTabbableElements = tabbable(targetCollapsibleToggle.parentElement);
-    //     const tabbableElementIndex = tabbableElements.indexOf(targetCollapsibleToggle);
-    //     const nodeToFocusTabbableIndex = tabbableElementIndex + focusoutTabbableElements.length;
-    //
-    //     if (nodeToFocusTabbableIndex >= tabbableElements.length) {
-    //       nodeToFocus = document.querySelector('body');
-    //     } else {
-    //       nodeToFocus = tabbableElements[nodeToFocusTabbableIndex]
-    //     }
-    //   } else {
-    //     nodeToFocus = fieldsetToggleNodeArray[nodeToFocusFieldsetToggleIndex]
-    //   }
-    // } else {
-    //   const nodeToFocusFieldsetToggleIndex = focusoutFieldsetToggleNodeIndex - 1;
-    //
-    //   if (nodeToFocusFieldsetToggleIndex < 0) {
-    //     const tabbableElements = tabbable(document);
-    //     const tabbableElementIndex = tabbableElements.indexOf(targetCollapsibleToggle);
-    //     const nodeToFocusTabbableIndex = tabbableElementIndex - 1;
-    //
-    //     if (nodeToFocusTabbableIndex < 0) {
-    //       nodeToFocus = document.querySelector('body');
-    //     } else {
-    //       nodeToFocus = tabbableElements[nodeToFocusTabbableIndex]
-    //     }
-    //   } else {
-    //     nodeToFocus = fieldsetToggleNodeArray[nodeToFocusFieldsetToggleIndex]
-    //   }
-    // }
-    //
-    // nodeToFocus.focus();
-  }
-
-  function _showCollapsibleFieldset(input) {
-    _checkCollapsibleCheckbox(input)
-    _showCollapsibleContent(input);
-  }
-
-  function _checkCollapsibleCheckbox(input) {
-    const collapsibleCheckbox = _getCollapsibleCheckbox(input)
-    collapsibleCheckbox.checked = true;
-  }
-
-  function _getCollapsibleCheckbox(input) {
-    const rootFieldset = _getRootFieldset(input);
-    return rootFieldset.querySelector(`.${_TOGGLE_COLLAPSIBLE_CLASS_NAME}`);
-  }
-
-  function _showCollapsibleContent(input) {
-    const collapsibleContent = _getCollapsibleContent(input);
-
-    if (collapsibleContent.classList.contains(_SCREEN_READER_ONLY_CLASS_NAME)) {
-      collapsibleContent.classList.remove(_SCREEN_READER_ONLY_CLASS_NAME);
-    }
   }
 })();
