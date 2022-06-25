@@ -17,7 +17,7 @@ th, td {
 
 table > tr:nth-child(even),
 tbody tr:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.055);
+  background-color: rgba(0, 0, 0, 0.175);
 }
 
 table > tr:nth-child(odd),
@@ -34,6 +34,11 @@ tbody tr:hover {
   table > tr:hover,
   tbody tr:hover {
     background-color: #b3d4fc;
+  }
+
+  table > tr:nth-child(even),
+  tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.05);
   }
 }
 
