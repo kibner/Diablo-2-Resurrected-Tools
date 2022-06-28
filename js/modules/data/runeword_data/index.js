@@ -39,7 +39,7 @@ const _runeword_data = [
     character_level: 65,
     stats: ['35% Chance to cast Level 14 Amplify Damage when struck', '100% Chance to cast Level 18 Bone Spear on striking', 'Fires Explosive Arrows or Bolts', '+260-340% Enhanced Damage', 'Ignore Target\'s Defense', '20% Bonus to Attack Rating', '+280-330% Damage to Demons', '20% Deadly Strike', 'Prevent Monster Heal', 'Knockback'],
     has_aura: false,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-breath-of-the-dying`,
@@ -89,7 +89,7 @@ const _runeword_data = [
     character_level: 55,
     stats: ['100% Chance to cast Level 44 Chain Lightning when you Die', '25% Chance to cast Level 18 Glacial Spike on attack', 'Indestructible', '+300-385% Enhanced Damage', '20% Bonus to Attack Rating', '+50 to Attack Rating', 'Adds 1-50 Lightning Damage', '7% Mana stolen per hit', '50% Chance of Crushing Blow', '0.5% Deadly Strike (Based on Character Level)', '+1 to Light Radius', 'Level 22 Blood Golem (15/15 Charges)'],
     has_aura: false,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-destruction`,
@@ -99,7 +99,7 @@ const _runeword_data = [
     character_level: 65,
     stats: ['23% Chance to cast Level 12 Volcano on striking', '5% Chance to cast Level 23 Molten Boulder on striking', '100% Chance to cast Level 45 Meteor when you Die', '15% Chance to cast Level 22 Nova on attack', '+350% Enhanced Damage', 'Ignore Target\'s Defense', 'Adds 100-180 Magic Damage', '7% Mana stolen per hit', '20% Chance of Crushing Blow', '20% Deadly Strike', 'Prevent Monster Heal', '+10 to Dexterity'],
     has_aura: false,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-doom`,
@@ -119,7 +119,7 @@ const _runeword_data = [
     character_level: 25,
     stats: ['Level 15 Thorns Aura When Equipped', '+35% Increased Attack Speed', '+320-380% Damage to Demons', '+280% Damage to Undead', '+75 Poison Damage over 5 seconds', '7% Life stolen per hit', 'Prevent Monster Heal', '5-10 to all Attributes', '+2 to Mana after each Kill', 'Reduces all Vendor Prices 15%'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-eternity`,
@@ -139,7 +139,7 @@ const _runeword_data = [
     character_level: 65,
     stats: ['Level 12-15 Fanaticism Aura When Equipped', '+1-2 to All Skills', '+330% Enhanced Damage', 'Ignore Target\'s Defense', '300% Bonus to Attack Rating', '+75% Damage to Undead', '+50 to Attack Rating against Undead', '+120 Fire Damage', 'All Resistances +15', '10% Reanimate as: Returned', '75% Extra Gold from Monsters'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-famine`,
@@ -159,7 +159,7 @@ const _runeword_data = [
     character_level: 59,
     stats: ['20% Chance to cast Level 15 Chilling Armor when struck', '+25% Faster Cast Rate', '+300% Enhanced Damage', '+9 to Minimum Damage', '+50 to Attack Rating', '20% Deadly Strike', 'Hit Causes Monster to Flee 25%', '+200% Enhanced Defense', '+1-1.5 to Life (Based on Character Level)', 'All Resistances +25-30', '12% Damage Taken Goes To Mana', '+1 to Light Radius'],
     has_aura: false,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-fury`,
@@ -179,7 +179,7 @@ const _runeword_data = [
     character_level: 59,
     stats: ['35% Chance to cast Level 15 Venom on striking', '+30-40% Increased Attack Speed', 'Damage +340-400', 'Ignore Target\'s Defense', '-25% Target Defense', '+1.875% Damage to Demons (Based on Character Level)', 'Adds 5-30 Fire Damage', '-20-25% to Enemy Poison Resistance', '20% Deadly Strike', 'Prevent Monster Heal', '+2 to Mana after each Kill', '+10-15 Life after each Kill'],
     has_aura: false,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-hand-of-justice`,
@@ -199,7 +199,7 @@ const _runeword_data = [
     character_level: 39,
     stats: ['Level 10 Vigor Aura When Equipped', '+200-275% Enhanced Damage', '+9 to Minimum Damage', '+9 to Maximum Damage', 'Adds 55-160 Fire Damage', 'Adds 55-160 Lightning Damage', 'Adds 55-160 Cold Damage', '+2-6 to Valkyrie', '+10 to Dexterity', 'Regenerate Mana 20%', '+2 to Mana after each Kill', '+2 to Light Radius', 'Level 20 Revive (25/25 Charges)'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-heart-of-the-oak`,
@@ -239,7 +239,7 @@ const _runeword_data = [
     character_level: 65,
     stats: ['100% Chance to cast Level 40 Blizzard when you Level-Up', '25% Chance to cast Level 22 Frost Nova on striking', 'Level 18 Holy Freeze Aura When Equipped', '20% Increased Attack Speed', '+140-210% Enhanced Damage', 'Ignore Target\'s Defense', '+25-30% to Cold Skill Damage', '-20% to Enemy Cold Resistance', '7% Life stolen per hit', '20% Deadly Strike', '3.125% Extra gold from Monsters (Based on Character Level)'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-infinity`,
@@ -249,7 +249,7 @@ const _runeword_data = [
     character_level: 63,
     stats: ['50% Chance to cast Level 20 Chain Lightning when you Kill an Enemy', 'Level 12  Conviction Aura When Equipped', '+35% Faster Run/Walk', '+255-325% Enhanced Damage', '-45-55% to Enemy Lightning Resistance', '40% Chance of Crushing Blow', 'Prevent Monster Heal', '0.5 to Vitality (Based on Character Level)', '30% Better Chance of Getting Magic Items', 'Level 21 Cyclone Armor (30/30 Charges)'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-insight`,
@@ -259,7 +259,7 @@ const _runeword_data = [
     character_level: 27,
     stats: ['Level 12-17 Meditation Aura When Equipped', '+35% Faster Cast Rate', '+200-260% Enhanced Damage', '+9 to Minimum Damage', '180-250% Bonus to Attack Rating', 'Adds 5-30 Fire Damage', '+75 Poison Damage over 5 seconds', '+1-6 to Critical Strike', '+5 to All Attributes', '+2 to Mana after each Kill', '23% Better Chance of Getting Magic Items'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-kings-grace`,
@@ -289,7 +289,7 @@ const _runeword_data = [
     character_level: 65,
     stats: ['6% Chance to cast Level 11 Fade when struck', '10% Chance to cast Level 18 Life Tap on striking', '20% Chance to cast Level 20 Charged Bolt on attack', 'Level 17 Might Aura When Equipped', '+330-375% Enhanced Damage', 'Ignores Target\'s Defense', '60-70% Chance of Crushing Blow', 'Prevent Monster Heal', 'Hit Blinds Target', '0.5% Better Chance of Getting Magic Items (Based on Character Level)'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-lawbringer`,
@@ -299,7 +299,7 @@ const _runeword_data = [
     character_level: 43,
     stats: ['20% Chance to cast Level 15 Decrepify on striking', 'Level 16-18 Sanctuary Aura When Equipped', '-50% Target Defense', 'Adds 150-210 Fire Damage', 'Adds 130-180 Cold Damage', '7% Life stolen per hit', 'Slain Monsters Rest in Peace', '+200-250 Defense vs. Missile', '+10 to Dexterity', '75% Extra Gold from Monsters'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-leaf`,
@@ -359,7 +359,7 @@ const _runeword_data = [
     character_level: 59,
     stats: ['30% Chance to cast Level 20 Bone Spirit on striking', 'Indestructible', '+50% Increased Attack Speed', '+210-340% Enhanced Damage', '+75% Damage to Demons', '+100 to Attack Rating against Demons', 'Prevent Monster Heal', '+10 to Energy', '+10-15 Magic Absorb', 'Level 16 Heart of Wolverine (20/20 Charges)', 'Level 17 Iron Golem (14/14 Charges)'],
     has_aura: false,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-obedience`,
@@ -369,7 +369,7 @@ const _runeword_data = [
     character_level: 41,
     stats: ['30% Chance to cast Level 21 Enchant when you Kill an Enemy', '+40% Faster Hit Recovery', '+370% Enhanced Damage', '-25% Target Defense', 'Adds 3-14 Cold Damage', '-25% to Enemy Fire Resistance', '40% Chance of Crushing Blow', '+200-300 Defense', '+10 to Strength', '+10 to Dexterity', 'All Resistances +20-30', 'Requirements -20%'],
     has_aura: false,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-obsession`,
@@ -409,7 +409,7 @@ const _runeword_data = [
     character_level: 47,
     stats: ['100% Chance to cast Level 40 Blaze when you Level-Up', '40% Chance to cast Level 22 Firestorm on striking', 'Level 10-15 Redemption Aura When Equipped', '+350-400% Enhanced Damage', 'Ignore Target\'s Defense', '14% Mana stolen per hit', '-28% to Enemy Fire Resistance', '20% Deadly Strike', '+350-400 Defense vs. Missile', '+15-21 Fire Absorb'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-plague`,
@@ -429,7 +429,7 @@ const _runeword_data = [
     character_level: 67,
     stats: ['25% Chance to cast Level 17 Fire Wall when struck', 'Level 16-20 Concentration Aura When Equipped', '260-300% Bonus to Attack Rating', '+1% Damage to Demons (Based on Character Level)', 'Adds 50-280 Lightning Damage', '20% Deadly Strike', 'Hit Blinds Target', 'Freezes Target +3', '+10 to Vitality', 'Replenish Life +8', '1.875% Extra Gold from Monsters (Based on Character Level)'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-rift`,
@@ -439,7 +439,7 @@ const _runeword_data = [
     character_level: 43,
     stats: ['20% Chance to cast Level 16 Tornado on striking', '16% Chance to cast Level 21 Frozen Orb on attack', '20% Bonus to Attack Rating', 'Adds 160-250 Magic Damage', 'Adds 60-180 Fire Damage', '+5-10 to Strength', '+15-20 to Dexterity', '+5-10 to Vitality', '+5-10 to Energy', '38% Damage Taken Goes To Mana', '75% Extra Gold from Monsters', 'Level 15 Iron Maiden (40/40 Charges)', 'Requirements -20%'],
     has_aura: false,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-silence`,
@@ -459,7 +459,7 @@ const _runeword_data = [
     character_level: 25,
     stats: ['+2 to All Skills', '+25-35% Faster Cast Rate', '+55% Faster Hit Recovery', 'Adds 1-50 Lightning Damage', 'Adds 3-14 Cold Damage', '+75 Poison Damage over 5 seconds', '7% Life stolen per hit', '+250 Defense vs. Missile', '+22 to Vitality', '+89-112 to Mana', '+3-8 Magic Absorb'],
     has_aura: false,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-steel`,
@@ -509,7 +509,7 @@ const _runeword_data = [
     character_level: 43,
     stats: ['15% Chance to cast Level 13 Frozen Orb on striking', '18% Chance to cast Level 20 Ice Blast on striking', '+50 to Attack Rating', '+220-350% Damage to Demons', '+355-375% Damage to Undead', '+50 to Attack Rating against Undead', 'Adds 100-220 Cold Damage', '-24% to Enemy Cold Resistance', '+10 to Dexterity', 'Cannot Be Frozen', '75% Extra Gold from Monsters', '+1 to Light Radius'],
     has_aura: false,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-white`,
@@ -539,7 +539,7 @@ const _runeword_data = [
     character_level: 63,
     stats: ['30% Chance to cast Level 1 Decrepify on striking', '5% Chance to cast Level 10 Life Tap on striking', '+375% Damage to Demons', '+100 to Attack Rating against Demons', '+250-300% Damage to Undead', 'Adds 85-120 Magic Damage', 'Adds 41-240 Lightning Damage', '20% Chance of Crushing Blow', 'Prevent Monster Heal', '+10 to Energy', 'Cannot Be Frozen'],
     has_aura: false,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-zephyr`,
@@ -569,7 +569,7 @@ const _runeword_data = [
     character_level: 61,
     stats: ['20% Chance to cast Level 18 Venom when struck', '12% Chance to cast Level 15 Hydra on striking', 'Level 14 Holy Fire Aura When Equipped', '+360 Defense', '+230 Defense vs. Missile', '+0.375 to Strength (Based on Character Level)', '3-5 to all Attributes', '+50 to Mana', '+5% to Maximum Lightning Resist', 'Damage Reduced by 7'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_SHIELD_PREFIX}-dream`,
@@ -579,7 +579,7 @@ const _runeword_data = [
     character_level: 65,
     stats: ['10% Chance to cast Level 15 Confuse when struck', 'Level 15 Holy Shock Aura When Equipped', '+20-30% Faster Hit Recovery', '+30% Enhanced Defense', '+150-220 Defense', '+10 to Vitality', '+50 to Life', '+0.625 to Mana (Based on Character Level)', 'All Resistances +5-20', '12-25% Better Chance of Getting Magic Items'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_SHIELD_PREFIX}-exile`,
@@ -599,7 +599,7 @@ const _runeword_data = [
     character_level: 65,
     stats: ['100% Chance to cast Level 40 Blaze when you Level-Up', '40% Chance to cast Level 22 Firestorm on striking', 'Level 10-15  Redemption Aura When Equipped', '+350-400% Enhanced Damage', '+50 to Life', '-28% to Enemy Fire Resistance', '+5% to maximum Lightning Resist', '+10% to maximum Fire Resist', '+350-400 Defense vs. Missile', '15-21 Fire Absorb'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_SHIELD_PREFIX}-rhyme`,
@@ -629,7 +629,7 @@ const _runeword_data = [
     character_level: 25,
     stats: ['+2 to All Skills', '+25-35% Faster Cast Rate', '+55% Faster Hit Recovery', '+250 Defense vs. Missile', '+22 to Vitality', '+89-112 to Mana', 'Cold Resist +35%', 'Lightning Resist +35%', 'Poison Resist +35%', '+3-8 Magic Absorb', 'Attacker Takes Damage of 14'],
     has_aura: false,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_SHIELD_PREFIX}-splendor`,
@@ -649,7 +649,7 @@ const _runeword_data = [
     character_level: 65,
     stats: ['10% Chance to cast Level 15 Confuse when struck', 'Level 15 Holy Shock Aura When Equipped', '+20-30% Faster Hit Recovery', '+30% Enhanced Defense', '+150-220 Defense', '+10 to Vitality', 'Increase Maximum Life 5%', '+0.625 to Mana (Based on Character Level)', 'All Resistances +5-20', '12-25% Better Chance of Getting Magic Items'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_HELMET_PREFIX}-delirium`,
@@ -749,7 +749,7 @@ const _runeword_data = [
     character_level: 61,
     stats: ['20% Chance to cast Level 18 Venom when struck', '12% Chance to cast Level 15 Hydra on striking', 'Level 14 Holy Fire Aura When Equipped', '+360 Defense', '+230 Defense vs. Missile', '+0.375 to Strength (Based on Character Level)', '3-5 to all Attributes', 'Increase Maximum Mana 5%', '+5% to Maximum Lightning Resist', 'Damage Reduced by 7'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_BODY_ARMOR_PREFIX}-duress`,
@@ -789,7 +789,7 @@ const _runeword_data = [
     character_level: 47,
     stats: ['20% Chance to cast Level 15 Chilling Armor when struck', '+25% Faster Cast Rate', '+300% Enhanced Damage', '+200% Enhanced Defense', '+15 Defense', '+1-1.5 to Life (Based on Character Level)', 'Replenish Life +7', '+5% to Maximum Lightning Resist', 'All Resistances +25-30', 'Damage Reduced by 7', '12% Damage Taken Goes To Mana', '+1 to Light Radius'],
     has_aura: false,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_BODY_ARMOR_PREFIX}-gloom`,
