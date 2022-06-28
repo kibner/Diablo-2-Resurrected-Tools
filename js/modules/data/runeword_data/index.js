@@ -493,7 +493,7 @@ const _runeword_data = [
   },
   {
     id: `${_WEAPON_PREFIX}-venom`,
-    name: 'venom',
+    name: 'Venom',
     runes: ['tal', 'dol', 'mal'],
     equipment: _ALL_WEAPONS,
     character_level: 49,
@@ -533,7 +533,7 @@ const _runeword_data = [
   },
   {
     id: `${_WEAPON_PREFIX}-wrath`,
-    name: 'wrath',
+    name: 'Wrath',
     runes: ['pul', 'lum', 'ber', 'mal'],
     equipment: _ALL_MISSILE_WEAPONS,
     character_level: 63,
@@ -833,7 +833,7 @@ const _runeword_data = [
   },
   {
     id: `${_BODY_ARMOR_PREFIX}-principle`,
-    name: 'principle',
+    name: 'Principle',
     runes: ['ral', 'gul', 'eld'],
     equipment: _ALL_BODY_ARMORS,
     character_level: 55,
