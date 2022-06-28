@@ -20,10 +20,20 @@ const _hasMatchingEquipment = function (searchParamEquipment, runeword) {
     });
 };
 
+const _hasMatchingMiscellaneous = function (searchParamMiscellaneous, runeword) {
+  return searchParamMiscellaneous.length === 0
+    || searchParamMiscellaneous.some(miscellaneous => {
+      return miscellaneous === 'has-aura' && runeword.hasAura === true;
+    });
+}
+
 const _searchRunewords = function (searchParams) {
   return runeword_data.reduce((previousValue, currentValue) => {
-    if (_hasMatchingSocket(searchParams.sockets, currentValue)
-      && _hasMatchingEquipment(searchParams.equipment, currentValue)) {
+    if (
+      _hasMatchingSocket(searchParams.sockets, currentValue)
+      && _hasMatchingEquipment(searchParams.equipment, currentValue)
+      && _hasMatchingMiscellaneous(searchParams.miscellaneous, currentValue)
+    ) {
       return previousValue.concat(currentValue);
     }
 

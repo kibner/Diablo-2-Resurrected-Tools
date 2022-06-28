@@ -1,6 +1,7 @@
 import socket_fieldset from "socket_fieldset";
 import equipment_fieldset from "equipment_fieldset";
 import search_service from "search_service";
+import miscellaneous_fieldset from "miscellaneous_fieldset";
 import search_results_output from "search_results_output";
 import {focusable} from "tabbable";
 
@@ -8,6 +9,7 @@ import {focusable} from "tabbable";
   // Just return a value to define the module export.
   const _SOCKET_FIELDSET_NAME = 'sockets';
   const _EQUIPMENT_FIELDSET_NAME = 'equipment';
+  const _MISCELLANEOUS_FIELDSET_NAME = 'miscellaneous';
   const _SCREEN_READER_ONLY_CLASS_NAME = 'sr-only';
   const _TOGGLE_COLLAPSIBLE_CLASS_NAME = 'toggle-collapsible';
   const _COLLAPSIBLE_CONTENT_CLASS_NAME = 'collapsible-content'
@@ -16,7 +18,8 @@ import {focusable} from "tabbable";
   let _runewordForm;
   let _runewordFormOutput;
   let _socketFieldset;
-  let _equipmentFieldset
+  let _equipmentFieldset;
+  let _miscellaneousFieldset;
 
   // readystatechange as event listener to insert or modify the DOM before DOMContentLoaded
   document.addEventListener('readystatechange', event => {
@@ -52,11 +55,13 @@ import {focusable} from "tabbable";
     _runewordFormOutput = _runewordForm.querySelector('output[name=runeword-result]');
     _socketFieldset = _runewordForm.querySelector(`fieldset[name=${_SOCKET_FIELDSET_NAME}]`);
     _equipmentFieldset = _runewordForm.querySelector(`fieldset[name=${_EQUIPMENT_FIELDSET_NAME}]`);
+    _miscellaneousFieldset = _runewordForm.querySelector(`fieldset[name=${_MISCELLANEOUS_FIELDSET_NAME}]`);
   }
 
   function _initializeFormInputs() {
     _initializeSocketFieldSet();
     _initializeEquipmentFieldSet();
+    _initializeMiscellaneousFieldSet();
   }
 
   function _initializeSocketFieldSet() {
@@ -65,6 +70,10 @@ import {focusable} from "tabbable";
 
   function _initializeEquipmentFieldSet() {
     _equipmentFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`).innerHTML = equipment_fieldset.getInnerHtml(_EQUIPMENT_FIELDSET_NAME);
+  }
+
+  function _initializeMiscellaneousFieldSet() {
+    _miscellaneousFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`).innerHTML = miscellaneous_fieldset.getInnerHtml(_MISCELLANEOUS_FIELDSET_NAME);
   }
 
   function _initializeFormOutput() {
@@ -134,13 +143,20 @@ import {focusable} from "tabbable";
       .reduce((previousValue, currentValue) => previousValue.concat(currentValue.value), []);
   }
 
+  function _getMiscellaneousParameters() {
+    return Array.from(_runewordForm.querySelectorAll(`input[name=${_MISCELLANEOUS_FIELDSET_NAME}]:checked`))
+      .reduce((previousValue, currentValue) => previousValue.concat(currentValue.value), []);
+  }
+
   function _getSearchParameters() {
     const sockets = _getSocketParameters();
     const equipment = _getEquipmentParameters();
+    const miscellaneous = _getMiscellaneousParameters();
 
     return {
       sockets: sockets,
-      equipment: equipment
+      equipment: equipment,
+      miscellaneous: miscellaneous
     };
   }
 

@@ -17,7 +17,8 @@ const _runeword_data = [
     runes: ['ber', 'tir', 'um', 'mal', 'lum'],
     equipment: ['axe', 'hammer-1', 'hammer-2', 'scepter'],
     character_level: 63,
-    stats: ['Level 9 Fanaticism Aura When Equipped', '+40% Increased Attack Speed', '+240-270% Enhanced Damage', '20% Chance of Crushing Blow', '25% Chance of Open Wounds', '+3 to Werebear', '+3 to Lycanthropy', 'Prevent Monster Heal', '+25-40 to Strength', '+10 to Energy', '+2 to Mana after each Kill', 'Level 13 Summon Grizzly (5/5 Charges)']
+    stats: ['Level 9 Fanaticism Aura When Equipped', '+40% Increased Attack Speed', '+240-270% Enhanced Damage', '20% Chance of Crushing Blow', '25% Chance of Open Wounds', '+3 to Werebear', '+3 to Lycanthropy', 'Prevent Monster Heal', '+25-40 to Strength', '+10 to Energy', '+2 to Mana after each Kill', 'Level 13 Summon Grizzly (5/5 Charges)'],
+    hasAura: true
   },
   {
     id: `${_WEAPON_PREFIX}-black`,
@@ -89,7 +90,8 @@ const _runeword_data = [
     runes: ['hel', 'ohm', 'um', 'lo', 'cham'],
     equipment: ['axe', 'hammer-1', 'hammer-2', 'polearm'],
     character_level: 67,
-    stats: ['5% Chance to cast Level 18 Volcano on striking', 'Level 12 Holy Freeze Aura When Equipped', '+2 to All Skills', '+45% Increased Attack Speed', '+330-370% Enhanced Damage', '-40-60% to Enemy Cold Resistance', '20% Deadly Strike', '25% Chance of Open Wounds', 'Prevent Monster Heal', 'Freezes target +3', 'Requirements -20%']
+    stats: ['5% Chance to cast Level 18 Volcano on striking', 'Level 12 Holy Freeze Aura When Equipped', '+2 to All Skills', '+45% Increased Attack Speed', '+330-370% Enhanced Damage', '-40-60% to Enemy Cold Resistance', '20% Deadly Strike', '25% Chance of Open Wounds', 'Prevent Monster Heal', 'Freezes target +3', 'Requirements -20%'],
+    hasAura: true
   },
   {
     id: `${_WEAPON_PREFIX}-edge`,
@@ -97,7 +99,8 @@ const _runeword_data = [
     runes: ['tir', 'tal', 'amn'],
     equipment: _ALL_MISSILE_WEAPONS,
     character_level: 25,
-    stats: ['Level 15 Thorns Aura When Equipped', '+35% Increased Attack Speed', '+320-380% Damage to Demons', '+280% Damage to Undead', '+75 Poison Damage over 5 seconds', '7% Life stolen per hit', 'Prevent Monster Heal', '5-10 to all Attributes', '+2 to Mana after each Kill', 'Reduces all Vendor Prices 15%']
+    stats: ['Level 15 Thorns Aura When Equipped', '+35% Increased Attack Speed', '+320-380% Damage to Demons', '+280% Damage to Undead', '+75 Poison Damage over 5 seconds', '7% Life stolen per hit', 'Prevent Monster Heal', '5-10 to all Attributes', '+2 to Mana after each Kill', 'Reduces all Vendor Prices 15%'],
+    hasAura: true
   },
   {
     id: `${_WEAPON_PREFIX}-eternity`,
@@ -113,7 +116,8 @@ const _runeword_data = [
     runes: ['ohm', 'jah', 'lem', 'eld'],
     equipment: _ALL_MISSILE_WEAPONS,
     character_level: 65,
-    stats: ['Level 12-15 Fanaticism Aura When Equipped', '+1-2 to All Skills', '+330% Enhanced Damage', 'Ignore Target\'s Defense', '300% Bonus to Attack Rating', '+75% Damage to Undead', '+50 to Attack Rating against Undead', '+120 Fire Damage', 'All Resistances +15', '10% Reanimate as: Returned', '75% Extra Gold from Monsters']
+    stats: ['Level 12-15 Fanaticism Aura When Equipped', '+1-2 to All Skills', '+330% Enhanced Damage', 'Ignore Target\'s Defense', '300% Bonus to Attack Rating', '+75% Damage to Undead', '+50 to Attack Rating against Undead', '+120 Fire Damage', 'All Resistances +15', '10% Reanimate as: Returned', '75% Extra Gold from Monsters'],
+    hasAura: true
   },
   {
     id: `${_WEAPON_PREFIX}-famine`,
@@ -153,7 +157,8 @@ const _runeword_data = [
     runes: ['sur', 'cham', 'amn', 'lo'],
     equipment: _ALL_WEAPONS,
     character_level: 67,
-    stats: ['100% Chance to cast Level 36  Blaze when you Level-Up', '100% Chance to cast Level 48  Meteor when you Die', 'Level 16 Holy Fire Aura When Equipped', '33% Increased Attack Speed', '+280-330% Enhanced Damage', 'Ignore Target\'s Defense', '-20% to Enemy Fire Resistance', '7% Life stolen per hit', '20% Deadly Strike', 'Hit Blinds Target', 'Freezes Target +3']
+    stats: ['100% Chance to cast Level 36  Blaze when you Level-Up', '100% Chance to cast Level 48  Meteor when you Die', 'Level 16 Holy Fire Aura When Equipped', '33% Increased Attack Speed', '+280-330% Enhanced Damage', 'Ignore Target\'s Defense', '-20% to Enemy Fire Resistance', '7% Life stolen per hit', '20% Deadly Strike', 'Hit Blinds Target', 'Freezes Target +3'],
+    hasAura: true
   },
   {
     id: `${_WEAPON_PREFIX}-harmony`,
@@ -161,7 +166,8 @@ const _runeword_data = [
     runes: ['tir', 'ith', 'sol', 'ko'],
     equipment: _ALL_MISSILE_WEAPONS,
     character_level: 39,
-    stats: ['Level 10 Vigor Aura When Equipped', '+200-275% Enhanced Damage', '+9 to Minimum Damage', '+9 to Maximum Damage', 'Adds 55-160 Fire Damage', 'Adds 55-160 Lightning Damage', 'Adds 55-160 Cold Damage', '+2-6 to Valkyrie', '+10 to Dexterity', 'Regenerate Mana 20%', '+2 to Mana after each Kill', '+2 to Light Radius', 'Level 20 Revive (25/25 Charges)']
+    stats: ['Level 10 Vigor Aura When Equipped', '+200-275% Enhanced Damage', '+9 to Minimum Damage', '+9 to Maximum Damage', 'Adds 55-160 Fire Damage', 'Adds 55-160 Lightning Damage', 'Adds 55-160 Cold Damage', '+2-6 to Valkyrie', '+10 to Dexterity', 'Regenerate Mana 20%', '+2 to Mana after each Kill', '+2 to Light Radius', 'Level 20 Revive (25/25 Charges)'],
+    hasAura: true
   },
   {
     id: `${_WEAPON_PREFIX}-heart-of-the-oak`,
@@ -193,7 +199,8 @@ const _runeword_data = [
     runes: ['amn', 'shael', 'jah', 'lo'],
     equipment: _ALL_MISSILE_WEAPONS,
     character_level: 65,
-    stats: ['100% Chance to cast Level 40 Blizzard when you Level-Up', '25% Chance to cast Level 22 Frost Nova on striking', 'Level 18 Holy Freeze Aura When Equipped', '20% Increased Attack Speed', '+140-210% Enhanced Damage', 'Ignore Target\'s Defense', '+25-30% to Cold Skill Damage', '-20% to Enemy Cold Resistance', '7% Life stolen per hit', '20% Deadly Strike', '3.125% Extra gold from Monsters (Based on Character Level)']
+    stats: ['100% Chance to cast Level 40 Blizzard when you Level-Up', '25% Chance to cast Level 22 Frost Nova on striking', 'Level 18 Holy Freeze Aura When Equipped', '20% Increased Attack Speed', '+140-210% Enhanced Damage', 'Ignore Target\'s Defense', '+25-30% to Cold Skill Damage', '-20% to Enemy Cold Resistance', '7% Life stolen per hit', '20% Deadly Strike', '3.125% Extra gold from Monsters (Based on Character Level)'],
+    hasAura: true
   },
   {
     id: `${_WEAPON_PREFIX}-infinity`,
@@ -201,7 +208,8 @@ const _runeword_data = [
     runes: ['ber', 'mal', 'ber', 'ist'],
     equipment: ['polearm'],
     character_level: 63,
-    stats: ['50% Chance to cast Level 20 Chain Lightning when you Kill an Enemy', 'Level 12  Conviction Aura When Equipped', '+35% Faster Run/Walk', '+255-325% Enhanced Damage', '-45-55% to Enemy Lightning Resistance', '40% Chance of Crushing Blow', 'Prevent Monster Heal', '0.5 to Vitality (Based on Character Level)', '30% Better Chance of Getting Magic Items', 'Level 21 Cyclone Armor (30/30 Charges)']
+    stats: ['50% Chance to cast Level 20 Chain Lightning when you Kill an Enemy', 'Level 12  Conviction Aura When Equipped', '+35% Faster Run/Walk', '+255-325% Enhanced Damage', '-45-55% to Enemy Lightning Resistance', '40% Chance of Crushing Blow', 'Prevent Monster Heal', '0.5 to Vitality (Based on Character Level)', '30% Better Chance of Getting Magic Items', 'Level 21 Cyclone Armor (30/30 Charges)'],
+    hasAura: true
   },
   {
     id: `${_WEAPON_PREFIX}-insight`,
@@ -209,7 +217,8 @@ const _runeword_data = [
     runes: ['ral', 'tir', 'tal', 'sol'],
     equipment: ['amazon-bow', 'bow', 'crossbow', 'polearm', 'staff'],
     character_level: 27,
-    stats: ['Level 12-17 Meditation Aura When Equipped', '+35% Faster Cast Rate', '+200-260% Enhanced Damage', '+9 to Minimum Damage', '180-250% Bonus to Attack Rating', 'Adds 5-30 Fire Damage', '+75 Poison Damage over 5 seconds', '+1-6 to Critical Strike', '+5 to All Attributes', '+2 to Mana after each Kill', '23% Better Chance of Getting Magic Items']
+    stats: ['Level 12-17 Meditation Aura When Equipped', '+35% Faster Cast Rate', '+200-260% Enhanced Damage', '+9 to Minimum Damage', '180-250% Bonus to Attack Rating', 'Adds 5-30 Fire Damage', '+75 Poison Damage over 5 seconds', '+1-6 to Critical Strike', '+5 to All Attributes', '+2 to Mana after each Kill', '23% Better Chance of Getting Magic Items'],
+    hasAura: true
   },
   {
     id: `${_WEAPON_PREFIX}-kings-grace`,
@@ -233,7 +242,8 @@ const _runeword_data = [
     runes: ['jah', 'mal', 'jah', 'sur', 'jah', 'ber'],
     equipment: ['axe', 'hammer-1', 'hammer-2', 'sword'],
     character_level: 65,
-    stats: ['6% Chance to cast Level 11 Fade when struck', '10% Chance to cast Level 18 Life Tap on striking', '20% Chance to cast Level 20 Charged Bolt on attack', 'Level 17 Might Aura When Equipped', '+330-375% Enhanced Damage', 'Ignores Target\'s Defense', '60-70% Chance of Crushing Blow', 'Prevent Monster Heal', 'Hit Blinds Target', '0.5% Better Chance of Getting Magic Items (Based on Character Level)']
+    stats: ['6% Chance to cast Level 11 Fade when struck', '10% Chance to cast Level 18 Life Tap on striking', '20% Chance to cast Level 20 Charged Bolt on attack', 'Level 17 Might Aura When Equipped', '+330-375% Enhanced Damage', 'Ignores Target\'s Defense', '60-70% Chance of Crushing Blow', 'Prevent Monster Heal', 'Hit Blinds Target', '0.5% Better Chance of Getting Magic Items (Based on Character Level)'],
+    hasAura: true
   },
   {
     id: `${_WEAPON_PREFIX}-lawbringer`,
@@ -241,7 +251,8 @@ const _runeword_data = [
     runes: ['amn', 'lem', 'ko'],
     equipment: ['hammer-1', 'hammer-2', 'scepter', 'sword'],
     character_level: 43,
-    stats: ['20% Chance to cast Level 15 Decrepify on striking', 'Level 16-18 Sanctuary Aura When Equipped', '-50% Target Defense', 'Adds 150-210 Fire Damage', 'Adds 130-180 Cold Damage', '7% Life stolen per hit', 'Slain Monsters Rest in Peace', '+200-250 Defense vs. Missile', '+10 to Dexterity', '75% Extra Gold from Monsters']
+    stats: ['20% Chance to cast Level 15 Decrepify on striking', 'Level 16-18 Sanctuary Aura When Equipped', '-50% Target Defense', 'Adds 150-210 Fire Damage', 'Adds 130-180 Cold Damage', '7% Life stolen per hit', 'Slain Monsters Rest in Peace', '+200-250 Defense vs. Missile', '+10 to Dexterity', '75% Extra Gold from Monsters'],
+    hasAura: true
   },
   {
     id: `${_WEAPON_PREFIX}-leaf`,
@@ -281,7 +292,8 @@ const _runeword_data = [
     runes: ['cham', 'shael', 'gul', 'thul', 'ith'],
     equipment: _ALL_MISSILE_WEAPONS,
     character_level: 67,
-    stats: ['Level 8-12 Concentration Aura When Equipped', '+3 To All Skills', '20% Increased Attack Speed', '+100% Piercing Attack', '+325-375% Enhanced Damage', '+9 To Maximum Damage', '20% Bonus to Attack Rating', 'Adds 3-14 Cold Damage', 'Freeze Target +3', '+24 Vitality', 'All Resistances +40']
+    stats: ['Level 8-12 Concentration Aura When Equipped', '+3 To All Skills', '20% Increased Attack Speed', '+100% Piercing Attack', '+325-375% Enhanced Damage', '+9 To Maximum Damage', '20% Bonus to Attack Rating', 'Adds 3-14 Cold Damage', 'Freeze Target +3', '+24 Vitality', 'All Resistances +40'],
+    hasAura: true
   },
   {
     id: `${_WEAPON_PREFIX}-oath`,
@@ -329,7 +341,8 @@ const _runeword_data = [
     runes: ['vex', 'vex', 'lo', 'jah'],
     equipment: _ALL_WEAPONS,
     character_level: 47,
-    stats: ['100% Chance to cast Level 40 Blaze when you Level-Up', '40% Chance to cast Level 22 Firestorm on striking', 'Level 10-15 Redemption Aura When Equipped', '+350-400% Enhanced Damage', 'Ignore Target\'s Defense', '14% Mana stolen per hit', '-28% to Enemy Fire Resistance', '20% Deadly Strike', '+350-400 Defense vs. Missile', '+15-21 Fire Absorb']
+    stats: ['100% Chance to cast Level 40 Blaze when you Level-Up', '40% Chance to cast Level 22 Firestorm on striking', 'Level 10-15 Redemption Aura When Equipped', '+350-400% Enhanced Damage', 'Ignore Target\'s Defense', '14% Mana stolen per hit', '-28% to Enemy Fire Resistance', '20% Deadly Strike', '+350-400 Defense vs. Missile', '+15-21 Fire Absorb'],
+    hasAura: true
   },
   {
     id: `${_WEAPON_PREFIX}-plague`,
@@ -337,7 +350,8 @@ const _runeword_data = [
     runes: ['cham', 'shael', 'um'],
     equipment: ['assassin-katar', 'dagger', 'sword'],
     character_level: 67,
-    stats: ['25% Chance to Cast Level 15 Poison Nova on striking', '20% Chance to Cast Level 12 Lower Resist when struck', 'Level 13-17 Cleansing Aura when equipped', '+1-2 to All Skills', '+20% Increased Attack Speed', '+220-320% Enhanced Damage', '-23% to Enemy Poison Resistance', '+0.3% Deadly Strike (Based on Character Level)', '25% Chance of Open Wounds', 'Freezes Target +3']
+    stats: ['25% Chance to Cast Level 15 Poison Nova on striking', '20% Chance to Cast Level 12 Lower Resist when struck', 'Level 13-17 Cleansing Aura when equipped', '+1-2 to All Skills', '+20% Increased Attack Speed', '+220-320% Enhanced Damage', '-23% to Enemy Poison Resistance', '+0.3% Deadly Strike (Based on Character Level)', '25% Chance of Open Wounds', 'Freezes Target +3'],
+    hasAura: true
   },
   {
     id: `${_WEAPON_PREFIX}-pride`,
@@ -345,7 +359,8 @@ const _runeword_data = [
     runes: ['cham', 'sur', 'io', 'lo'],
     equipment: ['amazon-spear', 'polearm', 'spear'],
     character_level: 67,
-    stats: ['25% Chance to cast Level 17 Fire Wall when struck', 'Level 16-20 Concentration Aura When Equipped', '260-300% Bonus to Attack Rating', '+1% Damage to Demons (Based on Character Level)', 'Adds 50-280 Lightning Damage', '20% Deadly Strike', 'Hit Blinds Target', 'Freezes Target +3', '+10 to Vitality', 'Replenish Life +8', '1.875% Extra Gold from Monsters (Based on Character Level)']
+    stats: ['25% Chance to cast Level 17 Fire Wall when struck', 'Level 16-20 Concentration Aura When Equipped', '260-300% Bonus to Attack Rating', '+1% Damage to Demons (Based on Character Level)', 'Adds 50-280 Lightning Damage', '20% Deadly Strike', 'Hit Blinds Target', 'Freezes Target +3', '+10 to Vitality', 'Replenish Life +8', '1.875% Extra Gold from Monsters (Based on Character Level)'],
+    hasAura: true
   },
   {
     id: `${_WEAPON_PREFIX}-rift`,
@@ -457,7 +472,8 @@ const _runeword_data = [
     runes: ['sur', 'lo', 'sol'],
     equipment: _ALL_SHIELDS,
     character_level: 61,
-    stats: ['20% Chance to cast Level 18 Venom when struck', '12% Chance to cast Level 15 Hydra on striking', 'Level 14 Holy Fire Aura When Equipped', '+360 Defense', '+230 Defense vs. Missile', '+0.375 to Strength (Based on Character Level)', '3-5 to all Attributes', '+50 to Mana', '+5% to Maximum Lightning Resist', 'Damage Reduced by 7']
+    stats: ['20% Chance to cast Level 18 Venom when struck', '12% Chance to cast Level 15 Hydra on striking', 'Level 14 Holy Fire Aura When Equipped', '+360 Defense', '+230 Defense vs. Missile', '+0.375 to Strength (Based on Character Level)', '3-5 to all Attributes', '+50 to Mana', '+5% to Maximum Lightning Resist', 'Damage Reduced by 7'],
+    hasAura: true
   },
   {
     id: `${_SHIELD_PREFIX}-dream`,
@@ -465,7 +481,8 @@ const _runeword_data = [
     runes: ['io', 'jah', 'pul'],
     equipment: _ALL_SHIELDS,
     character_level: 65,
-    stats: ['10% Chance to cast Level 15 Confuse when struck', 'Level 15 Holy Shock Aura When Equipped', '+20-30% Faster Hit Recovery', '+30% Enhanced Defense', '+150-220 Defense', '+10 to Vitality', '+50 to Life', '+0.625 to Mana (Based on Character Level)', 'All Resistances +5-20', '12-25% Better Chance of Getting Magic Items']
+    stats: ['10% Chance to cast Level 15 Confuse when struck', 'Level 15 Holy Shock Aura When Equipped', '+20-30% Faster Hit Recovery', '+30% Enhanced Defense', '+150-220 Defense', '+10 to Vitality', '+50 to Life', '+0.625 to Mana (Based on Character Level)', 'All Resistances +5-20', '12-25% Better Chance of Getting Magic Items'],
+    hasAura: true
   },
   {
     id: `${_SHIELD_PREFIX}-exile`,
@@ -473,7 +490,8 @@ const _runeword_data = [
     runes: ['vex', 'ohm', 'ist', 'dol'],
     equipment: ['paladin-shield'],
     character_level: 57,
-    stats: ['15% Chance to cast Level 5 Life Tap on striking', 'Level 13-16  Defiance Aura When Equipped', '+2 to Offensive Auras (Paladin Only)', '+30% Faster Block Rate', 'Freezes Target', '220-260% Enhanced Defense', 'Replenish Life +7', '+5% to Maximum Cold Resist', '+5% to Maximum Fire Resist', '25% Better Chance of Getting Magic Items', 'Repairs 1 Durability in 4 seconds']
+    stats: ['15% Chance to cast Level 5 Life Tap on striking', 'Level 13-16  Defiance Aura When Equipped', '+2 to Offensive Auras (Paladin Only)', '+30% Faster Block Rate', 'Freezes Target', '220-260% Enhanced Defense', 'Replenish Life +7', '+5% to Maximum Cold Resist', '+5% to Maximum Fire Resist', '25% Better Chance of Getting Magic Items', 'Repairs 1 Durability in 4 seconds'],
+    hasAura: true
   },
   {
     id: `${_SHIELD_PREFIX}-phoenix`,
@@ -481,7 +499,8 @@ const _runeword_data = [
     runes: ['vex', 'vex', 'lo', 'jah'],
     equipment: _ALL_SHIELDS,
     character_level: 65,
-    stats: ['100% Chance to cast Level 40 Blaze when you Level-Up', '40% Chance to cast Level 22 Firestorm on striking', 'Level 10-15  Redemption Aura When Equipped', '+350-400% Enhanced Damage', '+50 to Life', '-28% to Enemy Fire Resistance', '+5% to maximum Lightning Resist', '+10% to maximum Fire Resist', '+350-400 Defense vs. Missile', '15-21 Fire Absorb']
+    stats: ['100% Chance to cast Level 40 Blaze when you Level-Up', '40% Chance to cast Level 22 Firestorm on striking', 'Level 10-15  Redemption Aura When Equipped', '+350-400% Enhanced Damage', '+50 to Life', '-28% to Enemy Fire Resistance', '+5% to maximum Lightning Resist', '+10% to maximum Fire Resist', '+350-400 Defense vs. Missile', '15-21 Fire Absorb'],
+    hasAura: true
   },
   {
     id: `${_SHIELD_PREFIX}-rhyme`,
@@ -521,7 +540,8 @@ const _runeword_data = [
     runes: ['io', 'jah', 'pul'],
     equipment: _ALL_HELMETS,
     character_level: 65,
-    stats: ['10% Chance to cast Level 15 Confuse when struck', 'Level 15 Holy Shock Aura When Equipped', '+20-30% Faster Hit Recovery', '+30% Enhanced Defense', '+150-220 Defense', '+10 to Vitality', 'Increase Maximum Life 5%', '+0.625 to Mana (Based on Character Level)', 'All Resistances +5-20', '12-25% Better Chance of Getting Magic Items']
+    stats: ['10% Chance to cast Level 15 Confuse when struck', 'Level 15 Holy Shock Aura When Equipped', '+20-30% Faster Hit Recovery', '+30% Enhanced Defense', '+150-220 Defense', '+10 to Vitality', 'Increase Maximum Life 5%', '+0.625 to Mana (Based on Character Level)', 'All Resistances +5-20', '12-25% Better Chance of Getting Magic Items'],
+    hasAura: true
   },
   {
     id: `${_HELMET_PREFIX}-delirium`,
@@ -537,7 +557,8 @@ const _runeword_data = [
     runes: ['nef', 'pul', 'vex'],
     equipment: _ALL_HELMETS,
     character_level: 55,
-    stats: ['Level 4-8 Resist Fire Aura When Equipped', '+3 To Fire Skills', '-10-15% to Enemy Fire Resistance', '+30% Enhanced Defense', '+30 Defense Vs. Missile', '+50-75 to Mana', 'Half Freeze Duration', '+5% to Maximum Fire Resist', 'Poison Length Reduced by 50%']
+    stats: ['Level 4-8 Resist Fire Aura When Equipped', '+3 To Fire Skills', '-10-15% to Enemy Fire Resistance', '+30% Enhanced Defense', '+30 Defense Vs. Missile', '+50-75 to Mana', 'Half Freeze Duration', '+5% to Maximum Fire Resist', 'Poison Length Reduced by 50%'],
+    hasAura: true
   },
   {
     id: `${_HELMET_PREFIX}-lore`,
@@ -585,7 +606,8 @@ const _runeword_data = [
     runes: ['ral', 'ohm', 'sur', 'eth'],
     equipment: _ALL_BODY_ARMORS,
     character_level: 61,
-    stats: ['Level 15-21 Thorns Aura When Equipped', '+50% Faster Hit Recovery', '+25-50% to Poison Skill Damage', '+300 Defense', 'Increase Maximum Mana 5%', 'Regenerate Mana 15%', '5% to Maximum Cold Resist', 'Fire Resist +30%', 'Poison Resist +100%', '+13 Life after each Kill', 'Level 13 Spirit of Barbs (33/33 Charges)']
+    stats: ['Level 15-21 Thorns Aura When Equipped', '+50% Faster Hit Recovery', '+25-50% to Poison Skill Damage', '+300 Defense', 'Increase Maximum Mana 5%', 'Regenerate Mana 15%', '5% to Maximum Cold Resist', 'Fire Resist +30%', 'Poison Resist +100%', '+13 Life after each Kill', 'Level 13 Spirit of Barbs (33/33 Charges)'],
+    hasAura: true
   },
   {
     id: `${_BODY_ARMOR_PREFIX}-chains-of-honor`,
@@ -601,7 +623,8 @@ const _runeword_data = [
     runes: ['sur', 'lo', 'sol'],
     equipment: _ALL_BODY_ARMORS,
     character_level: 61,
-    stats: ['20% Chance to cast Level 18 Venom when struck', '12% Chance to cast Level 15 Hydra on striking', 'Level 14 Holy Fire Aura When Equipped', '+360 Defense', '+230 Defense vs. Missile', '+0.375 to Strength (Based on Character Level)', '3-5 to all Attributes', 'Increase Maximum Mana 5%', '+5% to Maximum Lightning Resist', 'Damage Reduced by 7']
+    stats: ['20% Chance to cast Level 18 Venom when struck', '12% Chance to cast Level 15 Hydra on striking', 'Level 14 Holy Fire Aura When Equipped', '+360 Defense', '+230 Defense vs. Missile', '+0.375 to Strength (Based on Character Level)', '3-5 to all Attributes', 'Increase Maximum Mana 5%', '+5% to Maximum Lightning Resist', 'Damage Reduced by 7'],
+    hasAura: true
   },
   {
     id: `${_BODY_ARMOR_PREFIX}-duress`,
