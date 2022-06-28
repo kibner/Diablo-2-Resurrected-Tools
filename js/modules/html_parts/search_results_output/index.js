@@ -36,8 +36,9 @@ const _getRunewordDescription = function (value) {
   const runes = _getRunesHtml(value);
   const equipment = _getEquipmentHtml(value);
   const character_level = _getCharacterLevelHtml(value);
+  const miscellaneous = _getMiscellaneousHtml(value);
 
-  return `<dl>${runes}${equipment}${character_level}</dl>`;
+  return `<dl>${runes}${equipment}${character_level}${miscellaneous}</dl>`;
 }
 
 const _getRunesHtml = function (value) {
@@ -70,6 +71,24 @@ const _getEquipmentHtml = function (value) {
 
 const _getCharacterLevelHtml = function (value) {
   return `<dt>Required level</dt><dd>${value.character_level}</dd>`;
+}
+
+const _getMiscellaneousHtml = function (value) {
+  let miscellaneous = '';
+
+  if (typeof (value.has_aura) === 'boolean' && value.has_aura === true) {
+    miscellaneous = `${miscellaneous}<li>Aura</li>`;
+  }
+
+  if (typeof (value.is_ladder_only) === 'boolean' && value.is_ladder_only === true) {
+    miscellaneous = `${miscellaneous}<li>Ladder</li>`;
+  }
+
+  if (miscellaneous.length > 0) {
+    miscellaneous = `<dt>Miscellaneous</dt><dd><ul class="list-inline">${miscellaneous}</ul></dd>`;
+  }
+
+  return miscellaneous;
 }
 
 const _getStatsHtml = function (value) {

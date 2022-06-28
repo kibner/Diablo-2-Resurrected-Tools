@@ -22,9 +22,17 @@ const _hasMatchingEquipment = function (searchParamEquipment, runeword) {
 
 const _hasMatchingMiscellaneous = function (searchParamMiscellaneous, runeword) {
   return searchParamMiscellaneous.length === 0
-    || searchParamMiscellaneous.some(miscellaneous => {
-      return miscellaneous === 'has-aura' && runeword.hasAura === true;
+    || searchParamMiscellaneous.every(miscellaneousValue => {
+      return _hasAura(miscellaneousValue, runeword) || _excludeLadderOnly(miscellaneousValue, runeword);
     });
+}
+
+const _hasAura = function (miscellaneousValue, runeword) {
+  return miscellaneousValue === 'has-aura' && runeword.has_aura === true;
+}
+
+const _excludeLadderOnly = function (miscellaneousValue, runeword) {
+  return miscellaneousValue === 'exclude-ladder-only' && runeword.is_ladder_only === false;
 }
 
 const _searchRunewords = function (searchParams) {
