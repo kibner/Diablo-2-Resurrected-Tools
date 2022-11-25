@@ -6,5 +6,6 @@ dist
 .cache
 .parcel-cache
 
-# IDE directores
+# IDE directories
 .idea
+.fleet
