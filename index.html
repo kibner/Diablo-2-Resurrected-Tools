@@ -26,11 +26,45 @@
 
 <body>
 <header>
-  <section class="auto-margin-max-width-50">
+  <div class="auto-margin-max-width-50">
     <h1>Diablo 2: Resurrected | Tools</h1>
-  </section>
+  </div>
 </header>
 <main class="auto-margin-max-width-50">
+  <nav class="tabs">
+    <div role="tablist" aria-label="Tools" class="automatic">
+      <button id="tab-1" role="tab" tabindex="0" aria-selected="true" aria-controls="tabpanel-1">
+        <span class="focus">
+          First Tab
+        </span>
+      </button>
+      <button id="tab-2" role="tab" tabindex="-1" aria-selected="false" aria-controls="tabpanel-2">
+        <span class="focus">
+          Second Tab
+        </span>
+      </button>
+      <button id="tab-3" role="tab" tabindex="-1" aria-selected="false" aria-controls="tabpanel-3">
+        <span class="focus">
+          Third Tab
+        </span>
+      </button>
+    </div>
+    <div id="tabpanel-1" role="tabpanel" tabindex="0" aria-labelledby="tab-1">
+      <p>
+        Content for the first panel
+      </p>
+    </div>
+    <div id="tabpanel-2" role="tabpanel" tabindex="0" aria-labelledby="tab-2" hidden class="is-hidden">
+      <p>
+        Content for the second panel
+      </p>
+    </div>
+    <div id="tabpanel-3" role="tabpanel" tabindex="0" aria-labelledby="tab-3" hidden class="is-hidden">
+      <p>
+        Content for the third panel
+      </p>
+    </div>
+  </nav>
   <form id="runeword-form">
     <fieldset name="sockets">
       <input id="sockets-collapsible" type="checkbox" checked="" class="toggle-collapsible sr-only">
