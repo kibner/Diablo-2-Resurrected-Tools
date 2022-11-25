@@ -484,7 +484,7 @@ const _runeword_data = [
   {
     id: `${_WEAPON_PREFIX}-unbending-will`,
     name: 'Unbending Will',
-    runes: ['fa', 'io', 'ith', 'eld', 'el', 'hel'],
+    runes: ['fal', 'io', 'ith', 'eld', 'el', 'hel'],
     equipment: ['sword'],
     character_level: 41,
     stats: ['18% Chance to cast Level 18 Taunt on striking', '+3 To Combat Skills (Barbarian Only)', '+20-30% Increased Attack Speed (varies)', '+300-350% Enhanced Damage', '+9 To Maximum Damage', '+50 To Attack Rating', '+75% Damage to Undead', '+50 Attack Rating Against Undead', '8-10% Life Stolen Per Hit (varies)', 'Prevent Monster Heal', '+10 To Strength', '+10 To Vitality', 'Damage Reduced By 8', '+1 Light Radius', 'Requirements -20%'],
