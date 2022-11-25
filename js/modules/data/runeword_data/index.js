@@ -245,7 +245,7 @@ const _runeword_data = [
     id: `${_WEAPON_PREFIX}-infinity`,
     name: 'Infinity',
     runes: ['ber', 'mal', 'ber', 'ist'],
-    equipment: ['polearm'],
+    equipment: ['amazon-spear', 'polearm', 'spear'],
     character_level: 63,
     stats: ['50% Chance to cast Level 20 Chain Lightning when you Kill an Enemy', 'Level 12  Conviction Aura When Equipped', '+35% Faster Run/Walk', '+255-325% Enhanced Damage', '-45-55% to Enemy Lightning Resistance', '40% Chance of Crushing Blow', 'Prevent Monster Heal', '0.5 to Vitality (Based on Character Level)', '30% Better Chance of Getting Magic Items', 'Level 21 Cyclone Armor (30/30 Charges)'],
     has_aura: true,
