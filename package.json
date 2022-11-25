@@ -18,19 +18,19 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "parcel": "^2.5.0",
-    "@parcel/transformer-webmanifest": "^2.5.0",
-    "@parcel/packager-raw-url": "^2.5.0"
+    "@parcel/packager-raw-url": "^2.8.0",
+    "@parcel/transformer-webmanifest": "^2.8.0",
+    "parcel": "^2.8.0"
   },
   "dependencies": {
     "equipment_data": "file:js/modules/data/equipment_data",
-    "runes_data": "file:js/modules/data/rune_data",
-    "runewords_data": "file:js/modules/data/runeword_data",
-    "search_service": "file:js/modules/services/search_service",
-    "socket_fieldset": "file:js/modules/html_parts/socket_fieldset",
     "equipment_fieldset": "file:js/modules/html_parts/equipment_fieldset",
     "miscellaneous_fieldset": "file:js/modules/html_parts/miscellaneous_fieldset",
+    "runes_data": "file:js/modules/data/rune_data",
+    "runewords_data": "file:js/modules/data/runeword_data",
     "search_results_output": "file:js/modules/html_parts/search_results_output",
+    "search_service": "file:js/modules/services/search_service",
+    "socket_fieldset": "file:js/modules/html_parts/socket_fieldset",
     "tabbable": "^5.3.3"
   }
 }
