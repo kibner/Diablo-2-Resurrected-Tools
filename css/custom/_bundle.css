@@ -1,7 +1,6 @@
 /* always import color-scheme.css first */
 @import 'color-scheme.css';
 
-@import 'main.css';
 @import 'form.css';
 @import 'fieldset.css';
 @import 'legend.css';
