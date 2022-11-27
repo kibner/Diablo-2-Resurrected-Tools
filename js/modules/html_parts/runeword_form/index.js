@@ -19,17 +19,20 @@ let _equipmentFieldset;
 let _miscellaneousFieldset;
 
 const _initialize = function (runewordFormId) {
-  _runewordForm = document.getElementById(runewordFormId);
-  _runewordFormOutput = _runewordForm.querySelector('output[name=runeword-result]');
-  _socketFieldset = _runewordForm.querySelector(`fieldset[name=${_SOCKET_FIELDSET_NAME}]`);
-  _equipmentFieldset = _runewordForm.querySelector(`fieldset[name=${_EQUIPMENT_FIELDSET_NAME}]`);
-  _miscellaneousFieldset = _runewordForm.querySelector(`fieldset[name=${_MISCELLANEOUS_FIELDSET_NAME}]`);
-
+  _initializeGlobals(runewordFormId);
   _initializeFormInputs();
   _initializeFormOutput();
   _initializeListeners();
 
   _executeSearch();
+}
+
+const _initializeGlobals = function (runewordFormId) {
+  _runewordForm = document.getElementById(runewordFormId);
+  _runewordFormOutput = _runewordForm.querySelector('output[name=runeword-result]');
+  _socketFieldset = _runewordForm.querySelector(`fieldset[name=${_SOCKET_FIELDSET_NAME}]`);
+  _equipmentFieldset = _runewordForm.querySelector(`fieldset[name=${_EQUIPMENT_FIELDSET_NAME}]`);
+  _miscellaneousFieldset = _runewordForm.querySelector(`fieldset[name=${_MISCELLANEOUS_FIELDSET_NAME}]`);
 }
 
 const _initializeFormInputs = function () {
