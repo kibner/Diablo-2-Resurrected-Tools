@@ -1,5 +1,5 @@
 import equipment_data from "equipment_data";
-import rune_data from "runes_data";
+import rune_data from "rune_data";
 
 const _getInnerHtml = function (searchResults) {
   let html = '';

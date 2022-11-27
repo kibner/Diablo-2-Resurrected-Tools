@@ -1,5 +1,5 @@
 import equipment_data from "equipment_data";
-import runeword_data from "runewords_data";
+import runeword_data from "runeword_data";
 
 const _hasMatchingSocket = function (searchParamSockets, runeword) {
   return searchParamSockets.length === 0 || searchParamSockets.includes(runeword.runes.length);

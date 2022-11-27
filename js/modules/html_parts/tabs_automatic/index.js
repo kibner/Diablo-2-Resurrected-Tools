@@ -115,14 +115,9 @@ class TabsAutomatic {
   }
 }
 
-const _initialize = function () {
-  window.addEventListener('load', function () {
-      const tablists = document.querySelectorAll('[role=tablist].automatic');
-      for (let i = 0; i < tablists.length; i++) {
-        new TabsAutomatic(tablists[i]);
-      }
-    }
-  )
+const _initialize = function (tablistId) {
+  const tablist = document.getElementById(tablistId);
+  new TabsAutomatic(tablist);
 }
 
 export default {
