@@ -11,6 +11,6 @@ import runeword_form from "runeword_form";
 
   function _initializeApp() {
     tabs_automatic.initialize('prototype-tablist');
-    runeword_form.initialize('runeword-form')
+    runeword_form.initialize('runeword-form');
   }
 })();
