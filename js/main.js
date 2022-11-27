@@ -3,6 +3,7 @@ import equipment_fieldset from "equipment_fieldset";
 import search_service from "search_service";
 import miscellaneous_fieldset from "miscellaneous_fieldset";
 import search_results_output from "search_results_output";
+import tabs_automatic from "./modules/html_parts/tabs_automatic";
 import {focusable} from "tabbable";
 
 (function () {
@@ -43,6 +44,8 @@ import {focusable} from "tabbable";
   }
 
   function _initializeApp() {
+    tabs_automatic.initialize();
+
     _initializeFormInputs();
     _initializeFormOutput();
     _initializeListeners();
