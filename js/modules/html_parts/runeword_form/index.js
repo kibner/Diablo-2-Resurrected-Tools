@@ -1,8 +1,8 @@
-import socket_fieldset from "socket_fieldset";
-import equipment_fieldset from "equipment_fieldset";
-import miscellaneous_fieldset from "miscellaneous_fieldset";
+import socket_fieldset from "./socket_fieldset";
+import equipment_fieldset from "./equipment_fieldset";
+import miscellaneous_fieldset from "./miscellaneous_fieldset";
 import search_service from "search_service";
-import search_results_output from "search_results_output";
+import search_results_output from "./search_results_output";
 import {focusable} from "tabbable";
 
 const _SOCKET_FIELDSET_NAME = 'sockets';

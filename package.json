@@ -24,14 +24,10 @@
   },
   "dependencies": {
     "equipment_data": "file:js/modules/data/equipment_data",
-    "equipment_fieldset": "file:js/modules/html_parts/runeword_form/equipment_fieldset",
-    "miscellaneous_fieldset": "file:js/modules/html_parts/runeword_form/miscellaneous_fieldset",
     "rune_data": "file:js/modules/data/rune_data",
     "runeword_data": "file:js/modules/data/runeword_data",
     "runeword_form": "file:js/modules/html_parts/runeword_form",
-    "search_results_output": "file:js/modules/html_parts/runeword_form/search_results_output",
     "search_service": "file:js/modules/services/search_service",
-    "socket_fieldset": "file:js/modules/html_parts/runeword_form/socket_fieldset",
     "tabs_automatic": "file:js/modules/html_parts/tabs_automatic",
     "tabbable": "^5.3.3"
   }
