@@ -349,7 +349,7 @@ const _runeword_data = [
     character_level: 67,
     stats: ['Level 8-12 Concentration Aura When Equipped', '+3 To All Skills', '20% Increased Attack Speed', '+100% Piercing Attack', '+325-375% Enhanced Damage', '+9 To Maximum Damage', '20% Bonus to Attack Rating', 'Adds 3-14 Cold Damage', 'Freeze Target +3', '+24 Vitality', 'All Resistances +40'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-oath`,
@@ -379,7 +379,7 @@ const _runeword_data = [
     character_level: 69,
     stats: ['Indestructible', '24% Chance to cast level 10 Weaken when struck', '+4 To All Skills', '+65% Faster Cast Rate', '+60% Faster Hit Recovery', 'Knockback', '+10 to Vitality', '+10 to Energy', 'Increase Maximum Life 15-25%', 'Regenerate Mana 15-30%', 'All Resistances +60-70', '75% Extra Gold from Monsters', '30% Better Chance of Getting Magic Items'],
     has_aura: false,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-passion`,
@@ -399,7 +399,7 @@ const _runeword_data = [
     character_level: 23,
     stats: ['+30% Faster Block Rate', '+40-80% Enhanced Damage', '10% Bonus to Attack Rating', 'Adds 17-32 Fire Damage', 'Adds 1-50 Lightning Damage', 'Adds 3-14 Cold Damage', '+75 Poison Damage over 5 Seconds', '+6 to Strength', '+6 to Dexterity', 'All Resistances +15'],
     has_aura: false,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-phoenix`,
@@ -419,7 +419,7 @@ const _runeword_data = [
     character_level: 67,
     stats: ['25% Chance to Cast Level 15 Poison Nova on striking', '20% Chance to Cast Level 12 Lower Resist when struck', 'Level 13-17 Cleansing Aura when equipped', '+1-2 to All Skills', '+20% Increased Attack Speed', '+220-320% Enhanced Damage', '-23% to Enemy Poison Resistance', '+0.3% Deadly Strike (Based on Character Level)', '25% Chance of Open Wounds', 'Freezes Target +3'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-pride`,
@@ -489,7 +489,7 @@ const _runeword_data = [
     character_level: 41,
     stats: ['18% Chance to cast Level 18 Taunt on striking', '+3 To Combat Skills (Barbarian Only)', '+20-30% Increased Attack Speed (varies)', '+300-350% Enhanced Damage', '+9 To Maximum Damage', '+50 To Attack Rating', '+75% Damage to Undead', '+50 Attack Rating Against Undead', '8-10% Life Stolen Per Hit (varies)', 'Prevent Monster Heal', '+10 To Strength', '+10 To Vitality', 'Damage Reduced By 8', '+1 Light Radius', 'Requirements -20%'],
     has_aura: false,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_WEAPON_PREFIX}-venom`,
@@ -689,7 +689,7 @@ const _runeword_data = [
     character_level: 55,
     stats: ['Level 4-8 Resist Fire Aura When Equipped', '+3 To Fire Skills', '-10-15% to Enemy Fire Resistance', '+30% Enhanced Defense', '+30 Defense Vs. Missile', '+50-75 to Mana', 'Half Freeze Duration', '+5% to Maximum Fire Resist', 'Poison Length Reduced by 50%'],
     has_aura: true,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_HELMET_PREFIX}-lore`,
@@ -729,7 +729,7 @@ const _runeword_data = [
     character_level: 45,
     stats: ['+33% Piercing Attack', '+15-25% Bonus to Attack Rating', '4-8% Mana Stolen Per Hit', '+30% Enhanced Defense', '+10 Energy', '15% Slower Stamina Drain', 'Cannot Be Frozen', '+5 Mana After Each Kill', '15% Damage Taken Goes to Mana'],
     has_aura: false,
-    is_ladder_only: true
+    is_ladder_only: false
   },
   {
     id: `${_HELMET_PREFIX}-bulwark`,
