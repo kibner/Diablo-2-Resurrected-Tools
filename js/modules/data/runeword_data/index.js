@@ -565,9 +565,9 @@ const _runeword_data = [
     id: `${_WEAPON_PREFIX}-mosaic`,
     name: 'Mosaic',
     runes: ['mal', 'gul', 'thul'],
-    equipment: 'assassin-katar',
+    equipment: ['assasin-katar'],
     character_level: 53,
-    stats: ['+50% +25% chance for finishing moves to not consume charges', 'When a finisher is executed this way, it now refreshes the expiration timer of the stack', '+2 to Martial Arts (Assassin only)', '+20% Increased Attack Speed', '+200-250% Enhanced Damage', '+20% Bonus to Attack Rating', '7% Life Steal', '+8-15% to Cold Skill Damage', '+8-15% to Lightning Skill Damage', '+8-15% to Fire Skill Damage', 'Prevent Monster Heal'],
+    stats: ['+50% chance for finishing moves to not consume charges', 'When a finisher is executed this way, it now refreshes the expiration timer of the stack', '+2 to Martial Arts (Assassin only)', '+20% Increased Attack Speed', '+200-250% Enhanced Damage', '+20% Bonus to Attack Rating', '7% Life Steal', '+8-15% to Cold Skill Damage', '+8-15% to Lightning Skill Damage', '+8-15% to Fire Skill Damage', 'Prevent Monster Heal'],
     has_aura: false,
     is_ladder_only: true
   },
