@@ -552,6 +552,26 @@ const _runeword_data = [
     is_ladder_only: false
   },
   {
+    id: `${_WEAPON_PREFIX}-hustle`,
+    name: 'Hustle',
+    runes: ['shael', 'ko', 'eld'],
+    equipment: _ALL_WEAPONS,
+    character_level: 39,
+    stats: ['5% Chance to cast level 1 Burst of Speed on striking', 'Level 1 Fanaticism Aura', '+30% Increased Attack Speed', '+180-200% Enhanced Damage', '+75% Damage to Undead', '+50 to Attack Rating against Undead', '+10 to Dexterity'],
+    has_aura: true,
+    is_ladder_only: true
+  },
+  {
+    id: `${_WEAPON_PREFIX}-mosaic`,
+    name: 'Mosaic',
+    runes: ['mal', 'gul', 'thul'],
+    equipment: 'assassin-katar',
+    character_level: 53,
+    stats: ['+50% +25% chance for finishing moves to not consume charges', 'When a finisher is executed this way, it now refreshes the expiration timer of the stack', '+2 to Martial Arts (Assassin only)', '+20% Increased Attack Speed', '+200-250% Enhanced Damage', '+20% Bonus to Attack Rating', '7% Life Steal', '+8-15% to Cold Skill Damage', '+8-15% to Lightning Skill Damage', '+8-15% to Fire Skill Damage', 'Prevent Monster Heal'],
+    has_aura: false,
+    is_ladder_only: true
+  },
+  {
     id: `${_SHIELD_PREFIX}-ancients-pledge`,
     name: 'Ancients Pledge',
     runes: ['ral', 'ort', 'tal'],
@@ -708,6 +728,66 @@ const _runeword_data = [
     equipment: _ALL_HELMETS,
     character_level: 45,
     stats: ['+33% Piercing Attack', '+15-25% Bonus to Attack Rating', '4-8% Mana Stolen Per Hit', '+30% Enhanced Defense', '+10 Energy', '15% Slower Stamina Drain', 'Cannot Be Frozen', '+5 Mana After Each Kill', '15% Damage Taken Goes to Mana'],
+    has_aura: false,
+    is_ladder_only: true
+  },
+  {
+    id: `${_HELMET_PREFIX}-bulwark`,
+    name: 'Bulwark',
+    runes: ['shael', 'io', 'sol'],
+    equipment: _ALL_HELMETS,
+    character_level: 35,
+    stats: ['+20% Faster Hit Recovery', '+4-6% Life stolen per hit', '+75-100% Enhanced Defense', '+10 to Vitality', 'Increase Maximum Life 5%', 'Replenish Life +30', 'Damage Reduced by 7', 'Physical Damage Received Reduced by 10-15%'],
+    has_aura: false,
+    is_ladder_only: true
+  },
+  {
+    id: `${_HELMET_PREFIX}-cure`,
+    name: 'Cure',
+    runes: ['shael', 'io', 'tal'],
+    equipment: _ALL_HELMETS,
+    character_level: 35,
+    stats: ['Level 1 Cleansing Aura when Equipped', '+20% Faster Hit Recovery', '+75-100% Enhanced Defense', '+10 to Vitality', 'Increase Maximum Life 5%', 'Poison Resist +40-60%', 'Poison Length Reduced by 50%'],
+    has_aura: true,
+    is_ladder_only: true
+  },
+  {
+    id: `${_HELMET_PREFIX}-ground`,
+    name: 'Ground',
+    runes: ['shael', 'io', 'ort'],
+    equipment: _ALL_HELMETS,
+    character_level: 35,
+    stats: ['+20% Faster Hit Recovery', '+75-100% Enhanced Defense', '+10 to Vitality', 'Increase Maximum Life 5%', 'Lightning Resist +40-60%', 'Lightning Absorb +10-15%'],
+    has_aura: false,
+    is_ladder_only: true
+  },
+  {
+    id: `${_HELMET_PREFIX}-hearth`,
+    name: 'Hearth',
+    runes: ['shael', 'io', 'thul'],
+    equipment: _ALL_HELMETS,
+    character_level: 35,
+    stats: ['+20% Faster Hit Recovery', '+75-100% Enhanced Defense', '+10 to Vitality', 'Increase Maximum Life 5%', 'Cold Resist +40-60%', 'Cold Absorb +10-15%', 'Cannot be Frozen'],
+    has_aura: false,
+    is_ladder_only: true
+  },
+  {
+    id: `${_HELMET_PREFIX}-temper`,
+    name: 'Temper',
+    runes: ['shael', 'io', 'ral'],
+    equipment: _ALL_HELMETS,
+    character_level: 35,
+    stats: ['+20% Faster Hit Recovery', '+75-100% Enhanced Defense', '+10 to Vitality', 'Increase Maximum Life 5%', 'Fire Resist +40-60%', 'Fire Absorb +10-15%'],
+    has_aura: false,
+    is_ladder_only: true
+  },
+  {
+    id: `${_HELMET_PREFIX}-metamorphosis`,
+    name: 'Metamorphosis',
+    runes: ['io', 'cham', 'fal'],
+    equipment: _ALL_HELMETS,
+    character_level: 67,
+    stats: ['Werewolf strikes grant Mark for 180 seconds', 'Mark of the Wolf: +30% Bonus to Attack Rating', 'Mark of the Wolf: Increase Maximum Life 40%', 'Werebear strikes grant Mark for 180 seconds', 'Mark of the Bear: +25% Attack Speed', 'Mark of the Bear: Physical Damage Received Reduced by 20%', '+5 to Shape Shifting Skills (Druid only)', '+25% Chance of Crushing Blow', '+50-80% Enhanced Defense', '+10 to Strength', '+10 to Vitality', 'All Resistances +10', 'Cannot be Frozen'],
     has_aura: false,
     is_ladder_only: true
   },
@@ -910,6 +990,16 @@ const _runeword_data = [
     stats: ['+10 to Dexterity', '+2 to Mana after each Kill', '300% Extra Gold from Monsters', '100% Better Chance of Getting Magic Items'],
     has_aura: false,
     is_ladder_only: false
+  },
+  {
+    id: `${_BODY_ARMOR_PREFIX}-hustle`,
+    name: 'Hustle',
+    runes: ['shael', 'ko', 'eld'],
+    equipment: _ALL_BODY_ARMORS,
+    character_level: 39,
+    stats: ['+65% Faster Run/Walk', '+40% Increased Attack Speed', '+20% Faster Hit Recovery', '+6 to Evade', '+10 to Dexterity', '50% Slower Stamina Drain', '+All Resistances +10'],
+    has_aura: false,
+    is_ladder_only: true
   },
 ];
 
