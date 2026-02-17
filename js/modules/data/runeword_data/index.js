@@ -566,11 +566,11 @@ const _runeword_data = [
   },
   {
     id: `${_WEAPON_PREFIX}-mosaic`,
-    name: 'Mosaic',
+    name: 'Mosaic (DISABLED IN LADDER)',
     runes: [Rune_IDs.MAL, Rune_IDs.GUL, Rune_IDs.AMN],
     equipment: [Equipment_IDs.ASSASSIN_KATAR],
     character_level: 53,
-    stats: ['DISABLED FOR LADDER SEASON', '+50% chance for finishing moves to not consume charges', 'When a finisher is executed this way, it now refreshes the expiration timer of the stack', '+2 to Martial Arts (Assassin only)', '+20% Increased Attack Speed', '+200-250% Enhanced Damage', '+20% Bonus to Attack Rating', '7% Life Steal', '+8-15% to Cold Skill Damage', '+8-15% to Lightning Skill Damage', '+8-15% to Fire Skill Damage', 'Prevent Monster Heal'],
+    stats: ['DISABLED IN LADDER', '+50% chance for finishing moves to not consume charges', 'When a finisher is executed this way, it now refreshes the expiration timer of the stack', '+2 to Martial Arts (Assassin only)', '+20% Increased Attack Speed', '+200-250% Enhanced Damage', '+20% Bonus to Attack Rating', '7% Life Steal', '+8-15% to Cold Skill Damage', '+8-15% to Lightning Skill Damage', '+8-15% to Fire Skill Damage', 'Prevent Monster Heal'],
     has_aura: false,
     is_ladder_only: true
   },
