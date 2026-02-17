@@ -1005,4 +1005,4 @@ const _runeword_data = [
   },
 ];
 
-export default _runeword_data;
+export {_runeword_data as Runewords};

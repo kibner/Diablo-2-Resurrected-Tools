@@ -1,5 +1,5 @@
 import {Equipment} from "equipment_data";
-import runeword_data from "runewords_data";
+import {Runewords} from "runewords_data";
 
 const _hasMatchingSocket = function (searchParamSockets, runeword) {
   return searchParamSockets.length === 0 || searchParamSockets.includes(runeword.runes.length);
@@ -36,7 +36,7 @@ const _excludeLadderOnly = function (miscellaneousValue, runeword) {
 }
 
 const _searchRunewords = function (searchParams) {
-  return runeword_data.reduce((previousValue, currentValue) => {
+  return Runewords.reduce((previousValue, currentValue) => {
     if (
       _hasMatchingSocket(searchParams.sockets, currentValue)
       && _hasMatchingEquipment(searchParams.equipment, currentValue)
