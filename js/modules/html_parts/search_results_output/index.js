@@ -1,4 +1,4 @@
-import equipment_data from "equipment_data";
+import {Equipment} from "equipment_data";
 import rune_data from "runes_data";
 
 const _getInnerHtml = function (searchResults) {
@@ -57,7 +57,7 @@ const _getRunesHtml = function (value) {
 
 const _getEquipmentHtml = function (value) {
   const equipment = value.equipment.reduce((previousEquipment, currentEquipment) => {
-    const equipment = equipment_data.find(value => value.id === currentEquipment);
+    const equipment = Equipment.find(value => value.id === currentEquipment);
 
     if (equipment && equipment.max_sockets >= value.runes.length) {
       return `${previousEquipment}<li>${equipment.name}</li>`;
@@ -117,8 +117,8 @@ const _getForAttributeValueForSockets = function (socketFieldsetName) {
 const _getForAttributeValueForEquipment = function (equipmentFieldsetName) {
   let forAttributeValue = [];
 
-  for (let i = 0; i < equipment_data.length; i++) {
-    forAttributeValue.push(`${equipmentFieldsetName}-${equipment_data[i].id}`);
+  for (let i = 0; i < Equipment.length; i++) {
+    forAttributeValue.push(`${equipmentFieldsetName}-${Equipment[i].id}`);
   }
 
   return forAttributeValue.join(' ');

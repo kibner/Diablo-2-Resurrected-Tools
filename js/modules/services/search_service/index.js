@@ -1,4 +1,4 @@
-import equipment_data from "equipment_data";
+import {Equipment} from "equipment_data";
 import runeword_data from "runewords_data";
 
 const _hasMatchingSocket = function (searchParamSockets, runeword) {
@@ -14,7 +14,7 @@ const _hasMatchingEquipment = function (searchParamEquipment, runeword) {
         return false;
       }
 
-      const equipment = equipment_data.find(value => value.id === equipmentId);
+      const equipment = Equipment.find(value => value.id === equipmentId);
 
       return equipment && equipment.max_sockets >= runeword.runes.length;
     });
