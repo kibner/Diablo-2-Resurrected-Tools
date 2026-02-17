@@ -46,7 +46,16 @@ const _searchRunewords = function (searchParams) {
     }
 
     return previousValue;
-  }, []);
+  }, [])
+    .sort((a, b) => {
+      const _NAME_COMPARE = a.name.localeCompare(b.name);
+
+      if (_NAME_COMPARE === 0) {
+        return a.id.localeCompare(b.id);
+      } else {
+        return _NAME_COMPARE;
+      }
+    });
 };
 
 export default {
