@@ -1,5 +1,5 @@
 import {Equipment} from "equipment_data";
-import rune_data from "runes_data";
+import {Runes} from "runes_data";
 
 const _getInnerHtml = function (searchResults) {
   let html = '';
@@ -43,7 +43,7 @@ const _getRunewordDescription = function (value) {
 
 const _getRunesHtml = function (value) {
   const runes = value.runes.reduce((previousRunes, currentRune) => {
-    const rune = rune_data.find(value => value.id === currentRune);
+    const rune = Runes.find(value => value.id === currentRune);
 
     if (rune) {
       return `${previousRunes}<li>${rune.name}</li>`;
