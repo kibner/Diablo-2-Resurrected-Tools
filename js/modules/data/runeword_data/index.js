@@ -555,8 +555,8 @@ const _runeword_data = [
     is_ladder_only: false
   },
   {
-    id: `${_WEAPON_PREFIX}-hustle`,
-    name: 'Hustle',
+    id: `${_WEAPON_PREFIX}-mania`,
+    name: 'Mania',
     runes: [Rune_IDs.SHAEL, Rune_IDs.KO, Rune_IDs.ELD],
     equipment: _ALL_WEAPONS,
     character_level: 39,
@@ -570,7 +570,7 @@ const _runeword_data = [
     runes: [Rune_IDs.MAL, Rune_IDs.GUL, Rune_IDs.THUL],
     equipment: ['assasin-katar'],
     character_level: 53,
-    stats: ['+50% chance for finishing moves to not consume charges', 'When a finisher is executed this way, it now refreshes the expiration timer of the stack', '+2 to Martial Arts (Assassin only)', '+20% Increased Attack Speed', '+200-250% Enhanced Damage', '+20% Bonus to Attack Rating', '7% Life Steal', '+8-15% to Cold Skill Damage', '+8-15% to Lightning Skill Damage', '+8-15% to Fire Skill Damage', 'Prevent Monster Heal'],
+    stats: ['DISABLED FOR LADDER SEASON', '+50% chance for finishing moves to not consume charges', 'When a finisher is executed this way, it now refreshes the expiration timer of the stack', '+2 to Martial Arts (Assassin only)', '+20% Increased Attack Speed', '+200-250% Enhanced Damage', '+20% Bonus to Attack Rating', '7% Life Steal', '+8-15% to Cold Skill Damage', '+8-15% to Lightning Skill Damage', '+8-15% to Fire Skill Damage', 'Prevent Monster Heal'],
     has_aura: false,
     is_ladder_only: true
   },
@@ -995,8 +995,8 @@ const _runeword_data = [
     is_ladder_only: false
   },
   {
-    id: `${_BODY_ARMOR_PREFIX}-hustle`,
-    name: 'Hustle',
+    id: `${_BODY_ARMOR_PREFIX}-hysteria`,
+    name: 'Hysteria',
     runes: [Rune_IDs.SHAEL, Rune_IDs.KO, Rune_IDs.ELD],
     equipment: _ALL_BODY_ARMORS,
     character_level: 39,
