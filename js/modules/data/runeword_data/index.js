@@ -567,7 +567,7 @@ const _runeword_data = [
   {
     id: `${_WEAPON_PREFIX}-mosaic`,
     name: 'Mosaic',
-    runes: [Rune_IDs.MAL, Rune_IDs.GUL, Rune_IDs.THUL],
+    runes: [Rune_IDs.MAL, Rune_IDs.GUL, Rune_IDs.AMN],
     equipment: [Equipment_IDs.ASSASSIN_KATAR],
     character_level: 53,
     stats: ['DISABLED FOR LADDER SEASON', '+50% chance for finishing moves to not consume charges', 'When a finisher is executed this way, it now refreshes the expiration timer of the stack', '+2 to Martial Arts (Assassin only)', '+20% Increased Attack Speed', '+200-250% Enhanced Damage', '+20% Bonus to Attack Rating', '7% Life Steal', '+8-15% to Cold Skill Damage', '+8-15% to Lightning Skill Damage', '+8-15% to Fire Skill Damage', 'Prevent Monster Heal'],
@@ -1018,7 +1018,7 @@ const _runeword_data = [
     id: `${_HELMET_PREFIX}-coven`,
     name: 'Coven',
     runes: [Rune_IDs.IST, Rune_IDs.RAL, Rune_IDs.IO],
-    equipment: _ALL_BODY_ARMORS,
+    equipment: _ALL_HELMETS,
     character_level: 51,
     stats: ['5% Chance to cast level 10 Sigil: Lethargy when struck', '+1 to All Skills', '+20% Faster Cast Rate', '30-50% Enhanced Defense', '+10 to Vitality', 'Fire Resist +30%', '1-5 Life after each Kill', '26-40% Better Chance of Getting Magic Items'],
     has_aura: false,
