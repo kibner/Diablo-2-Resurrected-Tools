@@ -35,6 +35,7 @@ const _EQUIPMENT_IDS = Enum({
   STAFF: 'staff',
   SWORD: 'sword',
   WAND: 'wand',
+  WARLOCK_GRIMOIRE: 'warlock-grimoire'
 });
 
 const _EQUIPMENT_TYPES = {
@@ -201,7 +202,13 @@ const _equipment = [
     name: 'Wand',
     max_sockets: 2,
     type: _EQUIPMENT_TYPE_IDS.MELEE_WEAPON
-  }
+  },
+  {
+    id: _EQUIPMENT_IDS.WARLOCK_GRIMOIRE,
+    name: 'Warlock Grimoire',
+    max_sockets: 2,
+    type: _EQUIPMENT_TYPE_IDS.SHIELD
+  },
 ];
 
 const _get_equipment_ids_by_type_ids = function (types) {
