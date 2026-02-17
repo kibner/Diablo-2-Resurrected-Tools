@@ -1,6 +1,44 @@
+import {Enum} from '/js/helpers/enum'
+
+const _RUNE_IDS = Enum({
+  EL: 'el',
+  ELD: 'eld',
+  TIR: 'tir',
+  NEF: 'nef',
+  ETH: 'eth',
+  ITH: 'ith',
+  TAL: 'tal',
+  RAL: 'ral',
+  ORT: 'ort',
+  THUL: 'thul',
+  AMN: 'amn',
+  SOL: 'sol',
+  SHAEL: 'shael',
+  DOL: 'dol',
+  HEL: 'hel',
+  IO: 'io',
+  LUM: 'lum',
+  KO: 'ko',
+  FAL: 'fal',
+  LEM: 'lem',
+  PUL: 'pul',
+  UM: 'um',
+  MAL: 'mal',
+  IST: 'ist',
+  GUL: 'gul',
+  VEX: 'vex',
+  OHM: 'ohm',
+  LO: 'lo',
+  SUR: 'sur',
+  BER: 'ber',
+  JAH: 'jah',
+  CHAM: 'cham',
+  ZOD: 'zod'
+})
+
 const _rune_data = [
   {
-    id: 'el',
+    id: _RUNE_IDS.EL,
     name: 'El',
     weapon_stats: ['+50 Attack Rating', '+1 Light Radius'],
     helmet_stats: ['+15 Defense', '+1 Light Radius'],
@@ -8,7 +46,7 @@ const _rune_data = [
     shield_stats: ['+15 Defense', '+1 Light Radius']
   },
   {
-    id: 'eld',
+    id: _RUNE_IDS.ELD,
     name: 'Eld',
     weapon_stats: ['+75% Damage to Undead', '+50 to Attack Rating against Undead'],
     helmet_stats: ['15% Slower Stamina Drain'],
@@ -16,7 +54,7 @@ const _rune_data = [
     shield_stats: ['7% Increased Chance of Blocking']
   },
   {
-    id: 'tir',
+    id: _RUNE_IDS.TIR,
     name: 'Tir',
     weapon_stats: ['+2 Mana after each Kill'],
     helmet_stats: ['+2 Mana after each Kill'],
@@ -24,7 +62,7 @@ const _rune_data = [
     shield_stats: ['+2 Mana after each Kill']
   },
   {
-    id: 'nef',
+    id: _RUNE_IDS.NEF,
     name: 'Nef',
     weapon_stats: ['Knockback'],
     helmet_stats: ['+30 Defense vs. Missile'],
@@ -32,7 +70,7 @@ const _rune_data = [
     shield_stats: ['+30 Defense vs. Missile']
   },
   {
-    id: 'eth',
+    id: _RUNE_IDS.ETH,
     name: 'Eth',
     weapon_stats: ['-25% Target Defense'],
     helmet_stats: ['Regenerate Mana 15%'],
@@ -40,7 +78,7 @@ const _rune_data = [
     shield_stats: ['Regenerate Mana 15%']
   },
   {
-    id: 'ith',
+    id: _RUNE_IDS.ITH,
     name: 'Ith',
     weapon_stats: ['+9 to Maximum Damage'],
     helmet_stats: ['15% Damage Taken Goes To Mana'],
@@ -48,7 +86,7 @@ const _rune_data = [
     shield_stats: ['15% Damage Taken Goes To Mana']
   },
   {
-    id: 'tal',
+    id: _RUNE_IDS.TAL,
     name: 'Tal',
     weapon_stats: ['+75 Poison Damage over 5 seconds'],
     helmet_stats: ['Poison Resist +30%'],
@@ -56,7 +94,7 @@ const _rune_data = [
     shield_stats: ['Poison Resist +35%']
   },
   {
-    id: 'ral',
+    id: _RUNE_IDS.RAL,
     name: 'Ral',
     weapon_stats: ['Adds 5-30 Fire Damage'],
     helmet_stats: ['Fire Resist +30%'],
@@ -64,7 +102,7 @@ const _rune_data = [
     shield_stats: ['Fire Resist +35%']
   },
   {
-    id: 'ort',
+    id: _RUNE_IDS.ORT,
     name: 'Ort',
     weapon_stats: ['Adds 1-50 Lightning Damage'],
     helmet_stats: ['Lightning Resist +30%'],
@@ -72,7 +110,7 @@ const _rune_data = [
     shield_stats: ['Lightning Resist +35%']
   },
   {
-    id: 'thul',
+    id: _RUNE_IDS.THUL,
     name: 'Thul',
     weapon_stats: ['Adds 3-14 Cold Damage'],
     helmet_stats: ['Cold Resist +30%'],
@@ -80,7 +118,7 @@ const _rune_data = [
     shield_stats: ['Cold Resist +35%']
   },
   {
-    id: 'amn',
+    id: _RUNE_IDS.AMN,
     name: 'Amn',
     weapon_stats: ['7% Life stolen per hit'],
     helmet_stats: ['Attacker Takes Damage of 14'],
@@ -88,7 +126,7 @@ const _rune_data = [
     shield_stats: ['Attacker Takes Damage of 14']
   },
   {
-    id: 'sol',
+    id: _RUNE_IDS.SOL,
     name: 'Sol',
     weapon_stats: ['+9 to Minimum Damage'],
     helmet_stats: ['Damage Reduced by 7'],
@@ -96,7 +134,7 @@ const _rune_data = [
     shield_stats: ['Damage Reduced by 7']
   },
   {
-    id: 'shael',
+    id: _RUNE_IDS.SHAEL,
     name: 'Shael',
     weapon_stats: ['+20% Increased Attack Speed'],
     helmet_stats: ['+20% Faster Hit Recovery'],
@@ -104,7 +142,7 @@ const _rune_data = [
     shield_stats: ['+20% Faster Block Rate']
   },
   {
-    id: 'dol',
+    id: _RUNE_IDS.DOL,
     name: 'Dol',
     weapon_stats: ['Hit Causes Monster to Flee 25%'],
     helmet_stats: ['Replenish Life +7'],
@@ -112,7 +150,7 @@ const _rune_data = [
     shield_stats: ['Replenish Life +7']
   },
   {
-    id: 'hel',
+    id: _RUNE_IDS.HEL,
     name: 'Hel',
     weapon_stats: ['Requirements -20%'],
     helmet_stats: ['Requirements -15%'],
@@ -120,7 +158,7 @@ const _rune_data = [
     shield_stats: ['Requirements -15%']
   },
   {
-    id: 'io',
+    id: _RUNE_IDS.IO,
     name: 'Io',
     weapon_stats: ['+10 to Vitality'],
     helmet_stats: ['+10 to Vitality'],
@@ -128,7 +166,7 @@ const _rune_data = [
     shield_stats: ['+10 to Vitality']
   },
   {
-    id: 'lum',
+    id: _RUNE_IDS.LUM,
     name: 'Lum',
     weapon_stats: ['+10 to Energy'],
     helmet_stats: ['+10 to Energy'],
@@ -136,7 +174,7 @@ const _rune_data = [
     shield_stats: ['+10 to Energy']
   },
   {
-    id: 'ko',
+    id: _RUNE_IDS.KO,
     name: 'Ko',
     weapon_stats: ['+10 to Dexterity'],
     helmet_stats: ['+10 to Dexterity'],
@@ -144,7 +182,7 @@ const _rune_data = [
     shield_stats: ['+10 to Dexterity']
   },
   {
-    id: 'fal',
+    id: _RUNE_IDS.FAL,
     name: 'Fal',
     weapon_stats: ['+10 to Strength'],
     helmet_stats: ['+10 to Strength'],
@@ -152,7 +190,7 @@ const _rune_data = [
     shield_stats: ['+10 to Strength']
   },
   {
-    id: 'lem',
+    id: _RUNE_IDS.LEM,
     name: 'Lem',
     weapon_stats: ['75% Extra Gold from Monsters'],
     helmet_stats: ['50% Extra Gold from Monsters'],
@@ -160,7 +198,7 @@ const _rune_data = [
     shield_stats: ['50% Extra Gold from Monsters']
   },
   {
-    id: 'pul',
+    id: _RUNE_IDS.PUL,
     name: 'Pul',
     weapon_stats: ['+75% Damage to Demons', '+100 Attack Rating against Demons'],
     helmet_stats: ['+30% Enhanced Defense'],
@@ -168,7 +206,7 @@ const _rune_data = [
     shield_stats: ['+30% Enhanced Defense']
   },
   {
-    id: 'um',
+    id: _RUNE_IDS.UM,
     name: 'Um',
     weapon_stats: ['25% Chance of Open Wounds'],
     helmet_stats: ['All Resistances +15'],
@@ -176,7 +214,7 @@ const _rune_data = [
     shield_stats: ['All Resistances +22']
   },
   {
-    id: 'mal',
+    id: _RUNE_IDS.MAL,
     name: 'Mal',
     weapon_stats: ['Prevent Monster Heal'],
     helmet_stats: ['Magic Damage Reduced by 7'],
@@ -184,7 +222,7 @@ const _rune_data = [
     shield_stats: ['Magic Damage Reduced by 7']
   },
   {
-    id: 'ist',
+    id: _RUNE_IDS.IST,
     name: 'Ist',
     weapon_stats: ['30% Better Chance of Getting Magic Items'],
     helmet_stats: ['25% Better Chance of Getting Magic Items'],
@@ -192,7 +230,7 @@ const _rune_data = [
     shield_stats: ['25% Better Chance of Getting Magic Items']
   },
   {
-    id: 'gul',
+    id: _RUNE_IDS.GUL,
     name: 'Gul',
     weapon_stats: ['20% Bonus to Attack Rating'],
     helmet_stats: ['+5% to Maximum Poison Resist'],
@@ -200,7 +238,7 @@ const _rune_data = [
     shield_stats: ['+5% to Maximum Poison Resist']
   },
   {
-    id: 'vex',
+    id: _RUNE_IDS.VEX,
     name: 'Vex',
     weapon_stats: ['7% Mana stolen per hit'],
     helmet_stats: ['+5% to Maximum Fire Resist'],
@@ -208,7 +246,7 @@ const _rune_data = [
     shield_stats: ['+5% to Maximum Fire Resist']
   },
   {
-    id: 'ohm',
+    id: _RUNE_IDS.OHM,
     name: 'Ohm',
     weapon_stats: ['+50% Enhanced Damage'],
     helmet_stats: ['+5% to Maximum Cold Resist'],
@@ -216,7 +254,7 @@ const _rune_data = [
     shield_stats: ['+5% to Maximum Cold Resist']
   },
   {
-    id: 'lo',
+    id: _RUNE_IDS.LO,
     name: 'Lo',
     weapon_stats: ['20% Deadly Strike'],
     helmet_stats: ['+5% to Maximum Lightning Resist'],
@@ -224,7 +262,7 @@ const _rune_data = [
     shield_stats: ['+5% to Maximum Lightning Resist']
   },
   {
-    id: 'sur',
+    id: _RUNE_IDS.SUR,
     name: 'Sur',
     weapon_stats: ['Hit Blinds Target'],
     helmet_stats: ['Increase Maximum Mana 5%'],
@@ -232,7 +270,7 @@ const _rune_data = [
     shield_stats: ['+50 to Mana']
   },
   {
-    id: 'ber',
+    id: _RUNE_IDS.BER,
     name: 'Ber',
     weapon_stats: ['20% Chance of Crushing Blow'],
     helmet_stats: ['Damage Reduced by 8%'],
@@ -240,7 +278,7 @@ const _rune_data = [
     shield_stats: ['Damage Reduced by 8%']
   },
   {
-    id: 'jah',
+    id: _RUNE_IDS.JAH,
     name: 'Jah',
     weapon_stats: ['Ignores Target\'s Defense'],
     helmet_stats: ['Increased Maximum Life 5%'],
@@ -248,7 +286,7 @@ const _rune_data = [
     shield_stats: ['+50 to Life']
   },
   {
-    id: 'cham',
+    id: _RUNE_IDS.CHAM,
     name: 'Cham',
     weapon_stats: ['Freezes target +3'],
     helmet_stats: ['Cannot Be Frozen'],
@@ -256,7 +294,7 @@ const _rune_data = [
     shield_stats: ['Cannot Be Frozen']
   },
   {
-    id: 'zod',
+    id: _RUNE_IDS.ZOD,
     name: 'Zod',
     weapon_stats: ['Indestructible'],
     helmet_stats: ['Indestructible'],
@@ -265,4 +303,4 @@ const _rune_data = [
   }
 ];
 
-export {_rune_data as Runes};
+export {_rune_data as Runes, _RUNE_IDS as Rune_IDs};
