@@ -1003,6 +1003,56 @@ const _runeword_data = [
     has_aura: false,
     is_ladder_only: true
   },
+  {
+    id: `${_BODY_ARMOR_PREFIX}-authority`,
+    name: 'Authority',
+    runes: ['hel', 'shael', 'ral'],
+    equipment: _ALL_BODY_ARMORS,
+    character_level: 29,
+    stats: ['2% Chance to cast level 10 Psychic Ward when struck', '10% Chance to cast level 15 Miasma Chain on striking', '+2 to Warlock Skills', '+20% Faster Hit Recovery', '+40-60% Enhanced Damage', 'Fire Resist +30%', 'Requirements -15%'],
+    has_aura: false,
+    is_ladder_only: false
+  },
+  {
+    id: `${_HELMET_PREFIX}-coven`,
+    name: 'Coven',
+    runes: ['ist', 'ral', 'io'],
+    equipment: _ALL_BODY_ARMORS,
+    character_level: 51,
+    stats: ['5% Chance to cast level 10 Sigil: Lethargy when struck', '+1 to All Skills', '+20% Faster Cast Rate', '30-50% Enhanced Defense', '+10 to Vitality', 'Fire Resist +30%', '1-5 Life after each Kill', '26-40% Better Chance of Getting Magic Items'],
+    has_aura: false,
+    is_ladder_only: false
+  },
+  {
+    id: `${_WEAPON_PREFIX}-void`,
+    name: 'Void',
+    runes: ['thul', 'zod', 'ist'],
+    equipment: ['dagger'],
+    character_level: 69,
+    stats: ['Indestructible', '+2 to All Skills', '+40% Faster Cast Rate', 'Adds 3-14 cold damage', '10-15% to Magic Skill Damage', '1-3 to Abyss', '8-12 to Strength', '30% Better Chance of Getting Magic Items', 'Level 4 Decrepify (35/35 Charges)'],
+    has_aura: false,
+    is_ladder_only: false
+  },
+  {
+    id: `${_SHIELD_PREFIX}-vigilance`,
+    name: 'Vigilance',
+    runes: ['dol', 'gul'],
+    equipment: _ALL_SHIELDS,
+    character_level: 53,
+    stats: ['5% Chance to cast level 10 Ring of Fire when struck', '+10% Faster Run/Walk', '+30% Faster Block Rate', '75-100% Enhanced Defense', '20-40 to Life', 'Replenish Life +7', '20-40 to Mana', '+5% to Maximum Poison Resist', 'Fire Resist 25-35%'],
+    has_aura: false,
+    is_ladder_only: false
+  },
+  {
+    id: `${_WEAPON_PREFIX}-ritual`,
+    name: 'Ritual',
+    runes: ['amn, shael', 'ohm'],
+    equipment: ['dagger'],
+    character_level: 57,
+    stats: ['13% Chance to cast level 1 Sigil: Death when struck', '+40% Increased Attack Speed', '+250-320% Enhanced Damage', '200-260% Bonus to Attack Rating', '150-250% Damage to Demons', '7% Life stolen per hit', 'Slain Monsters Rest in Peace', '3-5 Life after each Kill'],
+    has_aura: false,
+    is_ladder_only: false
+  },
 ];
 
 export {_runeword_data as Runewords};
