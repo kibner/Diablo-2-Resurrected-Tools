@@ -1,9 +1,9 @@
 import {focusable} from "tabbable";
-import socket_fieldset from "./modules/html_parts/socket_fieldset";
-import search_results_output from "./modules/html_parts/search_results_output";
-import equipment_fieldset from "./modules/html_parts/equipment_fieldset";
-import miscellaneous_fieldset from "./modules/html_parts/miscellaneous_fieldset";
-import search_service from "./modules/services/search_service";
+import socket_fieldset from "./html_parts/socket_fieldset";
+import search_results_output from "./html_parts/search_results_output";
+import equipment_fieldset from "./html_parts/equipment_fieldset";
+import miscellaneous_fieldset from "./html_parts/miscellaneous_fieldset";
+import search_service from "./services/search_service";
 
 (function () {
   // Just return a value to define the module export.
