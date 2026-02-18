@@ -1,9 +1,9 @@
-import socket_fieldset from "socket_fieldset";
-import equipment_fieldset from "equipment_fieldset";
-import search_service from "search_service";
-import miscellaneous_fieldset from "miscellaneous_fieldset";
-import search_results_output from "search_results_output";
 import {focusable} from "tabbable";
+import socket_fieldset from "./modules/html_parts/socket_fieldset";
+import search_results_output from "./modules/html_parts/search_results_output";
+import equipment_fieldset from "./modules/html_parts/equipment_fieldset";
+import miscellaneous_fieldset from "./modules/html_parts/miscellaneous_fieldset";
+import search_service from "./modules/services/search_service";
 
 (function () {
   // Just return a value to define the module export.

@@ -1,5 +1,5 @@
-import {Equipment} from 'equipment_data';
-import {Runewords} from 'runewords_data';
+import {Equipment} from "../../data/equipment_data";
+import {Runewords} from "../../data/runeword_data";
 
 const _hasMatchingSocket = function (searchParamSockets, runeword) {
   return searchParamSockets.length === 0 || searchParamSockets.includes(runeword.runes.length);

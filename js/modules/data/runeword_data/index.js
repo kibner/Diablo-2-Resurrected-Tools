@@ -1,5 +1,5 @@
-import {Equipment_IDs, Equipment_Type_IDs, Get_Equipment_IDs_By_Type_IDs} from 'equipment_data';
-import {Rune_IDs} from 'runes_data'
+import {Equipment_IDs, Equipment_Type_IDs, Get_Equipment_IDs_By_Type_IDs} from "../equipment_data";
+import {Rune_IDs} from "../rune_data";
 
 const _WEAPON_PREFIX = 'weapon';
 const _SHIELD_PREFIX = 'shield';

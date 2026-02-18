@@ -1,4 +1,4 @@
-import {Equipment} from 'equipment_data';
+import {Equipment} from "../../data/equipment_data";
 
 const _getInnerHtml = function (equipmentFieldsetName) {
   let html = '';
