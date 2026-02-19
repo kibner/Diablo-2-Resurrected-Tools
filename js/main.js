@@ -1,12 +1,11 @@
 import {focusable} from "tabbable";
-import socket_fieldset from "./html_parts/socket_fieldset";
-import search_results_output from "./html_parts/search_results_output";
-import equipment_fieldset from "./html_parts/equipment_fieldset";
-import miscellaneous_fieldset from "./html_parts/miscellaneous_fieldset";
-import search_service from "./services/search_service";
+import {GetForAttributeValue, GetInnerHtml} from "./html_parts/search_results_output";
+import {AppendFieldsets as SocketAppendFieldsets} from "./html_parts/socket_fieldset";
+import {AppendFieldsets as EquipmentAppendFieldsets} from "./html_parts/equipment_fieldset";
+import {AppendFieldsets as MiscellaneousAppendFieldsets} from "./html_parts/miscellaneous_fieldset";
+import {SearchRunewords} from "./services/search_service";
 
 (function () {
-  // Just return a value to define the module export.
   const _SOCKET_FIELDSET_NAME = 'sockets';
   const _EQUIPMENT_FIELDSET_NAME = 'equipment';
   const _MISCELLANEOUS_FIELDSET_NAME = 'miscellaneous';
@@ -66,7 +65,7 @@ import search_service from "./services/search_service";
   }
 
   function _initializeSocketFieldSet() {
-    socket_fieldset.appendFieldsets(_socketFieldset.querySelector(
+    SocketAppendFieldsets(_socketFieldset.querySelector(
         `.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
       _FIELDSET_TEMPLATE_ID,
       _SOCKET_FIELDSET_NAME
@@ -74,7 +73,7 @@ import search_service from "./services/search_service";
   }
 
   function _initializeEquipmentFieldSet() {
-    equipment_fieldset.appendFieldsets(_equipmentFieldset.querySelector(
+    EquipmentAppendFieldsets(_equipmentFieldset.querySelector(
         `.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
       _FIELDSET_TEMPLATE_ID,
       _EQUIPMENT_FIELDSET_NAME
@@ -82,14 +81,14 @@ import search_service from "./services/search_service";
   }
 
   function _initializeMiscellaneousFieldSet() {
-    miscellaneous_fieldset.appendFieldsets(_miscellaneousFieldset.querySelector(
+    MiscellaneousAppendFieldsets(_miscellaneousFieldset.querySelector(
         `.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
       _FIELDSET_TEMPLATE_ID,
       _MISCELLANEOUS_FIELDSET_NAME);
   }
 
   function _initializeFormOutput() {
-    const formOutputForAttribute = search_results_output.getForAttributeValue(_SOCKET_FIELDSET_NAME, _EQUIPMENT_FIELDSET_NAME);
+    const formOutputForAttribute = GetForAttributeValue(_SOCKET_FIELDSET_NAME, _EQUIPMENT_FIELDSET_NAME);
 
     _runewordFormOutput.setAttribute('for', formOutputForAttribute);
   }
@@ -141,7 +140,7 @@ import search_service from "./services/search_service";
 
   function _executeSearch() {
     const searchParameters = _getSearchParameters();
-    const searchResults = search_service.searchRunewords(searchParameters);
+    const searchResults = SearchRunewords(searchParameters);
     _displaySearchResults(searchResults);
   }
 
@@ -173,6 +172,6 @@ import search_service from "./services/search_service";
   }
 
   function _displaySearchResults(searchResults) {
-    return _runewordFormOutput.innerHTML = search_results_output.getInnerHtml(searchResults);
+    return _runewordFormOutput.innerHTML = GetInnerHtml(searchResults);
   }
 })();

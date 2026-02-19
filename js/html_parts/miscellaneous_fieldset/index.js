@@ -15,6 +15,4 @@ const _getExcludeLadderOnly = function (template, fieldsetName,) {
   return GetCheckboxComponent(template, fieldsetName, 'exclude-ladder-only', 'Exclude Ladder Only');
 }
 
-export default {
-  appendFieldsets: _appendFieldsets
-};
+export {_appendFieldsets as AppendFieldsets};

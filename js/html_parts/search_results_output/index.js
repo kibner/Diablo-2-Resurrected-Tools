@@ -125,7 +125,4 @@ const _getForAttributeValueForEquipment = function (equipmentFieldsetName) {
   return forAttributeValue.join(' ');
 }
 
-export default {
-  getInnerHtml: _getInnerHtml,
-  getForAttributeValue: _getForAttributeValue
-}
+export {_getInnerHtml as GetInnerHtml, _getForAttributeValue as GetForAttributeValue}

@@ -9,6 +9,4 @@ const _appendFieldsets = function (targetElement, templateId, fieldsetName) {
   }
 }
 
-export default {
-  appendFieldsets: _appendFieldsets,
-}
+export {_appendFieldsets as AppendFieldsets}

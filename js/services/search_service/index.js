@@ -58,6 +58,4 @@ const _searchRunewords = function (searchParams) {
     });
 };
 
-export default {
-  searchRunewords: _searchRunewords
-};
+export {_searchRunewords as SearchRunewords};
