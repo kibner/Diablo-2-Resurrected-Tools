@@ -69,11 +69,11 @@ import search_service from "./services/search_service";
   }
 
   function _initializeEquipmentFieldSet() {
-    equipment_fieldset.appendEquipmentFieldsets(_equipmentFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`), _EQUIPMENT_FIELDSET_NAME);
+    equipment_fieldset.appendFieldsets(_equipmentFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`), _EQUIPMENT_FIELDSET_NAME);
   }
 
   function _initializeMiscellaneousFieldSet() {
-    _miscellaneousFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`).innerHTML = miscellaneous_fieldset.getInnerHtml(_MISCELLANEOUS_FIELDSET_NAME);
+    miscellaneous_fieldset.appendFieldsets(_miscellaneousFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`), _MISCELLANEOUS_FIELDSET_NAME);
   }
 
   function _initializeFormOutput() {

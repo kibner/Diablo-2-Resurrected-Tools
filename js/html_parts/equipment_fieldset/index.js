@@ -1,24 +1,14 @@
 import {Equipment} from "../../data/equipment_data";
+import {GetCheckboxComponent} from "../../helpers/checkboxComponent";
 
-const _appendEquipmentFieldsets = function (targetElement, equipmentFieldsetName) {
-  const template = document.querySelector('#equipment-fieldset-template');
+const _appendFieldsets = function (targetElement, fieldsetName) {
+  const template = document.querySelector('#fieldset-template');
 
   for (let i = 0; i < Equipment.length; i++) {
-    const clone = document.importNode(template.content, true);
-    const label = clone.querySelector(`label`);
-    const checkbox = clone.querySelector(`input[type="checkbox"]`);
-
-    checkbox.setAttribute('id', `${equipmentFieldsetName}-${Equipment[i].id}`);
-    checkbox.setAttribute('name', equipmentFieldsetName);
-    checkbox.setAttribute('value', Equipment[i].id);
-
-    label.setAttribute('for', checkbox.getAttribute('id'));
-    label.append(Equipment[i].name);
-
-    targetElement.appendChild(label);
+    targetElement.appendChild(GetCheckboxComponent(template, fieldsetName, Equipment[i].id, Equipment[i].name));
   }
 }
 
 export default {
-  appendEquipmentFieldsets: _appendEquipmentFieldsets,
+  appendFieldsets: _appendFieldsets,
 }
