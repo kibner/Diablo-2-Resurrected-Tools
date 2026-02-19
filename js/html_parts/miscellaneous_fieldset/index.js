@@ -37,4 +37,8 @@ const _generateCheckboxId = function (fieldsetName, id) {
   return `${fieldsetName}-${id}`;
 }
 
-export {_appendFieldsets as AppendFieldsets, _getCheckboxIds as GetCheckboxIds};
+export {
+  _appendFieldsets as AppendFieldsets,
+  _getCheckboxIds as GetCheckboxIds,
+  _CHECKBOX_NAMES as CheckboxNames
+};

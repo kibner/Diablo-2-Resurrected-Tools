@@ -1,5 +1,6 @@
 import {Equipment} from "../../data/equipment_data";
 import {Runewords} from "../../data/runeword_data";
+import {CheckboxNames} from "../../html_parts/miscellaneous_fieldset";
 
 const _hasMatchingSocket = function (searchParamSockets, runeword) {
   return searchParamSockets.length === 0 || searchParamSockets.includes(runeword.runes.length);
@@ -28,11 +29,11 @@ const _hasMatchingMiscellaneous = function (searchParamMiscellaneous, runeword) 
 }
 
 const _hasAura = function (miscellaneousValue, runeword) {
-  return miscellaneousValue === 'has-aura' && runeword.has_aura === true;
+  return miscellaneousValue === CheckboxNames.HAS_AURA && runeword.has_aura === true;
 }
 
 const _excludeLadderOnly = function (miscellaneousValue, runeword) {
-  return miscellaneousValue === 'exclude-ladder-only' && runeword.is_ladder_only === false;
+  return miscellaneousValue === CheckboxNames.EXCLUDE_LADDER_ONLY && runeword.is_ladder_only === false;
 }
 
 const _searchRunewords = function (searchParams) {
