@@ -5,7 +5,13 @@ const _appendFieldsets = function (targetElement, templateId, fieldsetName) {
   const template = document.querySelector(`#${templateId}`);
 
   for (let i = 0; i < Equipment.length; i++) {
-    targetElement.appendChild(GetCheckboxComponent(template, fieldsetName, Equipment[i].id, Equipment[i].name));
+    targetElement.appendChild(GetCheckboxComponent(
+      template,
+      fieldsetName,
+      `${fieldsetName}-${Equipment[i].id}`,
+      Equipment[i].id,
+      Equipment[i].name)
+    );
   }
 }
 

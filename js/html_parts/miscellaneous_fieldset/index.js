@@ -14,11 +14,21 @@ const _appendFieldsets = function (targetElement, templateId, fieldsetName) {
 }
 
 const _getHasAuraComponent = function (template, fieldsetName) {
-  return GetCheckboxComponent(template, fieldsetName, 'has-aura', 'Aura');
+  return GetCheckboxComponent(
+    template,
+    fieldsetName,
+    `${fieldsetName}-${_CHECKBOX_NAMES.HAS_AURA}`,
+    _CHECKBOX_NAMES.HAS_AURA,
+    'Aura');
 }
 
 const _getExcludeLadderOnly = function (template, fieldsetName,) {
-  return GetCheckboxComponent(template, fieldsetName, 'exclude-ladder-only', 'Exclude Ladder Only');
+  return GetCheckboxComponent(
+    template,
+    fieldsetName,
+    `${fieldsetName}-${_CHECKBOX_NAMES.EXCLUDE_LADDER_ONLY}`,
+    _CHECKBOX_NAMES.EXCLUDE_LADDER_ONLY,
+    'Exclude Ladder Only');
 }
 
 const _getCheckboxIds = function (fieldsetName) {

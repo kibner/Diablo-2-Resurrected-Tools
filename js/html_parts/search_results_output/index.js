@@ -1,8 +1,5 @@
 import {Runes} from "../../data/rune_data";
 import {Equipment} from "../../data/equipment_data";
-import {GetCheckboxIds as GetEquipmentCheckboxIds} from "../equipment_fieldset";
-import {GetCheckboxIds as GetMiscellaneousCheckboxIds} from "../miscellaneous_fieldset";
-import {GetCheckboxIds as GetSocketCheckboxIds} from "../socket_fieldset";
 
 const _getInnerHtml = function (searchResults) {
   let html = '';
@@ -100,8 +97,4 @@ const _getStatsHtml = function (value) {
   return `<ul class="padding-left-0 list-style-position-inside">${statItems}</ul>`;
 }
 
-const _getForAttributeValue = function (socketFieldsetName, equipmentFieldsetName, miscellaneousFieldsetName) {
-  return `${GetSocketCheckboxIds(socketFieldsetName).join(' ')} ${GetEquipmentCheckboxIds(equipmentFieldsetName).join(' ')} ${GetMiscellaneousCheckboxIds(miscellaneousFieldsetName).join(' ')}`;
-}
-
-export {_getInnerHtml as GetInnerHtml, _getForAttributeValue as GetForAttributeValue}
+export {_getInnerHtml as GetInnerHtml}

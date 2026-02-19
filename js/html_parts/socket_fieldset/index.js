@@ -7,7 +7,13 @@ const _appendFieldsets = function (targetElement, templateId, fieldsetName) {
   const template = document.querySelector(`#${templateId}`);
 
   for (let i = MIN_SOCKET_COUNT; i <= MAX_SOCKET_COUNT; i++) {
-    targetElement.appendChild(GetCheckboxComponent(template, fieldsetName, i, i));
+    targetElement.appendChild(GetCheckboxComponent(
+      template,
+      fieldsetName,
+      `${fieldsetName}-${i}`,
+      i,
+      i)
+    );
   }
 }
 

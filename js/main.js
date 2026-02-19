@@ -1,8 +1,21 @@
 import {focusable} from "tabbable";
-import {GetForAttributeValue, GetInnerHtml} from "./html_parts/search_results_output";
-import {AppendFieldsets as SocketAppendFieldsets} from "./html_parts/socket_fieldset";
-import {AppendFieldsets as EquipmentAppendFieldsets} from "./html_parts/equipment_fieldset";
-import {AppendFieldsets as MiscellaneousAppendFieldsets} from "./html_parts/miscellaneous_fieldset";
+import {GetInnerHtml} from "./html_parts/search_results_output";
+
+import {
+  AppendFieldsets as SocketAppendFieldsets,
+  GetCheckboxIds as GetSocketCheckboxIds
+} from "./html_parts/socket_fieldset";
+
+import {
+  AppendFieldsets as EquipmentAppendFieldsets,
+  GetCheckboxIds as GetEquipmentCheckboxIds
+} from "./html_parts/equipment_fieldset";
+
+import {
+  AppendFieldsets as MiscellaneousAppendFieldsets,
+  GetCheckboxIds as GetMiscellaneousCheckboxIds
+} from "./html_parts/miscellaneous_fieldset";
+
 import {SearchRunewords} from "./services/search_service";
 
 (function () {
@@ -88,9 +101,11 @@ import {SearchRunewords} from "./services/search_service";
   }
 
   function _initializeFormOutput() {
-    const formOutputForAttribute = GetForAttributeValue(_SOCKET_FIELDSET_NAME, _EQUIPMENT_FIELDSET_NAME, _MISCELLANEOUS_FIELDSET_NAME);
+    const formOutputForAttribute = GetSocketCheckboxIds(_SOCKET_FIELDSET_NAME)
+      .concat(GetEquipmentCheckboxIds(_EQUIPMENT_FIELDSET_NAME))
+      .concat(GetMiscellaneousCheckboxIds(_MISCELLANEOUS_FIELDSET_NAME));
 
-    _runewordFormOutput.setAttribute('for', formOutputForAttribute);
+    _runewordFormOutput.setAttribute('for', formOutputForAttribute.join(' '));
   }
 
   function _initializeListeners() {
