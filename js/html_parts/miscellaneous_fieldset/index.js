@@ -1,7 +1,7 @@
 import {GetCheckboxComponent} from "../../helpers/checkboxComponent";
 
-const _appendFieldsets = function (targetElement, fieldsetName) {
-  const template = document.querySelector('#fieldset-template');
+const _appendFieldsets = function (targetElement, templateId, fieldsetName) {
+  const template = document.querySelector(`#${templateId}`);
 
   targetElement.appendChild(_getHasAuraComponent(template, fieldsetName));
   targetElement.appendChild(_getExcludeLadderOnly(template, fieldsetName));

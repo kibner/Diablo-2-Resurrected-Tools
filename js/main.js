@@ -13,6 +13,7 @@ import search_service from "./services/search_service";
   const _SCREEN_READER_ONLY_CLASS_NAME = 'sr-only';
   const _TOGGLE_COLLAPSIBLE_CLASS_NAME = 'toggle-collapsible';
   const _COLLAPSIBLE_CONTENT_CLASS_NAME = 'collapsible-content'
+  const _FIELDSET_TEMPLATE_ID = 'fieldset-template';
 
   let _isInitialLoadComplete = false;
   let _runewordForm;
@@ -69,11 +70,18 @@ import search_service from "./services/search_service";
   }
 
   function _initializeEquipmentFieldSet() {
-    equipment_fieldset.appendFieldsets(_equipmentFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`), _EQUIPMENT_FIELDSET_NAME);
+    equipment_fieldset.appendFieldsets(_equipmentFieldset.querySelector(
+        `.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
+      _FIELDSET_TEMPLATE_ID,
+      _EQUIPMENT_FIELDSET_NAME
+    );
   }
 
   function _initializeMiscellaneousFieldSet() {
-    miscellaneous_fieldset.appendFieldsets(_miscellaneousFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`), _MISCELLANEOUS_FIELDSET_NAME);
+    miscellaneous_fieldset.appendFieldsets(_miscellaneousFieldset.querySelector(
+        `.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
+      _FIELDSET_TEMPLATE_ID,
+      _MISCELLANEOUS_FIELDSET_NAME);
   }
 
   function _initializeFormOutput() {
