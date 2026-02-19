@@ -38,14 +38,6 @@ const _EQUIPMENT_IDS = Enum({
   WARLOCK_GRIMOIRE: 'warlock-grimoire'
 });
 
-const _EQUIPMENT_TYPES = {
-  MELEE_WEAPON: {id: _EQUIPMENT_TYPE_IDS.MELEE_WEAPON, name: 'Melee Weapon'},
-  MISSILE_WEAPON: {id: _EQUIPMENT_TYPE_IDS.MISSILE_WEAPON, name: 'Missile Weapon'},
-  SHIELD: {id: _EQUIPMENT_TYPE_IDS.SHIELD, name: 'Shield'},
-  HELMET: {id: _EQUIPMENT_TYPE_IDS.HELMET, name: 'Helmet'},
-  BODY_ARMOR: {id: _EQUIPMENT_TYPE_IDS.BODY_ARMOR, name: 'Body Armor'}
-}
-
 const _equipment = [
   {
     id: _EQUIPMENT_IDS.AMAZON_BOW,
@@ -229,7 +221,6 @@ const _get_equipment_ids_by_type_ids = function (types) {
 export {
   _equipment as Equipment,
   _EQUIPMENT_IDS as Equipment_IDs,
-  _EQUIPMENT_TYPES as Equipment_Types,
   _EQUIPMENT_TYPE_IDS as Equipment_Type_IDs,
   _get_equipment_ids_by_type_ids as Get_Equipment_IDs_By_Type_IDs
 };
