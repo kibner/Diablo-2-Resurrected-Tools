@@ -66,7 +66,11 @@ import search_service from "./services/search_service";
   }
 
   function _initializeSocketFieldSet() {
-    _socketFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`).innerHTML = socket_fieldset.getInnerHtml(_SOCKET_FIELDSET_NAME);
+    socket_fieldset.appendFieldsets(_socketFieldset.querySelector(
+        `.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
+      _FIELDSET_TEMPLATE_ID,
+      _SOCKET_FIELDSET_NAME
+    );
   }
 
   function _initializeEquipmentFieldSet() {

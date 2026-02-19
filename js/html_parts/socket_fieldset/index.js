@@ -1,18 +1,15 @@
-const _getInnerHtml = function (socketFieldsetName) {
+import {GetCheckboxComponent} from "../../helpers/checkboxComponent";
+
+const _appendFieldsets = function (targetElement, templateId, fieldsetName) {
+  const template = document.querySelector(`#${templateId}`);
   const minSocketCount = 2;
   const maxSocketCount = 6;
 
-  let html = '';
-
   for (let i = minSocketCount; i <= maxSocketCount; i++) {
-    const inputHtml = `<input type="checkbox" id="${socketFieldsetName}-${i}" name="${socketFieldsetName}" value="${i}"/>`;
-    const labelHtml = `<label for="${socketFieldsetName}-${i}">${inputHtml}${i}</label>`;
-    html += `${labelHtml}`;
+    targetElement.appendChild(GetCheckboxComponent(template, fieldsetName, i, i));
   }
-
-  return html;
 }
 
 export default {
-  getInnerHtml: _getInnerHtml
-};
+  appendFieldsets: _appendFieldsets,
+}
