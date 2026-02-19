@@ -1,6 +1,8 @@
 import {Runes} from "../../data/rune_data";
 import {Equipment} from "../../data/equipment_data";
-import {CheckboxNames} from "../miscellaneous_fieldset";
+import {GetCheckboxIds as GetEquipmentCheckboxIds} from "../equipment_fieldset";
+import {GetCheckboxIds as GetMiscellaneousCheckboxIds} from "../miscellaneous_fieldset";
+import {GetCheckboxIds as GetSocketCheckboxIds} from "../socket_fieldset";
 
 const _getInnerHtml = function (searchResults) {
   let html = '';
@@ -99,39 +101,7 @@ const _getStatsHtml = function (value) {
 }
 
 const _getForAttributeValue = function (socketFieldsetName, equipmentFieldsetName, miscellaneousFieldsetName) {
-  return `${_getForAttributeValueForSockets(socketFieldsetName)} ${_getForAttributeValueForEquipment(equipmentFieldsetName)} ${_getForAttributeValueForMiscellaneous(miscellaneousFieldsetName)}`;
-}
-
-const _getForAttributeValueForSockets = function (fieldsetName) {
-  const minSocketCount = 2;
-  const maxSocketCount = 6;
-
-  let forAttributeValue = []
-
-  for (let i = minSocketCount; i <= maxSocketCount; i++) {
-    forAttributeValue.push(`${fieldsetName}-${i}`);
-  }
-
-  return forAttributeValue.join(' ');
-}
-
-const _getForAttributeValueForEquipment = function (fieldsetName) {
-  let forAttributeValue = [];
-
-  for (let i = 0; i < Equipment.length; i++) {
-    forAttributeValue.push(`${fieldsetName}-${Equipment[i].id}`);
-  }
-
-  return forAttributeValue.join(' ');
-}
-
-const _getForAttributeValueForMiscellaneous = function (fieldsetName) {
-  let forAttributeValue = [];
-
-  forAttributeValue.push(`${fieldsetName}-${CheckboxNames.HAS_AURA}`);
-  forAttributeValue.push(`${fieldsetName}-${CheckboxNames.EXCLUDE_LADDER_ONLY}`);
-
-  return forAttributeValue.join(' ');
+  return `${GetSocketCheckboxIds(socketFieldsetName).join(' ')} ${GetEquipmentCheckboxIds(equipmentFieldsetName).join(' ')} ${GetMiscellaneousCheckboxIds(miscellaneousFieldsetName).join(' ')}`;
 }
 
 export {_getInnerHtml as GetInnerHtml, _getForAttributeValue as GetForAttributeValue}

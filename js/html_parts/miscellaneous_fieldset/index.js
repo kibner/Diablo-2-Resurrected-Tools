@@ -21,4 +21,13 @@ const _getExcludeLadderOnly = function (template, fieldsetName,) {
   return GetCheckboxComponent(template, fieldsetName, 'exclude-ladder-only', 'Exclude Ladder Only');
 }
 
-export {_appendFieldsets as AppendFieldsets, _CHECKBOX_NAMES as CheckboxNames};
+const _getCheckboxIds = function (fieldsetName) {
+  let ids = []
+
+  ids.push(`${fieldsetName}-${_CHECKBOX_NAMES.HAS_AURA}`);
+  ids.push(`${fieldsetName}-${_CHECKBOX_NAMES.EXCLUDE_LADDER_ONLY}`);
+
+  return ids;
+}
+
+export {_appendFieldsets as AppendFieldsets, _getCheckboxIds as GetCheckboxIds};

@@ -9,4 +9,14 @@ const _appendFieldsets = function (targetElement, templateId, fieldsetName) {
   }
 }
 
-export {_appendFieldsets as AppendFieldsets}
+const _getCheckboxIds = function (fieldsetName) {
+  let ids = []
+
+  for (let i = 0; i < Equipment.length; i++) {
+    ids.push(`${fieldsetName}-${Equipment[i].id}`);
+  }
+
+  return ids;
+}
+
+export {_appendFieldsets as AppendFieldsets, _getCheckboxIds as GetCheckboxIds}
