@@ -1,17 +1,24 @@
 import {Equipment} from "../../data/equipment_data";
 
-const _getInnerHtml = function (equipmentFieldsetName) {
-  let html = '';
+const _appendEquipmentFieldsets = function (targetElement, equipmentFieldsetName) {
+  const template = document.querySelector('#equipment-fieldset-template');
 
   for (let i = 0; i < Equipment.length; i++) {
-    const inputHtml = `<input type="checkbox" id="${equipmentFieldsetName}-${Equipment[i].id}" name="${equipmentFieldsetName}" value="${Equipment[i].id}"/>`;
-    const labelHtml = `<label for="${equipmentFieldsetName}-${Equipment[i].id}">${inputHtml}${Equipment[i].name}</label>`;
-    html += `${labelHtml}`;
-  }
+    const clone = document.importNode(template.content, true);
+    const label = clone.querySelector(`label`);
+    const checkbox = clone.querySelector(`input[type="checkbox"]`);
 
-  return html;
+    checkbox.setAttribute('id', `${equipmentFieldsetName}-${Equipment[i].id}`);
+    checkbox.setAttribute('name', equipmentFieldsetName);
+    checkbox.setAttribute('value', Equipment[i].id);
+
+    label.setAttribute('for', checkbox.getAttribute('id'));
+    label.append(Equipment[i].name);
+
+    targetElement.appendChild(label);
+  }
 }
 
 export default {
-  getInnerHtml: _getInnerHtml
+  appendEquipmentFieldsets: _appendEquipmentFieldsets,
 }

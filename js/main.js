@@ -69,7 +69,7 @@ import search_service from "./services/search_service";
   }
 
   function _initializeEquipmentFieldSet() {
-    _equipmentFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`).innerHTML = equipment_fieldset.getInnerHtml(_EQUIPMENT_FIELDSET_NAME);
+    equipment_fieldset.appendEquipmentFieldsets(_equipmentFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`), _EQUIPMENT_FIELDSET_NAME);
   }
 
   function _initializeMiscellaneousFieldSet() {
