@@ -10,7 +10,7 @@ const _appendFieldsets = function (targetElement, templateId, fieldsetName) {
     targetElement.appendChild(GetCheckboxComponent(
       template,
       fieldsetName,
-      `${fieldsetName}-${i}`,
+      _generateCheckboxId(fieldsetName, i),
       i,
       i)
     );
@@ -21,10 +21,14 @@ const _getCheckboxIds = function (fieldsetName) {
   let ids = []
 
   for (let i = MIN_SOCKET_COUNT; i <= MAX_SOCKET_COUNT; i++) {
-    ids.push(`${fieldsetName}-${i}`);
+    ids.push(_generateCheckboxId(fieldsetName, i));
   }
 
   return ids;
+}
+
+const _generateCheckboxId = function (fieldsetName, id) {
+  return `${fieldsetName}-${id}`;
 }
 
 export {_appendFieldsets as AppendFieldsets, _getCheckboxIds as GetCheckboxIds}

@@ -9,35 +9,32 @@ const _CHECKBOX_NAMES = Enum({
 const _appendFieldsets = function (targetElement, templateId, fieldsetName) {
   const template = document.querySelector(`#${templateId}`);
 
-  targetElement.appendChild(_getHasAuraComponent(template, fieldsetName));
-  targetElement.appendChild(_getExcludeLadderOnly(template, fieldsetName));
-}
-
-const _getHasAuraComponent = function (template, fieldsetName) {
-  return GetCheckboxComponent(
+  targetElement.appendChild(GetCheckboxComponent(
     template,
     fieldsetName,
-    `${fieldsetName}-${_CHECKBOX_NAMES.HAS_AURA}`,
+    _generateCheckboxId(fieldsetName, _CHECKBOX_NAMES.HAS_AURA),
     _CHECKBOX_NAMES.HAS_AURA,
-    'Aura');
-}
+    'Aura'));
 
-const _getExcludeLadderOnly = function (template, fieldsetName,) {
-  return GetCheckboxComponent(
+  targetElement.appendChild(GetCheckboxComponent(
     template,
     fieldsetName,
-    `${fieldsetName}-${_CHECKBOX_NAMES.EXCLUDE_LADDER_ONLY}`,
+    _generateCheckboxId(fieldsetName, _CHECKBOX_NAMES.EXCLUDE_LADDER_ONLY),
     _CHECKBOX_NAMES.EXCLUDE_LADDER_ONLY,
-    'Exclude Ladder Only');
+    'Exclude Ladder Only'));
 }
 
 const _getCheckboxIds = function (fieldsetName) {
   let ids = []
 
-  ids.push(`${fieldsetName}-${_CHECKBOX_NAMES.HAS_AURA}`);
-  ids.push(`${fieldsetName}-${_CHECKBOX_NAMES.EXCLUDE_LADDER_ONLY}`);
+  ids.push(_generateCheckboxId(fieldsetName, _CHECKBOX_NAMES.HAS_AURA));
+  ids.push(_generateCheckboxId(fieldsetName, _CHECKBOX_NAMES.EXCLUDE_LADDER_ONLY));
 
   return ids;
+}
+
+const _generateCheckboxId = function (fieldsetName, id) {
+  return `${fieldsetName}-${id}`;
 }
 
 export {_appendFieldsets as AppendFieldsets, _getCheckboxIds as GetCheckboxIds};
