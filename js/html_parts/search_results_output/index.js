@@ -98,6 +98,7 @@ const _getStatsHtml = function (value) {
 }
 
 const _getForAttributeValue = function (socketFieldsetName, equipmentFieldsetName) {
+  // todo: add attribute values for the miscellaneous options
   return `${_getForAttributeValueForSockets(socketFieldsetName)} ${_getForAttributeValueForEquipment(equipmentFieldsetName)}`;
 }
 
