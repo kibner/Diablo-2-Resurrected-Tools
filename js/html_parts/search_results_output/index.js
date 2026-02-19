@@ -1,5 +1,6 @@
 import {Runes} from "../../data/rune_data";
 import {Equipment} from "../../data/equipment_data";
+import {CheckboxNames} from "../miscellaneous_fieldset";
 
 const _getInnerHtml = function (searchResults) {
   let html = '';
@@ -97,30 +98,38 @@ const _getStatsHtml = function (value) {
   return `<ul class="padding-left-0 list-style-position-inside">${statItems}</ul>`;
 }
 
-const _getForAttributeValue = function (socketFieldsetName, equipmentFieldsetName) {
-  // todo: add attribute values for the miscellaneous options
-  return `${_getForAttributeValueForSockets(socketFieldsetName)} ${_getForAttributeValueForEquipment(equipmentFieldsetName)}`;
+const _getForAttributeValue = function (socketFieldsetName, equipmentFieldsetName, miscellaneousFieldsetName) {
+  return `${_getForAttributeValueForSockets(socketFieldsetName)} ${_getForAttributeValueForEquipment(equipmentFieldsetName)} ${_getForAttributeValueForMiscellaneous(miscellaneousFieldsetName)}`;
 }
 
-const _getForAttributeValueForSockets = function (socketFieldsetName) {
+const _getForAttributeValueForSockets = function (fieldsetName) {
   const minSocketCount = 2;
   const maxSocketCount = 6;
 
   let forAttributeValue = []
 
   for (let i = minSocketCount; i <= maxSocketCount; i++) {
-    forAttributeValue.push(`${socketFieldsetName}-${i}`);
+    forAttributeValue.push(`${fieldsetName}-${i}`);
   }
 
   return forAttributeValue.join(' ');
 }
 
-const _getForAttributeValueForEquipment = function (equipmentFieldsetName) {
+const _getForAttributeValueForEquipment = function (fieldsetName) {
   let forAttributeValue = [];
 
   for (let i = 0; i < Equipment.length; i++) {
-    forAttributeValue.push(`${equipmentFieldsetName}-${Equipment[i].id}`);
+    forAttributeValue.push(`${fieldsetName}-${Equipment[i].id}`);
   }
+
+  return forAttributeValue.join(' ');
+}
+
+const _getForAttributeValueForMiscellaneous = function (fieldsetName) {
+  let forAttributeValue = [];
+
+  forAttributeValue.push(`${fieldsetName}-${CheckboxNames.HAS_AURA}`);
+  forAttributeValue.push(`${fieldsetName}-${CheckboxNames.EXCLUDE_LADDER_ONLY}`);
 
   return forAttributeValue.join(' ');
 }

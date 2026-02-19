@@ -88,7 +88,7 @@ import {SearchRunewords} from "./services/search_service";
   }
 
   function _initializeFormOutput() {
-    const formOutputForAttribute = GetForAttributeValue(_SOCKET_FIELDSET_NAME, _EQUIPMENT_FIELDSET_NAME);
+    const formOutputForAttribute = GetForAttributeValue(_SOCKET_FIELDSET_NAME, _EQUIPMENT_FIELDSET_NAME, _MISCELLANEOUS_FIELDSET_NAME);
 
     _runewordFormOutput.setAttribute('for', formOutputForAttribute);
   }
