@@ -6,7 +6,7 @@ const _CHECKBOX_NAMES = Enum({
   EXCLUDE_LADDER_ONLY: 'exclude-ladder-only'
 })
 
-const _appendFieldsets = function (targetElement, templateId, fieldsetName) {
+const _appendCheckboxes = function (targetElement, templateId, fieldsetName) {
   const template = document.querySelector(`#${templateId}`);
 
   targetElement.appendChild(GetCheckboxComponent(
@@ -38,7 +38,7 @@ const _generateCheckboxId = function (fieldsetName, id) {
 }
 
 export {
-  _appendFieldsets as AppendFieldsets,
+  _appendCheckboxes as AppendCheckboxes,
   _getCheckboxIds as GetCheckboxIds,
   _CHECKBOX_NAMES as CheckboxNames
 };
