@@ -1,26 +1,6 @@
 import {Runes} from "../../data/rune_data";
 import {Equipment} from "../../data/equipment_data";
 
-const _replaceSearchResults = function (searchResults, targetElement, tableTemplateId, rowTemplateId) {
-  if (searchResults && searchResults.length > 0) {
-    const tableTemplate = document.querySelector(`#${tableTemplateId}`);
-    const rowTemplate = document.querySelector(`#${rowTemplateId}`);
-    const tableClone = document.importNode(tableTemplate.content, true);
-
-    searchResults.forEach((searchResult) => {
-      const rowClone = document.importNode(rowTemplate.content, true);
-      const name = rowClone.querySelector(`tr > td:first-child > strong:first-child`);
-
-      name.append(searchResult.name);
-      tableClone.append(rowClone)
-    });
-
-    targetElement.replaceChildren(tableClone);
-  } else {
-    targetElement.replaceChildren();
-  }
-}
-
 const _getInnerHtml = function (searchResults) {
   let html = '';
 
@@ -117,4 +97,4 @@ const _getStatsHtml = function (value) {
   return `<ul class="padding-left-0 list-style-position-inside">${statItems}</ul>`;
 }
 
-export {_getInnerHtml as GetInnerHtml, _replaceSearchResults as ReplaceSearchResults}
+export {_getInnerHtml as GetInnerHtml}

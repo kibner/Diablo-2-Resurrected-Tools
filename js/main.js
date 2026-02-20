@@ -1,5 +1,5 @@
 import {focusable} from "tabbable";
-import {ReplaceSearchResults} from "./html_parts/search_results_output";
+import {GetInnerHtml} from "./html_parts/search_results_output";
 
 import {
   AppendFieldsets as SocketAppendFieldsets,
@@ -78,24 +78,24 @@ import {SearchRunewords} from "./services/search_service";
   }
 
   function _initializeSocketFieldSet() {
-    SocketAppendFieldsets(
-      _socketFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
+    SocketAppendFieldsets(_socketFieldset.querySelector(
+        `.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
       _FIELDSET_TEMPLATE_ID,
       _SOCKET_FIELDSET_NAME
     );
   }
 
   function _initializeEquipmentFieldSet() {
-    EquipmentAppendFieldsets(
-      _equipmentFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
+    EquipmentAppendFieldsets(_equipmentFieldset.querySelector(
+        `.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
       _FIELDSET_TEMPLATE_ID,
       _EQUIPMENT_FIELDSET_NAME
     );
   }
 
   function _initializeMiscellaneousFieldSet() {
-    MiscellaneousAppendFieldsets(
-      _miscellaneousFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
+    MiscellaneousAppendFieldsets(_miscellaneousFieldset.querySelector(
+        `.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
       _FIELDSET_TEMPLATE_ID,
       _MISCELLANEOUS_FIELDSET_NAME);
   }
@@ -156,13 +156,7 @@ import {SearchRunewords} from "./services/search_service";
   function _executeSearch() {
     const searchParameters = _getSearchParameters();
     const searchResults = SearchRunewords(searchParameters);
-
-    ReplaceSearchResults(
-      searchResults,
-      _runewordFormOutput,
-      'search-results-table-template',
-      'search-results-row-template'
-    );
+    _displaySearchResults(searchResults);
   }
 
   function _getSocketParameters() {
@@ -190,5 +184,9 @@ import {SearchRunewords} from "./services/search_service";
       equipment: equipment,
       miscellaneous: miscellaneous
     };
+  }
+
+  function _displaySearchResults(searchResults) {
+    return _runewordFormOutput.innerHTML = GetInnerHtml(searchResults);
   }
 })();
