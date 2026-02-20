@@ -25,81 +25,15 @@ const _replaceSearchResults = function (
     searchResults.forEach((searchResult) => {
       const rowClone = document.importNode(rowTemplate.content, true);
 
-      const name = rowClone.querySelector(`tr:first-of-type > td:first-of-type > strong:first-of-type`);
-      name.append(searchResult.name);
+      _appendName(rowClone, searchResult);
 
       const description = rowClone.querySelector(`tr:first-of-type > td:first-of-type > dl:first-of-type`);
+      _appendRunes(listPropertyTemplate, searchResult, listPropertyItemTemplate, description);
+      _appendEquipment(listPropertyTemplate, searchResult, listPropertyItemTemplate, description);
+      _appendRequiredLevel(singlePropertyTemplate, searchResult, description);
+      _appendMiscellaneous(listPropertyTemplate, searchResult, listPropertyItemTemplate, description);
 
-      const runeListClone = document.importNode(listPropertyTemplate.content, true);
-      const runesTitle = runeListClone.querySelector(`dt:first-of-type`);
-      runesTitle.append('Runes');
-
-      const runesList = runeListClone.querySelector(`dd:first-of-type > ol:first-of-type`);
-
-      searchResult.runes.forEach((runeId) => {
-        const runeItemClone = document.importNode(listPropertyItemTemplate.content, true);
-        const runeItem = runeItemClone.querySelector(`li:first-of-type`);
-        runeItem.append(Runes.find(value => value.id === runeId).name)
-        runesList.append(runeItemClone);
-      });
-
-      description.append(runeListClone);
-
-      const equipmentListClone = document.importNode(listPropertyTemplate.content, true);
-      const equipmentTitle = equipmentListClone.querySelector(`dt:first-of-type`);
-      equipmentTitle.append('Equipment');
-
-      const equipmentList = equipmentListClone.querySelector(`dd:first-of-type > ol:first-of-type`);
-
-      searchResult.equipment.forEach((equipmentId) => {
-        const equipmentItemClone = document.importNode(listPropertyItemTemplate.content, true);
-        const equipmentItem = equipmentItemClone.querySelector(`li:first-of-type`);
-        equipmentItem.append(Equipment.find(value => value.id === equipmentId).name)
-        equipmentList.append(equipmentItemClone);
-      });
-
-      description.append(equipmentListClone);
-
-      const requiredLevelClone = document.importNode(singlePropertyTemplate.content, true);
-      const requiredLevelTitle = requiredLevelClone.querySelector(`dt:first-of-type`);
-      requiredLevelTitle.append('Required level');
-
-      const requiredLevel = requiredLevelClone.querySelector(`dd:first-of-type`);
-      requiredLevel.append(searchResult.character_level);
-
-      description.append(requiredLevelClone);
-
-      const miscellaneousClone = document.importNode(listPropertyTemplate.content, true);
-      const miscellaneousList = miscellaneousClone.querySelector(`dd:first-of-type > ol:first-of-type`);
-
-      if (typeof (searchResult.has_aura) === 'boolean' && searchResult.has_aura === true) {
-        const miscellaneousItemClone = document.importNode(listPropertyItemTemplate.content, true);
-        const miscellaneousItem = miscellaneousItemClone.querySelector(`li:first-of-type`);
-        miscellaneousItem.append('Aura')
-        miscellaneousList.append(miscellaneousItemClone);
-      }
-
-      if (typeof (searchResult.is_ladder_only) === 'boolean' && searchResult.is_ladder_only === true) {
-        const miscellaneousItemClone = document.importNode(listPropertyItemTemplate.content, true);
-        const miscellaneousItem = miscellaneousItemClone.querySelector(`li:first-of-type`);
-        miscellaneousItem.append('Ladder')
-        miscellaneousList.append(miscellaneousItemClone);
-      }
-
-      if (miscellaneousList.children.length > 0) {
-        const miscellaneousTitle = miscellaneousClone.querySelector(`dt:first-of-type`);
-        miscellaneousTitle.append('Miscellaneous');
-        description.append(miscellaneousClone);
-      }
-
-      const statList = rowClone.querySelector(`tr:first-of-type > td:nth-of-type(2) > ul:first-of-type`);
-
-      searchResult.stats.forEach((stat) => {
-        const statItemClone = document.importNode(statItemTemplate.content, true);
-        const statItem = statItemClone.querySelector(`li:first-of-type`);
-        statItem.append(stat)
-        statList.append(statItemClone);
-      });
+      _appendStats(rowClone, searchResult, statItemTemplate);
 
       tableBody.append(rowClone)
     });
@@ -108,6 +42,92 @@ const _replaceSearchResults = function (
   } else {
     targetElement.replaceChildren();
   }
+}
+
+function _appendName(rowClone, searchResult) {
+  const name = rowClone.querySelector(`tr:first-of-type > td:first-of-type > strong:first-of-type`);
+  name.append(searchResult.name);
+}
+
+function _appendRunes(listPropertyTemplate, searchResult, listPropertyItemTemplate, description) {
+  const runeListClone = document.importNode(listPropertyTemplate.content, true);
+  const runesTitle = runeListClone.querySelector(`dt:first-of-type`);
+  runesTitle.append('Runes');
+
+  const runesList = runeListClone.querySelector(`dd:first-of-type > ol:first-of-type`);
+
+  searchResult.runes.forEach((runeId) => {
+    const runeItemClone = document.importNode(listPropertyItemTemplate.content, true);
+    const runeItem = runeItemClone.querySelector(`li:first-of-type`);
+    runeItem.append(Runes.find(value => value.id === runeId).name)
+    runesList.append(runeItemClone);
+  });
+
+  description.append(runeListClone);
+}
+
+function _appendEquipment(listPropertyTemplate, searchResult, listPropertyItemTemplate, description) {
+  const equipmentListClone = document.importNode(listPropertyTemplate.content, true);
+  const equipmentTitle = equipmentListClone.querySelector(`dt:first-of-type`);
+  equipmentTitle.append('Equipment');
+
+  const equipmentList = equipmentListClone.querySelector(`dd:first-of-type > ol:first-of-type`);
+
+  searchResult.equipment.forEach((equipmentId) => {
+    const equipmentItemClone = document.importNode(listPropertyItemTemplate.content, true);
+    const equipmentItem = equipmentItemClone.querySelector(`li:first-of-type`);
+    equipmentItem.append(Equipment.find(value => value.id === equipmentId).name)
+    equipmentList.append(equipmentItemClone);
+  });
+
+  description.append(equipmentListClone);
+}
+
+function _appendRequiredLevel(singlePropertyTemplate, searchResult, description) {
+  const requiredLevelClone = document.importNode(singlePropertyTemplate.content, true);
+  const requiredLevelTitle = requiredLevelClone.querySelector(`dt:first-of-type`);
+  requiredLevelTitle.append('Required level');
+
+  const requiredLevel = requiredLevelClone.querySelector(`dd:first-of-type`);
+  requiredLevel.append(searchResult.character_level);
+
+  description.append(requiredLevelClone);
+}
+
+function _appendMiscellaneous(listPropertyTemplate, searchResult, listPropertyItemTemplate, description) {
+  const miscellaneousClone = document.importNode(listPropertyTemplate.content, true);
+  const miscellaneousList = miscellaneousClone.querySelector(`dd:first-of-type > ol:first-of-type`);
+
+  if (typeof (searchResult.has_aura) === 'boolean' && searchResult.has_aura === true) {
+    const miscellaneousItemClone = document.importNode(listPropertyItemTemplate.content, true);
+    const miscellaneousItem = miscellaneousItemClone.querySelector(`li:first-of-type`);
+    miscellaneousItem.append('Aura')
+    miscellaneousList.append(miscellaneousItemClone);
+  }
+
+  if (typeof (searchResult.is_ladder_only) === 'boolean' && searchResult.is_ladder_only === true) {
+    const miscellaneousItemClone = document.importNode(listPropertyItemTemplate.content, true);
+    const miscellaneousItem = miscellaneousItemClone.querySelector(`li:first-of-type`);
+    miscellaneousItem.append('Ladder')
+    miscellaneousList.append(miscellaneousItemClone);
+  }
+
+  if (miscellaneousList.children.length > 0) {
+    const miscellaneousTitle = miscellaneousClone.querySelector(`dt:first-of-type`);
+    miscellaneousTitle.append('Miscellaneous');
+    description.append(miscellaneousClone);
+  }
+}
+
+function _appendStats(rowClone, searchResult, statItemTemplate) {
+  const statList = rowClone.querySelector(`tr:first-of-type > td:nth-of-type(2) > ul:first-of-type`);
+
+  searchResult.stats.forEach((stat) => {
+    const statItemClone = document.importNode(statItemTemplate.content, true);
+    const statItem = statItemClone.querySelector(`li:first-of-type`);
+    statItem.append(stat)
+    statList.append(statItemClone);
+  });
 }
 
 export {_replaceSearchResults as ReplaceSearchResults}
