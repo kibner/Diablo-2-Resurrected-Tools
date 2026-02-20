@@ -66,6 +66,29 @@ const _replaceSearchResults = function (
 
       description.append(requiredLevelClone);
 
+      const miscellaneousClone = document.importNode(listPropertyTemplate.content, true);
+      const miscellaneousList = miscellaneousClone.querySelector(`dd:first-of-type > ol:first-of-type`);
+
+      if (typeof (searchResult.has_aura) === 'boolean' && searchResult.has_aura === true) {
+        const miscellaneousItemClone = document.importNode(listPropertyItemTemplate.content, true);
+        const miscellaneousItem = miscellaneousItemClone.querySelector(`li:first-of-type`);
+        miscellaneousItem.append('Aura')
+        miscellaneousList.append(miscellaneousItemClone);
+      }
+
+      if (typeof (searchResult.is_ladder_only) === 'boolean' && searchResult.is_ladder_only === true) {
+        const miscellaneousItemClone = document.importNode(listPropertyItemTemplate.content, true);
+        const miscellaneousItem = miscellaneousItemClone.querySelector(`li:first-of-type`);
+        miscellaneousItem.append('Ladder')
+        miscellaneousList.append(miscellaneousItemClone);
+      }
+
+      if (miscellaneousList.children.length > 0) {
+        const miscellaneousTitle = miscellaneousClone.querySelector(`dt:first-of-type`);
+        miscellaneousTitle.append('Miscellaneous');
+        description.append(miscellaneousClone);
+      }
+
       tableClone.append(rowClone)
     });
 
@@ -100,69 +123,6 @@ const _getSearchResultsRowHtml = function (searchResults) {
       `<td>${stats}</td>` +
       '</tr>';
   }, '');
-}
-
-const _getNameHtml = function (value) {
-  return `<strong class="font-size-larger font-weight-normal">${value.name}</strong>`;
-}
-
-const _getRunewordDescription = function (value) {
-  const runes = _getRunesHtml(value);
-  const equipment = _getEquipmentHtml(value);
-  const character_level = _getCharacterLevelHtml(value);
-  const miscellaneous = _getMiscellaneousHtml(value);
-
-  return `<dl>${runes}${equipment}${character_level}${miscellaneous}</dl>`;
-}
-
-const _getRunesHtml = function (value) {
-  const runes = value.runes.reduce((previousRunes, currentRune) => {
-    const rune = Runes.find(value => value.id === currentRune);
-
-    if (rune) {
-      return `${previousRunes}<li>${rune.name}</li>`;
-    } else {
-      return previousRunes;
-    }
-  }, '');
-
-  return `<dt>Runes</dt><dd><ol class="list-inline">${runes}</ol></dd>`;
-}
-
-const _getEquipmentHtml = function (value) {
-  const equipment = value.equipment.reduce((previousEquipment, currentEquipment) => {
-    const equipment = Equipment.find(value => value.id === currentEquipment);
-
-    if (equipment && equipment.max_sockets >= value.runes.length) {
-      return `${previousEquipment}<li>${equipment.name}</li>`;
-    } else {
-      return previousEquipment;
-    }
-  }, '');
-
-  return `<dt>Equipment</dt><dd><ul class="list-inline">${equipment}</ul></dd>`;
-}
-
-const _getCharacterLevelHtml = function (value) {
-  return `<dt>Required level</dt><dd>${value.character_level}</dd>`;
-}
-
-const _getMiscellaneousHtml = function (value) {
-  let miscellaneous = '';
-
-  if (typeof (value.has_aura) === 'boolean' && value.has_aura === true) {
-    miscellaneous = `${miscellaneous}<li>Aura</li>`;
-  }
-
-  if (typeof (value.is_ladder_only) === 'boolean' && value.is_ladder_only === true) {
-    miscellaneous = `${miscellaneous}<li>Ladder</li>`;
-  }
-
-  if (miscellaneous.length > 0) {
-    miscellaneous = `<dt>Miscellaneous</dt><dd><ul class="list-inline">${miscellaneous}</ul></dd>`;
-  }
-
-  return miscellaneous;
 }
 
 const _getStatsHtml = function (value) {
