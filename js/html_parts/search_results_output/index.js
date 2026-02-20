@@ -57,6 +57,15 @@ const _replaceSearchResults = function (
 
       description.append(equipmentListClone);
 
+      const requiredLevelClone = document.importNode(singlePropertyTemplate.content, true);
+      const requiredLevelTitle = requiredLevelClone.querySelector(`dt:first-of-type`);
+      requiredLevelTitle.append('Required level');
+
+      const requiredLevel = requiredLevelClone.querySelector(`dd:first-of-type`);
+      requiredLevel.append(searchResult.character_level);
+
+      description.append(requiredLevelClone);
+
       tableClone.append(rowClone)
     });
 
