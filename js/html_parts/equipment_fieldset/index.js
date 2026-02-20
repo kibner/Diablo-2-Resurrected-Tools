@@ -1,5 +1,5 @@
 import {Equipment} from "../../data/equipment_data";
-import {GetCheckboxComponent} from "../../helpers/checkboxComponent";
+import {GetCheckboxComponent, GetCheckedCheckboxes} from "../../helpers/checkboxComponent";
 
 const _appendCheckboxes = function (targetElement, templateId, fieldsetName) {
   const template = document.querySelector(`#${templateId}`);
@@ -29,4 +29,12 @@ const _generateCheckboxId = function (fieldsetName, id) {
   return `${fieldsetName}-${id}`;
 }
 
-export {_appendCheckboxes as AppendCheckboxes, _getCheckboxIds as GetCheckboxIds}
+const _getSelectedValues = function (targetElement, fieldsetName) {
+  return GetCheckedCheckboxes(targetElement, fieldsetName);
+}
+
+export {
+  _appendCheckboxes as AppendCheckboxes,
+  _getCheckboxIds as GetCheckboxIds,
+  _getSelectedValues as GetSelectedValues
+}

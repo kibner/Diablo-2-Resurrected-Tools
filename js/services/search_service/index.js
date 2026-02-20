@@ -3,7 +3,7 @@ import {Runewords} from "../../data/runeword_data";
 import {CheckboxNames} from "../../html_parts/miscellaneous_fieldset";
 
 const _hasMatchingSocket = function (searchParamSockets, runeword) {
-  return searchParamSockets.length === 0 || searchParamSockets.includes(runeword.runes.length);
+  return searchParamSockets.length === 0 || searchParamSockets.includes(runeword.runes.length.toString());
 };
 
 const _hasMatchingEquipment = function (searchParamEquipment, runeword) {

@@ -1,4 +1,4 @@
-import {GetCheckboxComponent} from "../../helpers/checkboxComponent";
+import {GetCheckboxComponent, GetCheckedCheckboxes} from "../../helpers/checkboxComponent";
 import {Enum} from "../../helpers/enum";
 
 const _CHECKBOX_NAMES = Enum({
@@ -37,8 +37,13 @@ const _generateCheckboxId = function (fieldsetName, id) {
   return `${fieldsetName}-${id}`;
 }
 
+const _getSelectedValues = function (targetElement, fieldsetName) {
+  return GetCheckedCheckboxes(targetElement, fieldsetName);
+}
+
 export {
   _appendCheckboxes as AppendCheckboxes,
   _getCheckboxIds as GetCheckboxIds,
-  _CHECKBOX_NAMES as CheckboxNames
+  _CHECKBOX_NAMES as CheckboxNames,
+  _getSelectedValues as GetSelectedValues
 };

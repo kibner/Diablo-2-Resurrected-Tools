@@ -1,4 +1,4 @@
-import {GetCheckboxComponent} from "../../helpers/checkboxComponent";
+import {GetCheckboxComponent, GetCheckedCheckboxes} from "../../helpers/checkboxComponent";
 
 const MIN_SOCKET_COUNT = 2;
 const MAX_SOCKET_COUNT = 6;
@@ -31,4 +31,12 @@ const _generateCheckboxId = function (fieldsetName, id) {
   return `${fieldsetName}-${id}`;
 }
 
-export {_appendCheckboxes as AppendCheckboxes, _getCheckboxIds as GetCheckboxIds}
+const _getSelectedValues = function (targetElement, fieldsetName) {
+  return GetCheckedCheckboxes(targetElement, fieldsetName);
+}
+
+export {
+  _appendCheckboxes as AppendCheckboxes,
+  _getCheckboxIds as GetCheckboxIds,
+  _getSelectedValues as GetSelectedValues
+}

@@ -3,17 +3,20 @@ import {ReplaceSearchResults} from "./html_parts/search_results_output";
 
 import {
   AppendCheckboxes as AppendSocketCheckboxes,
-  GetCheckboxIds as GetSocketCheckboxIds
+  GetCheckboxIds as GetSocketCheckboxIds,
+  GetSelectedValues as GetSelectedSockets
 } from "./html_parts/socket_fieldset";
 
 import {
   AppendCheckboxes as AppendEquipmentCheckboxes,
-  GetCheckboxIds as GetEquipmentCheckboxIds
+  GetCheckboxIds as GetEquipmentCheckboxIds,
+  GetSelectedValues as GetSelectedEquipment
 } from "./html_parts/equipment_fieldset";
 
 import {
   AppendCheckboxes as AppendMiscellaneousCheckboxes,
-  GetCheckboxIds as GetMiscellaneousCheckboxIds
+  GetCheckboxIds as GetMiscellaneousCheckboxIds,
+  GetSelectedValues as GetSelectedMiscellaneous
 } from "./html_parts/miscellaneous_fieldset";
 
 import {SearchRunewords} from "./services/search_service";
@@ -169,25 +172,10 @@ import {SearchRunewords} from "./services/search_service";
     );
   }
 
-  function _getSocketParameters() {
-    return Array.from(_runewordForm.querySelectorAll(`input[name=${_SOCKET_FIELDSET_NAME}]:checked`))
-      .reduce((previousValue, currentValue) => previousValue.concat(parseInt(currentValue.value)), []);
-  }
-
-  function _getEquipmentParameters() {
-    return Array.from(_runewordForm.querySelectorAll(`input[name=${_EQUIPMENT_FIELDSET_NAME}]:checked`))
-      .reduce((previousValue, currentValue) => previousValue.concat(currentValue.value), []);
-  }
-
-  function _getMiscellaneousParameters() {
-    return Array.from(_runewordForm.querySelectorAll(`input[name=${_MISCELLANEOUS_FIELDSET_NAME}]:checked`))
-      .reduce((previousValue, currentValue) => previousValue.concat(currentValue.value), []);
-  }
-
   function _getSearchParameters() {
-    const sockets = _getSocketParameters();
-    const equipment = _getEquipmentParameters();
-    const miscellaneous = _getMiscellaneousParameters();
+    const sockets = GetSelectedSockets(_runewordForm, _SOCKET_FIELDSET_NAME);
+    const equipment = GetSelectedEquipment(_runewordForm, _EQUIPMENT_FIELDSET_NAME);
+    const miscellaneous = GetSelectedMiscellaneous(_runewordForm, _MISCELLANEOUS_FIELDSET_NAME);
 
     return {
       sockets: sockets,

@@ -13,4 +13,9 @@ const _getCheckboxComponent = function (template, fieldsetName, checkboxId, chec
   return label;
 }
 
-export {_getCheckboxComponent as GetCheckboxComponent}
+const _getCheckedCheckboxes = function (targetElement, fieldsetName) {
+  return Array.from(targetElement.querySelectorAll(`input[name=${fieldsetName}]:checked`))
+    .reduce((previousValue, currentValue) => previousValue.concat(currentValue.value), []);
+}
+
+export {_getCheckboxComponent as GetCheckboxComponent, _getCheckedCheckboxes as GetCheckedCheckboxes};
