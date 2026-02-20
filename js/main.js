@@ -161,7 +161,10 @@ import {SearchRunewords} from "./services/search_service";
       searchResults,
       _runewordFormOutput,
       'search-results-table-template',
-      'search-results-row-template'
+      'search-results-row-template',
+      'runeword-list-property-template',
+      'runeword-list-property-item-template',
+      'runeword-single-property-template'
     );
   }
 

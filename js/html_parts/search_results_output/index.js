@@ -1,17 +1,45 @@
 import {Runes} from "../../data/rune_data";
 import {Equipment} from "../../data/equipment_data";
 
-const _replaceSearchResults = function (searchResults, targetElement, tableTemplateId, rowTemplateId) {
+const _replaceSearchResults = function (
+  searchResults,
+  targetElement,
+  tableTemplateId,
+  rowTemplateId,
+  listPropertyTemplateId,
+  listPropertyItemTemplateId,
+  singlePropertyTemplateId
+) {
   if (searchResults && searchResults.length > 0) {
     const tableTemplate = document.querySelector(`#${tableTemplateId}`);
     const rowTemplate = document.querySelector(`#${rowTemplateId}`);
+    const listPropertyTemplate = document.querySelector(`#${listPropertyTemplateId}`);
+    const listPropertyItemTemplate = document.querySelector(`#${listPropertyItemTemplateId}`);
+    const singlePropertyTemplate = document.querySelector(`#${singlePropertyTemplateId}`);
+
     const tableClone = document.importNode(tableTemplate.content, true);
 
     searchResults.forEach((searchResult) => {
       const rowClone = document.importNode(rowTemplate.content, true);
-      const name = rowClone.querySelector(`tr > td:first-child > strong:first-child`);
+      const runeListClone = document.importNode(listPropertyTemplate.content, true);
+
+      const name = rowClone.querySelector(`tr:first-of-type > td:first-of-type > strong:first-of-type`);
+      const description = rowClone.querySelector(`tr:first-of-type > td:first-of-type > dl:first-of-type`);
+      const runesTitle = runeListClone.querySelector(`dt:first-of-type`);
+      const runesList = runeListClone.querySelector(`dd:first-of-type > ol:first-of-type`);
 
       name.append(searchResult.name);
+
+      description.append(runeListClone);
+      runesTitle.append('Runes');
+
+      searchResult.runes.forEach((runeId) => {
+        const runeItemClone = document.importNode(listPropertyItemTemplate.content, true);
+        const runeItem = runeItemClone.querySelector(`li:first-of-type`);
+        runeItem.append(Runes.find(value => value.id === runeId).name)
+        runesList.append(runeItemClone);
+      })
+
       tableClone.append(rowClone)
     });
 
@@ -117,4 +145,4 @@ const _getStatsHtml = function (value) {
   return `<ul class="padding-left-0 list-style-position-inside">${statItems}</ul>`;
 }
 
-export {_getInnerHtml as GetInnerHtml, _replaceSearchResults as ReplaceSearchResults}
+export {_replaceSearchResults as ReplaceSearchResults}
