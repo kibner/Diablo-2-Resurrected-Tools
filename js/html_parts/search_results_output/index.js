@@ -21,24 +21,41 @@ const _replaceSearchResults = function (
 
     searchResults.forEach((searchResult) => {
       const rowClone = document.importNode(rowTemplate.content, true);
-      const runeListClone = document.importNode(listPropertyTemplate.content, true);
 
       const name = rowClone.querySelector(`tr:first-of-type > td:first-of-type > strong:first-of-type`);
-      const description = rowClone.querySelector(`tr:first-of-type > td:first-of-type > dl:first-of-type`);
-      const runesTitle = runeListClone.querySelector(`dt:first-of-type`);
-      const runesList = runeListClone.querySelector(`dd:first-of-type > ol:first-of-type`);
-
       name.append(searchResult.name);
 
-      description.append(runeListClone);
+      const description = rowClone.querySelector(`tr:first-of-type > td:first-of-type > dl:first-of-type`);
+
+      const runeListClone = document.importNode(listPropertyTemplate.content, true);
+      const runesTitle = runeListClone.querySelector(`dt:first-of-type`);
       runesTitle.append('Runes');
+
+      const runesList = runeListClone.querySelector(`dd:first-of-type > ol:first-of-type`);
 
       searchResult.runes.forEach((runeId) => {
         const runeItemClone = document.importNode(listPropertyItemTemplate.content, true);
         const runeItem = runeItemClone.querySelector(`li:first-of-type`);
         runeItem.append(Runes.find(value => value.id === runeId).name)
         runesList.append(runeItemClone);
-      })
+      });
+
+      description.append(runeListClone);
+
+      const equipmentListClone = document.importNode(listPropertyTemplate.content, true);
+      const equipmentTitle = equipmentListClone.querySelector(`dt:first-of-type`);
+      equipmentTitle.append('Equipment');
+
+      const equipmentList = equipmentListClone.querySelector(`dd:first-of-type > ol:first-of-type`);
+
+      searchResult.equipment.forEach((equipmentId) => {
+        const equipmentItemClone = document.importNode(listPropertyItemTemplate.content, true);
+        const equipmentItem = equipmentItemClone.querySelector(`li:first-of-type`);
+        equipmentItem.append(Equipment.find(value => value.id === equipmentId).name)
+        equipmentList.append(equipmentItemClone);
+      });
+
+      description.append(equipmentListClone);
 
       tableClone.append(rowClone)
     });
