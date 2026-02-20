@@ -8,7 +8,8 @@ const _replaceSearchResults = function (
   rowTemplateId,
   listPropertyTemplateId,
   listPropertyItemTemplateId,
-  singlePropertyTemplateId
+  singlePropertyTemplateId,
+  statItemTemplateId
 ) {
   if (searchResults && searchResults.length > 0) {
     const tableTemplate = document.querySelector(`#${tableTemplateId}`);
@@ -16,6 +17,7 @@ const _replaceSearchResults = function (
     const listPropertyTemplate = document.querySelector(`#${listPropertyTemplateId}`);
     const listPropertyItemTemplate = document.querySelector(`#${listPropertyItemTemplateId}`);
     const singlePropertyTemplate = document.querySelector(`#${singlePropertyTemplateId}`);
+    const statItemTemplate = document.querySelector(`#${statItemTemplateId}`);
 
     const tableClone = document.importNode(tableTemplate.content, true);
 
@@ -88,6 +90,15 @@ const _replaceSearchResults = function (
         miscellaneousTitle.append('Miscellaneous');
         description.append(miscellaneousClone);
       }
+
+      const statList = rowClone.querySelector(`tr:first-of-type > td:nth-of-type(2) > ul:first-of-type`);
+
+      searchResult.stats.forEach((stat) => {
+        const statItemClone = document.importNode(statItemTemplate.content, true);
+        const statItem = statItemClone.querySelector(`li:first-of-type`);
+        statItem.append(stat)
+        statList.append(statItemClone);
+      });
 
       tableClone.append(rowClone)
     });
