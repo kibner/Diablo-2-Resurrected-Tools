@@ -20,6 +20,7 @@ const _replaceSearchResults = function (
     const statItemTemplate = document.querySelector(`#${statItemTemplateId}`);
 
     const tableClone = document.importNode(tableTemplate.content, true);
+    const tableBody = tableClone.querySelector(`table:first-of-type > tbody:first-of-type`);
 
     searchResults.forEach((searchResult) => {
       const rowClone = document.importNode(rowTemplate.content, true);
@@ -100,46 +101,13 @@ const _replaceSearchResults = function (
         statList.append(statItemClone);
       });
 
-      tableClone.append(rowClone)
+      tableBody.append(rowClone)
     });
 
     targetElement.replaceChildren(tableClone);
   } else {
     targetElement.replaceChildren();
   }
-}
-
-const _getInnerHtml = function (searchResults) {
-  let html = '';
-
-  if (searchResults && searchResults.length > 0) {
-    const tableStartHtml = '<table class="table-first-column-max-width-50-pct"><thead><tr><th class="text-align-left">Runeword</th><th class="text-align-left">Stats</th></tr></thead><tbody>';
-    const tableEndHtml = '</tbody></table>'
-    const resultsHtml = _getSearchResultsRowHtml(searchResults);
-
-    html += `${tableStartHtml}${resultsHtml}${tableEndHtml}`;
-  }
-
-  return html;
-}
-
-const _getSearchResultsRowHtml = function (searchResults) {
-  return searchResults.reduce((previousValue, currentValue) => {
-    const name = _getNameHtml(currentValue);
-    const description = _getRunewordDescription(currentValue);
-    const stats = _getStatsHtml(currentValue);
-
-    return `${previousValue}<tr>` +
-      `<td>${name}${description}</td>` +
-      `<td>${stats}</td>` +
-      '</tr>';
-  }, '');
-}
-
-const _getStatsHtml = function (value) {
-  const statItems = value.stats.reduce((previousStats, currentStat) => `${previousStats}<li>${currentStat}</li>`, '');
-
-  return `<ul class="padding-left-0 list-style-position-inside">${statItems}</ul>`;
 }
 
 export {_replaceSearchResults as ReplaceSearchResults}
