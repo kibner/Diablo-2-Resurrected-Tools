@@ -1,100 +1,133 @@
 import {Runes} from "../../data/rune_data";
 import {Equipment} from "../../data/equipment_data";
 
-const _getInnerHtml = function (searchResults) {
-  let html = '';
-
+const _replaceSearchResults = function (
+  searchResults,
+  targetElement,
+  tableTemplateId,
+  rowTemplateId,
+  listPropertyTemplateId,
+  listPropertyItemTemplateId,
+  singlePropertyTemplateId,
+  statItemTemplateId
+) {
   if (searchResults && searchResults.length > 0) {
-    const tableStartHtml = '<table class="table-first-column-max-width-50-pct"><thead><tr><th class="text-align-left">Runeword</th><th class="text-align-left">Stats</th></tr></thead><tbody>';
-    const tableEndHtml = '</tbody></table>'
-    const resultsHtml = _getSearchResultsRowHtml(searchResults);
+    const tableTemplate = document.querySelector(`#${tableTemplateId}`);
+    const rowTemplate = document.querySelector(`#${rowTemplateId}`);
+    const listPropertyTemplate = document.querySelector(`#${listPropertyTemplateId}`);
+    const listPropertyItemTemplate = document.querySelector(`#${listPropertyItemTemplateId}`);
+    const singlePropertyTemplate = document.querySelector(`#${singlePropertyTemplateId}`);
+    const statItemTemplate = document.querySelector(`#${statItemTemplateId}`);
 
-    html += `${tableStartHtml}${resultsHtml}${tableEndHtml}`;
+    const tableClone = document.importNode(tableTemplate.content, true);
+    const tableBody = tableClone.querySelector(`table:first-of-type > tbody:first-of-type`);
+
+    searchResults.forEach((searchResult) => {
+      const rowClone = document.importNode(rowTemplate.content, true);
+
+      _appendName(rowClone, searchResult);
+
+      const description = rowClone.querySelector(`tr:first-of-type > td:first-of-type > dl:first-of-type`);
+      _appendRunes(listPropertyTemplate, searchResult, listPropertyItemTemplate, description);
+      _appendEquipment(listPropertyTemplate, searchResult, listPropertyItemTemplate, description);
+      _appendRequiredLevel(singlePropertyTemplate, searchResult, description);
+      _appendMiscellaneous(listPropertyTemplate, searchResult, listPropertyItemTemplate, description);
+
+      _appendStats(rowClone, searchResult, statItemTemplate);
+
+      tableBody.append(rowClone)
+    });
+
+    targetElement.replaceChildren(tableClone);
+  } else {
+    targetElement.replaceChildren();
+  }
+}
+
+function _appendName(rowClone, searchResult) {
+  const name = rowClone.querySelector(`tr:first-of-type > td:first-of-type > strong:first-of-type`);
+  name.append(searchResult.name);
+}
+
+function _appendRunes(listPropertyTemplate, searchResult, listPropertyItemTemplate, description) {
+  const runeListClone = document.importNode(listPropertyTemplate.content, true);
+  const runesTitle = runeListClone.querySelector(`dt:first-of-type`);
+  runesTitle.append('Runes');
+
+  const runesList = runeListClone.querySelector(`dd:first-of-type > ol:first-of-type`);
+
+  searchResult.runes.forEach((runeId) => {
+    const runeItemClone = document.importNode(listPropertyItemTemplate.content, true);
+    const runeItem = runeItemClone.querySelector(`li:first-of-type`);
+    runeItem.append(Runes.find(value => value.id === runeId).name)
+    runesList.append(runeItemClone);
+  });
+
+  description.append(runeListClone);
+}
+
+function _appendEquipment(listPropertyTemplate, searchResult, listPropertyItemTemplate, description) {
+  const equipmentListClone = document.importNode(listPropertyTemplate.content, true);
+  const equipmentTitle = equipmentListClone.querySelector(`dt:first-of-type`);
+  equipmentTitle.append('Equipment');
+
+  const equipmentList = equipmentListClone.querySelector(`dd:first-of-type > ol:first-of-type`);
+
+  searchResult.equipment.forEach((equipmentId) => {
+    const equipmentItemClone = document.importNode(listPropertyItemTemplate.content, true);
+    const equipmentItem = equipmentItemClone.querySelector(`li:first-of-type`);
+    equipmentItem.append(Equipment.find(value => value.id === equipmentId).name)
+    equipmentList.append(equipmentItemClone);
+  });
+
+  description.append(equipmentListClone);
+}
+
+function _appendRequiredLevel(singlePropertyTemplate, searchResult, description) {
+  const requiredLevelClone = document.importNode(singlePropertyTemplate.content, true);
+  const requiredLevelTitle = requiredLevelClone.querySelector(`dt:first-of-type`);
+  requiredLevelTitle.append('Required level');
+
+  const requiredLevel = requiredLevelClone.querySelector(`dd:first-of-type`);
+  requiredLevel.append(searchResult.character_level);
+
+  description.append(requiredLevelClone);
+}
+
+function _appendMiscellaneous(listPropertyTemplate, searchResult, listPropertyItemTemplate, description) {
+  const miscellaneousClone = document.importNode(listPropertyTemplate.content, true);
+  const miscellaneousList = miscellaneousClone.querySelector(`dd:first-of-type > ol:first-of-type`);
+
+  if (typeof (searchResult.has_aura) === 'boolean' && searchResult.has_aura === true) {
+    const miscellaneousItemClone = document.importNode(listPropertyItemTemplate.content, true);
+    const miscellaneousItem = miscellaneousItemClone.querySelector(`li:first-of-type`);
+    miscellaneousItem.append('Aura')
+    miscellaneousList.append(miscellaneousItemClone);
   }
 
-  return html;
-}
-
-const _getSearchResultsRowHtml = function (searchResults) {
-  return searchResults.reduce((previousValue, currentValue) => {
-    const name = _getNameHtml(currentValue);
-    const description = _getRunewordDescription(currentValue);
-    const stats = _getStatsHtml(currentValue);
-
-    return `${previousValue}<tr>` +
-      `<td>${name}${description}</td>` +
-      `<td>${stats}</td>` +
-      '</tr>';
-  }, '');
-}
-
-const _getNameHtml = function (value) {
-  return `<strong class="font-size-larger font-weight-normal">${value.name}</strong>`;
-}
-
-const _getRunewordDescription = function (value) {
-  const runes = _getRunesHtml(value);
-  const equipment = _getEquipmentHtml(value);
-  const character_level = _getCharacterLevelHtml(value);
-  const miscellaneous = _getMiscellaneousHtml(value);
-
-  return `<dl>${runes}${equipment}${character_level}${miscellaneous}</dl>`;
-}
-
-const _getRunesHtml = function (value) {
-  const runes = value.runes.reduce((previousRunes, currentRune) => {
-    const rune = Runes.find(value => value.id === currentRune);
-
-    if (rune) {
-      return `${previousRunes}<li>${rune.name}</li>`;
-    } else {
-      return previousRunes;
-    }
-  }, '');
-
-  return `<dt>Runes</dt><dd><ol class="list-inline">${runes}</ol></dd>`;
-}
-
-const _getEquipmentHtml = function (value) {
-  const equipment = value.equipment.reduce((previousEquipment, currentEquipment) => {
-    const equipment = Equipment.find(value => value.id === currentEquipment);
-
-    if (equipment && equipment.max_sockets >= value.runes.length) {
-      return `${previousEquipment}<li>${equipment.name}</li>`;
-    } else {
-      return previousEquipment;
-    }
-  }, '');
-
-  return `<dt>Equipment</dt><dd><ul class="list-inline">${equipment}</ul></dd>`;
-}
-
-const _getCharacterLevelHtml = function (value) {
-  return `<dt>Required level</dt><dd>${value.character_level}</dd>`;
-}
-
-const _getMiscellaneousHtml = function (value) {
-  let miscellaneous = '';
-
-  if (typeof (value.has_aura) === 'boolean' && value.has_aura === true) {
-    miscellaneous = `${miscellaneous}<li>Aura</li>`;
+  if (typeof (searchResult.is_ladder_only) === 'boolean' && searchResult.is_ladder_only === true) {
+    const miscellaneousItemClone = document.importNode(listPropertyItemTemplate.content, true);
+    const miscellaneousItem = miscellaneousItemClone.querySelector(`li:first-of-type`);
+    miscellaneousItem.append('Ladder')
+    miscellaneousList.append(miscellaneousItemClone);
   }
 
-  if (typeof (value.is_ladder_only) === 'boolean' && value.is_ladder_only === true) {
-    miscellaneous = `${miscellaneous}<li>Ladder</li>`;
+  if (miscellaneousList.children.length > 0) {
+    const miscellaneousTitle = miscellaneousClone.querySelector(`dt:first-of-type`);
+    miscellaneousTitle.append('Miscellaneous');
+    description.append(miscellaneousClone);
   }
-
-  if (miscellaneous.length > 0) {
-    miscellaneous = `<dt>Miscellaneous</dt><dd><ul class="list-inline">${miscellaneous}</ul></dd>`;
-  }
-
-  return miscellaneous;
 }
 
-const _getStatsHtml = function (value) {
-  const statItems = value.stats.reduce((previousStats, currentStat) => `${previousStats}<li>${currentStat}</li>`, '');
+function _appendStats(rowClone, searchResult, statItemTemplate) {
+  const statList = rowClone.querySelector(`tr:first-of-type > td:nth-of-type(2) > ul:first-of-type`);
 
-  return `<ul class="padding-left-0 list-style-position-inside">${statItems}</ul>`;
+  searchResult.stats.forEach((stat) => {
+    const statItemClone = document.importNode(statItemTemplate.content, true);
+    const statItem = statItemClone.querySelector(`li:first-of-type`);
+    statItem.append(stat)
+    statList.append(statItemClone);
+  });
 }
 
-export {_getInnerHtml as GetInnerHtml}
+export {_replaceSearchResults as ReplaceSearchResults}
