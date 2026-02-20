@@ -2,17 +2,17 @@ import {focusable} from "tabbable";
 import {ReplaceSearchResults} from "./html_parts/search_results_output";
 
 import {
-  AppendFieldsets as SocketAppendFieldsets,
+  AppendCheckboxes as AppendSocketCheckboxes,
   GetCheckboxIds as GetSocketCheckboxIds
 } from "./html_parts/socket_fieldset";
 
 import {
-  AppendFieldsets as EquipmentAppendFieldsets,
+  AppendCheckboxes as AppendEquipmentCheckboxes,
   GetCheckboxIds as GetEquipmentCheckboxIds
 } from "./html_parts/equipment_fieldset";
 
 import {
-  AppendFieldsets as MiscellaneousAppendFieldsets,
+  AppendCheckboxes as AppendMiscellaneousCheckboxes,
   GetCheckboxIds as GetMiscellaneousCheckboxIds
 } from "./html_parts/miscellaneous_fieldset";
 
@@ -25,7 +25,7 @@ import {SearchRunewords} from "./services/search_service";
   const _SCREEN_READER_ONLY_CLASS_NAME = 'sr-only';
   const _TOGGLE_COLLAPSIBLE_CLASS_NAME = 'toggle-collapsible';
   const _COLLAPSIBLE_CONTENT_CLASS_NAME = 'collapsible-content'
-  const _FIELDSET_TEMPLATE_ID = 'fieldset-template';
+  const _CHECKBOX_TEMPLATE_ID = 'checkbox-template';
 
   let _isInitialLoadComplete = false;
   let _runewordForm;
@@ -78,25 +78,25 @@ import {SearchRunewords} from "./services/search_service";
   }
 
   function _initializeSocketFieldSet() {
-    SocketAppendFieldsets(
+    AppendSocketCheckboxes(
       _socketFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
-      _FIELDSET_TEMPLATE_ID,
+      _CHECKBOX_TEMPLATE_ID,
       _SOCKET_FIELDSET_NAME
     );
   }
 
   function _initializeEquipmentFieldSet() {
-    EquipmentAppendFieldsets(
+    AppendEquipmentCheckboxes(
       _equipmentFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
-      _FIELDSET_TEMPLATE_ID,
+      _CHECKBOX_TEMPLATE_ID,
       _EQUIPMENT_FIELDSET_NAME
     );
   }
 
   function _initializeMiscellaneousFieldSet() {
-    MiscellaneousAppendFieldsets(
+    AppendMiscellaneousCheckboxes(
       _miscellaneousFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
-      _FIELDSET_TEMPLATE_ID,
+      _CHECKBOX_TEMPLATE_ID,
       _MISCELLANEOUS_FIELDSET_NAME);
   }
 

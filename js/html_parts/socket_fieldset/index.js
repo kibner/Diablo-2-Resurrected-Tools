@@ -3,7 +3,7 @@ import {GetCheckboxComponent} from "../../helpers/checkboxComponent";
 const MIN_SOCKET_COUNT = 2;
 const MAX_SOCKET_COUNT = 6;
 
-const _appendFieldsets = function (targetElement, templateId, fieldsetName) {
+const _appendCheckboxes = function (targetElement, templateId, fieldsetName) {
   const template = document.querySelector(`#${templateId}`);
 
   for (let i = MIN_SOCKET_COUNT; i <= MAX_SOCKET_COUNT; i++) {
@@ -31,4 +31,4 @@ const _generateCheckboxId = function (fieldsetName, id) {
   return `${fieldsetName}-${id}`;
 }
 
-export {_appendFieldsets as AppendFieldsets, _getCheckboxIds as GetCheckboxIds}
+export {_appendCheckboxes as AppendCheckboxes, _getCheckboxIds as GetCheckboxIds}
