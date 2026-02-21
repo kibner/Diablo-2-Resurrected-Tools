@@ -1,4 +1,5 @@
-const _getCheckboxComponent = function (template, fieldsetName, checkboxId, checkboxName, checkboxLabel) {
+const _getCheckboxComponent = function (fieldsetName, checkboxId, checkboxName, checkboxLabel) {
+  const template = document.querySelector(`#checkbox-template`);
   const clone = document.importNode(template.content, true);
   const label = clone.querySelector(`label`);
   const checkbox = clone.querySelector(`input[type="checkbox"]`);
@@ -10,7 +11,7 @@ const _getCheckboxComponent = function (template, fieldsetName, checkboxId, chec
   label.setAttribute('for', checkbox.getAttribute('id'));
   label.append(checkboxLabel);
 
-  return label;
+  return clone;
 }
 
 const _getCheckedCheckboxes = function (targetElement, fieldsetName) {
