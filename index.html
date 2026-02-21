@@ -26,30 +26,28 @@
 
 <body>
 <main>
-  <form id="runeword-form">
-    <fieldset name="sockets">
-      <input id="sockets-collapsible" type="checkbox" checked="" class="toggle-collapsible sr-only">
-      <legend><label for="sockets-collapsible">Sockets</label></legend>
-      <div class="collapsible-content"></div>
-    </fieldset>
-    <fieldset name="equipment">
-      <input id="equipment-collapsible" type="checkbox" checked="" class="toggle-collapsible sr-only">
-      <legend><label for="equipment-collapsible">Equipment</label></legend>
-      <div class="collapsible-content"></div>
-    </fieldset>
-    <fieldset name="miscellaneous">
-      <input id="miscellaneous-collapsible" type="checkbox" checked="" class="toggle-collapsible sr-only">
-      <legend><label for="miscellaneous-collapsible">Miscellaneous</label></legend>
-      <div class="collapsible-content"></div>
-    </fieldset>
-    <output name="runeword-result"></output>
-  </form>
+  <form id="runeword-form"></form>
 </main>
+
+<template id="fieldset-template">
+  <fieldset>
+    <legend>
+      <label>
+        <input type="checkbox" checked="" class="toggle-collapsible sr-only"/>
+      </label>
+    </legend>
+    <div class="collapsible-content"></div>
+  </fieldset>
+</template>
 
 <template id="checkbox-template">
   <label>
     <input type="checkbox"/>
   </label>
+</template>
+
+<template id="search-results-output-template">
+  <output></output>
 </template>
 
 <template id="search-results-table-template">
@@ -81,8 +79,7 @@
 <template id="runeword-list-property-template">
   <dt></dt>
   <dd>
-    <ol class="list-inline">
-    </ol>
+    <ol class="list-inline"></ol>
   </dd>
 </template>
 

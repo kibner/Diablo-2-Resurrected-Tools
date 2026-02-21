@@ -1,38 +1,33 @@
 import {focusable} from "tabbable";
-import {ReplaceSearchResults} from "./html_parts/search_results_output";
+import {
+  AppendOutput as AppendSearchResultsOutput,
+  ReplaceSearchResults
+} from "./html_parts/search_results_output";
 
 import {
-  AppendCheckboxes as AppendSocketCheckboxes,
-  GetCheckboxIds as GetSocketCheckboxIds
+  AppendFieldset as AppendSocketFieldset,
+  GetSelectedValues as GetSelectedSockets
 } from "./html_parts/socket_fieldset";
 
 import {
-  AppendCheckboxes as AppendEquipmentCheckboxes,
-  GetCheckboxIds as GetEquipmentCheckboxIds
+  AppendFieldset as AppendEquipmentFieldset,
+  GetSelectedValues as GetSelectedEquipment
 } from "./html_parts/equipment_fieldset";
 
 import {
-  AppendCheckboxes as AppendMiscellaneousCheckboxes,
-  GetCheckboxIds as GetMiscellaneousCheckboxIds
+  AppendFieldset as AppendMiscellaneousFieldset,
+  GetSelectedValues as GetSelectedMiscellaneous
 } from "./html_parts/miscellaneous_fieldset";
 
 import {SearchRunewords} from "./services/search_service";
 
 (function () {
-  const _SOCKET_FIELDSET_NAME = 'sockets';
-  const _EQUIPMENT_FIELDSET_NAME = 'equipment';
-  const _MISCELLANEOUS_FIELDSET_NAME = 'miscellaneous';
   const _SCREEN_READER_ONLY_CLASS_NAME = 'sr-only';
   const _TOGGLE_COLLAPSIBLE_CLASS_NAME = 'toggle-collapsible';
   const _COLLAPSIBLE_CONTENT_CLASS_NAME = 'collapsible-content'
-  const _CHECKBOX_TEMPLATE_ID = 'checkbox-template';
 
   let _isInitialLoadComplete = false;
   let _runewordForm;
-  let _runewordFormOutput;
-  let _socketFieldset;
-  let _equipmentFieldset;
-  let _miscellaneousFieldset;
 
   // readystatechange as event listener to insert or modify the DOM before DOMContentLoaded
   document.addEventListener('readystatechange', event => {
@@ -51,7 +46,7 @@ import {SearchRunewords} from "./services/search_service";
 
   function _initializeLoader() {
     _isInitialLoadComplete = false;
-    _initializeGlobals();
+    _runewordForm = document.getElementById('runeword-form');
     _isInitialLoadComplete = true;
   }
 
@@ -63,49 +58,14 @@ import {SearchRunewords} from "./services/search_service";
     _executeSearch();
   }
 
-  function _initializeGlobals() {
-    _runewordForm = document.getElementById('runeword-form');
-    _runewordFormOutput = _runewordForm.querySelector('output[name=runeword-result]');
-    _socketFieldset = _runewordForm.querySelector(`fieldset[name=${_SOCKET_FIELDSET_NAME}]`);
-    _equipmentFieldset = _runewordForm.querySelector(`fieldset[name=${_EQUIPMENT_FIELDSET_NAME}]`);
-    _miscellaneousFieldset = _runewordForm.querySelector(`fieldset[name=${_MISCELLANEOUS_FIELDSET_NAME}]`);
-  }
-
   function _initializeFormInputs() {
-    _initializeSocketFieldSet();
-    _initializeEquipmentFieldSet();
-    _initializeMiscellaneousFieldSet();
-  }
-
-  function _initializeSocketFieldSet() {
-    AppendSocketCheckboxes(
-      _socketFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
-      _CHECKBOX_TEMPLATE_ID,
-      _SOCKET_FIELDSET_NAME
-    );
-  }
-
-  function _initializeEquipmentFieldSet() {
-    AppendEquipmentCheckboxes(
-      _equipmentFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
-      _CHECKBOX_TEMPLATE_ID,
-      _EQUIPMENT_FIELDSET_NAME
-    );
-  }
-
-  function _initializeMiscellaneousFieldSet() {
-    AppendMiscellaneousCheckboxes(
-      _miscellaneousFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`),
-      _CHECKBOX_TEMPLATE_ID,
-      _MISCELLANEOUS_FIELDSET_NAME);
+    AppendSocketFieldset(_runewordForm);
+    AppendEquipmentFieldset(_runewordForm);
+    AppendMiscellaneousFieldset(_runewordForm);
   }
 
   function _initializeFormOutput() {
-    const formOutputForAttribute = GetSocketCheckboxIds(_SOCKET_FIELDSET_NAME)
-      .concat(GetEquipmentCheckboxIds(_EQUIPMENT_FIELDSET_NAME))
-      .concat(GetMiscellaneousCheckboxIds(_MISCELLANEOUS_FIELDSET_NAME));
-
-    _runewordFormOutput.setAttribute('for', formOutputForAttribute.join(' '));
+    AppendSearchResultsOutput(_runewordForm);
   }
 
   function _initializeListeners() {
@@ -157,37 +117,13 @@ import {SearchRunewords} from "./services/search_service";
     const searchParameters = _getSearchParameters();
     const searchResults = SearchRunewords(searchParameters);
 
-    ReplaceSearchResults(
-      searchResults,
-      _runewordFormOutput,
-      'search-results-table-template',
-      'search-results-row-template',
-      'runeword-list-property-template',
-      'runeword-list-property-item-template',
-      'runeword-single-property-template',
-      'runeword-stat-item-template'
-    );
-  }
-
-  function _getSocketParameters() {
-    return Array.from(_runewordForm.querySelectorAll(`input[name=${_SOCKET_FIELDSET_NAME}]:checked`))
-      .reduce((previousValue, currentValue) => previousValue.concat(parseInt(currentValue.value)), []);
-  }
-
-  function _getEquipmentParameters() {
-    return Array.from(_runewordForm.querySelectorAll(`input[name=${_EQUIPMENT_FIELDSET_NAME}]:checked`))
-      .reduce((previousValue, currentValue) => previousValue.concat(currentValue.value), []);
-  }
-
-  function _getMiscellaneousParameters() {
-    return Array.from(_runewordForm.querySelectorAll(`input[name=${_MISCELLANEOUS_FIELDSET_NAME}]:checked`))
-      .reduce((previousValue, currentValue) => previousValue.concat(currentValue.value), []);
+    ReplaceSearchResults(searchResults);
   }
 
   function _getSearchParameters() {
-    const sockets = _getSocketParameters();
-    const equipment = _getEquipmentParameters();
-    const miscellaneous = _getMiscellaneousParameters();
+    const sockets = GetSelectedSockets(_runewordForm);
+    const equipment = GetSelectedEquipment(_runewordForm);
+    const miscellaneous = GetSelectedMiscellaneous(_runewordForm);
 
     return {
       sockets: sockets,

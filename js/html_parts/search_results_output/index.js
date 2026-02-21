@@ -1,23 +1,38 @@
 import {Runes} from "../../data/rune_data";
 import {Equipment} from "../../data/equipment_data";
+import {GetCheckboxIds as GetSocketCheckboxIds} from "../socket_fieldset";
+import {GetCheckboxIds as GetEquipmentCheckboxIds} from "../equipment_fieldset";
+import {GetCheckboxIds as GetMiscellaneousCheckboxIds} from "../miscellaneous_fieldset";
+
+const OUTPUT_NAME = 'runeword-result';
+
+const _appendOutput = function (targetElement, fieldsetsParentElement) {
+  const template = document.querySelector(`#search-results-output-template`);
+  const clone = document.importNode(template.content, true);
+  const output = clone.querySelector(`output`);
+  output.setAttribute('name', OUTPUT_NAME);
+
+  const outputForAttribute = GetSocketCheckboxIds(fieldsetsParentElement)
+    .concat(GetEquipmentCheckboxIds(fieldsetsParentElement))
+    .concat(GetMiscellaneousCheckboxIds(fieldsetsParentElement));
+
+  output.setAttribute('for', outputForAttribute.join(' '));
+
+  targetElement.appendChild(clone);
+}
 
 const _replaceSearchResults = function (
-  searchResults,
-  targetElement,
-  tableTemplateId,
-  rowTemplateId,
-  listPropertyTemplateId,
-  listPropertyItemTemplateId,
-  singlePropertyTemplateId,
-  statItemTemplateId
+  searchResults
 ) {
+  const output = document.querySelector(`output[name="${OUTPUT_NAME}"]`);
+
   if (searchResults && searchResults.length > 0) {
-    const tableTemplate = document.querySelector(`#${tableTemplateId}`);
-    const rowTemplate = document.querySelector(`#${rowTemplateId}`);
-    const listPropertyTemplate = document.querySelector(`#${listPropertyTemplateId}`);
-    const listPropertyItemTemplate = document.querySelector(`#${listPropertyItemTemplateId}`);
-    const singlePropertyTemplate = document.querySelector(`#${singlePropertyTemplateId}`);
-    const statItemTemplate = document.querySelector(`#${statItemTemplateId}`);
+    const tableTemplate = document.querySelector(`#search-results-table-template`);
+    const rowTemplate = document.querySelector(`#search-results-row-template`);
+    const listPropertyTemplate = document.querySelector(`#runeword-list-property-template`);
+    const listPropertyItemTemplate = document.querySelector(`#runeword-list-property-item-template`);
+    const singlePropertyTemplate = document.querySelector(`#runeword-single-property-template`);
+    const statItemTemplate = document.querySelector(`#runeword-stat-item-template`);
 
     const tableClone = document.importNode(tableTemplate.content, true);
     const tableBody = tableClone.querySelector(`table:first-of-type > tbody:first-of-type`);
@@ -38,9 +53,9 @@ const _replaceSearchResults = function (
       tableBody.append(rowClone)
     });
 
-    targetElement.replaceChildren(tableClone);
+    output.replaceChildren(tableClone);
   } else {
-    targetElement.replaceChildren();
+    output.replaceChildren();
   }
 }
 
@@ -130,4 +145,4 @@ function _appendStats(rowClone, searchResult, statItemTemplate) {
   });
 }
 
-export {_replaceSearchResults as ReplaceSearchResults}
+export {_appendOutput as AppendOutput, _replaceSearchResults as ReplaceSearchResults}

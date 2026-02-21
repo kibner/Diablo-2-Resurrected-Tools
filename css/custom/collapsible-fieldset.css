@@ -2,30 +2,27 @@
 /* - https://www.digitalocean.com/community/tutorials/css-collapsible */
 /* - https://stackoverflow.com/a/58648331 */
 
-legend {
+legend:has(.toggle-collapsible) {
   width: 100%;
 }
 
-.toggle-collapsible:focus + legend,
-.toggle-collapsible:focus-visible + legend,
-.toggle-collapsible:focus-within + legend,
-.toggle-collapsible:hover + legend,
-legend:focus,
-legend:focus-visible,
-legend:focus-within,
-legend:hover {
+legend:has(.toggle-collapsible):focus,
+legend:has(.toggle-collapsible):focus-visible,
+legend:has(.toggle-collapsible):focus-within,
+legend:has(.toggle-collapsible):hover
+{
   outline: 2px solid;
   outline-offset: 2px;
 }
 
-legend > label:focus,
-legend > label:focus-visible,
-legend > label:focus-within,
-legend > label:hover {
+label:has(.toggle-collapsible):focus,
+label:has(.toggle-collapsible):focus-visible,
+label:has(.toggle-collapsible):focus-within,
+label:has(.toggle-collapsible):hover {
   outline: none;
 }
 
-legend > label::before {
+label:has(.toggle-collapsible)::before {
   content: '';
   display: inline-block;
   border-top: 5px solid transparent;
@@ -37,17 +34,17 @@ legend > label::before {
   transform: translateY(-2px);
 }
 
-.toggle-collapsible:checked + legend + .collapsible-content {
+legend:has(.toggle-collapsible:checked) + .collapsible-content {
   display: flex;
   flex-flow: column wrap;
   gap: 0.75em;
 }
 
-.toggle-collapsible:checked + legend > label::before {
+label:has(.toggle-collapsible:checked)::before {
   transform: rotate(90deg) translateX(-3px);
 }
 
-.toggle-collapsible:checked + legend > label {
+label:has(.toggle-collapsible:checked) {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -63,11 +60,11 @@ legend > label::before {
    ========================================================================== */
 @media only screen and (min-width: 35em) {
   /* Style adjustments for viewports that meet the condition */
-  legend {
+  legend:has(.toggle-collapsible) {
     width: auto;
   }
 
-  .toggle-collapsible:checked + legend + .collapsible-content {
+  legend:has(.toggle-collapsible:checked) + .collapsible-content {
     flex-flow: row wrap;
   }
 }
