@@ -1,4 +1,3 @@
-import {focusable} from "tabbable";
 import {
   AppendOutput as AppendSearchResultsOutput,
   ReplaceSearchResults
@@ -20,12 +19,9 @@ import {
 } from "./html_parts/miscellaneous_fieldset";
 
 import {SearchRunewords} from "./services/search_service";
+import {SelectorCssClasses, ToggleCollapsibleContent} from "./components/fieldsetComponent";
 
 (function () {
-  const _SCREEN_READER_ONLY_CLASS_NAME = 'sr-only';
-  const _TOGGLE_COLLAPSIBLE_CLASS_NAME = 'toggle-collapsible';
-  const _COLLAPSIBLE_CONTENT_CLASS_NAME = 'collapsible-content'
-
   let _isInitialLoadComplete = false;
   let _runewordForm;
 
@@ -44,13 +40,13 @@ import {SearchRunewords} from "./services/search_service";
     }
   });
 
-  function _initializeLoader() {
+  const _initializeLoader = function () {
     _isInitialLoadComplete = false;
     _runewordForm = document.getElementById('runeword-form');
     _isInitialLoadComplete = true;
   }
 
-  function _initializeApp() {
+  const _initializeApp = function () {
     _initializeFormInputs();
     _initializeFormOutput();
     _initializeListeners();
@@ -58,69 +54,40 @@ import {SearchRunewords} from "./services/search_service";
     _executeSearch();
   }
 
-  function _initializeFormInputs() {
+  const _initializeFormInputs = function () {
     AppendSocketFieldset(_runewordForm);
     AppendEquipmentFieldset(_runewordForm);
     AppendMiscellaneousFieldset(_runewordForm);
   }
 
-  function _initializeFormOutput() {
+  const _initializeFormOutput = function () {
     AppendSearchResultsOutput(_runewordForm);
   }
 
-  function _initializeListeners() {
+  const _initializeListeners = function () {
     _runewordForm.addEventListener('input', _handleFormInputChange);
   }
 
-  function _handleFormInputChange(event) {
+  const _handleFormInputChange = function (event) {
     if (event.target.tagName !== 'INPUT') {
       return;
     }
 
-    if (event.target.classList.contains(_TOGGLE_COLLAPSIBLE_CLASS_NAME)) {
-      _toggleCollapsibleContent(event.target);
+    if (event.target.classList.contains(SelectorCssClasses.TOGGLE_COLLAPSIBLE_CLASS_NAME)) {
+      ToggleCollapsibleContent(event.target);
     } else {
       _executeSearch();
     }
   }
 
-  function _toggleCollapsibleContent(input) {
-    const collapsibleContent = _getCollapsibleContent(input);
-
-    if (collapsibleContent.classList.contains(_SCREEN_READER_ONLY_CLASS_NAME)) {
-      collapsibleContent.classList.remove(_SCREEN_READER_ONLY_CLASS_NAME);
-      _setTabindexAttributeForAllFocusableNodes(collapsibleContent, 0);
-    } else {
-      _setTabindexAttributeForAllFocusableNodes(collapsibleContent, -1);
-      collapsibleContent.classList.add(_SCREEN_READER_ONLY_CLASS_NAME);
-    }
-  }
-
-  function _getCollapsibleContent(input) {
-    const rootFieldset = _getRootFieldset(input);
-    return rootFieldset.querySelector(`.${_COLLAPSIBLE_CONTENT_CLASS_NAME}`);
-  }
-
-  function _getRootFieldset(input) {
-    return input.closest('fieldset');
-  }
-
-  function _setTabindexAttributeForAllFocusableNodes(rootNode, tabindexValue) {
-    const focusableContent = focusable(rootNode);
-
-    focusableContent.forEach((tabbableElement) => {
-      tabbableElement.setAttribute('tabindex', tabindexValue);
-    });
-  }
-
-  function _executeSearch() {
+  const _executeSearch = function () {
     const searchParameters = _getSearchParameters();
     const searchResults = SearchRunewords(searchParameters);
 
     ReplaceSearchResults(searchResults);
   }
 
-  function _getSearchParameters() {
+  const _getSearchParameters = function () {
     const sockets = GetSelectedSockets(_runewordForm);
     const equipment = GetSelectedEquipment(_runewordForm);
     const miscellaneous = GetSelectedMiscellaneous(_runewordForm);
