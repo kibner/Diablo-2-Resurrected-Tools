@@ -35,14 +35,14 @@ const _replaceSearchResults = function (
     const statItemTemplate = document.querySelector(`#runeword-stat-item-template`);
 
     const tableClone = document.importNode(tableTemplate.content, true);
-    const tableBody = tableClone.querySelector(`table:first-of-type > tbody:first-of-type`);
+    const tableBody = tableClone.querySelector(`tbody`);
 
     searchResults.forEach((searchResult) => {
       const rowClone = document.importNode(rowTemplate.content, true);
 
       _appendName(rowClone, searchResult);
 
-      const description = rowClone.querySelector(`tr:first-of-type > td:first-of-type > dl:first-of-type`);
+      const description = rowClone.querySelector(`td:first-of-type dl`);
       _appendRunes(listPropertyTemplate, searchResult, listPropertyItemTemplate, description);
       _appendEquipment(listPropertyTemplate, searchResult, listPropertyItemTemplate, description);
       _appendRequiredLevel(singlePropertyTemplate, searchResult, description);
@@ -60,20 +60,20 @@ const _replaceSearchResults = function (
 }
 
 const _appendName = function (rowClone, searchResult) {
-  const name = rowClone.querySelector(`tr:first-of-type > td:first-of-type > strong:first-of-type`);
+  const name = rowClone.querySelector(`.runeword-name`);
   name.append(searchResult.name);
 }
 
 const _appendRunes = function (listPropertyTemplate, searchResult, listPropertyItemTemplate, description) {
   const runeListClone = document.importNode(listPropertyTemplate.content, true);
-  const runesTitle = runeListClone.querySelector(`dt:first-of-type`);
+  const runesTitle = runeListClone.querySelector(`dt`);
   runesTitle.append('Runes');
 
-  const runesList = runeListClone.querySelector(`dd:first-of-type > ol:first-of-type`);
+  const runesList = runeListClone.querySelector(`ol`);
 
   searchResult.runes.forEach((runeId) => {
     const runeItemClone = document.importNode(listPropertyItemTemplate.content, true);
-    const runeItem = runeItemClone.querySelector(`li:first-of-type`);
+    const runeItem = runeItemClone.querySelector(`li`);
     runeItem.append(Runes.find(value => value.id === runeId).name)
     runesList.append(runeItemClone);
   });
@@ -83,14 +83,14 @@ const _appendRunes = function (listPropertyTemplate, searchResult, listPropertyI
 
 const _appendEquipment = function (listPropertyTemplate, searchResult, listPropertyItemTemplate, description) {
   const equipmentListClone = document.importNode(listPropertyTemplate.content, true);
-  const equipmentTitle = equipmentListClone.querySelector(`dt:first-of-type`);
+  const equipmentTitle = equipmentListClone.querySelector(`dt`);
   equipmentTitle.append('Equipment');
 
-  const equipmentList = equipmentListClone.querySelector(`dd:first-of-type > ol:first-of-type`);
+  const equipmentList = equipmentListClone.querySelector(`ol`);
 
   searchResult.equipment.forEach((equipmentId) => {
     const equipmentItemClone = document.importNode(listPropertyItemTemplate.content, true);
-    const equipmentItem = equipmentItemClone.querySelector(`li:first-of-type`);
+    const equipmentItem = equipmentItemClone.querySelector(`li`);
     equipmentItem.append(Equipment.find(value => value.id === equipmentId).name)
     equipmentList.append(equipmentItemClone);
   });
@@ -100,10 +100,10 @@ const _appendEquipment = function (listPropertyTemplate, searchResult, listPrope
 
 const _appendRequiredLevel = function (singlePropertyTemplate, searchResult, description) {
   const requiredLevelClone = document.importNode(singlePropertyTemplate.content, true);
-  const requiredLevelTitle = requiredLevelClone.querySelector(`dt:first-of-type`);
+  const requiredLevelTitle = requiredLevelClone.querySelector(`dt`);
   requiredLevelTitle.append('Required level');
 
-  const requiredLevel = requiredLevelClone.querySelector(`dd:first-of-type`);
+  const requiredLevel = requiredLevelClone.querySelector(`dd`);
   requiredLevel.append(searchResult.character_level);
 
   description.append(requiredLevelClone);
@@ -111,35 +111,35 @@ const _appendRequiredLevel = function (singlePropertyTemplate, searchResult, des
 
 const _appendMiscellaneous = function (listPropertyTemplate, searchResult, listPropertyItemTemplate, description) {
   const miscellaneousClone = document.importNode(listPropertyTemplate.content, true);
-  const miscellaneousList = miscellaneousClone.querySelector(`dd:first-of-type > ol:first-of-type`);
+  const miscellaneousList = miscellaneousClone.querySelector(`ol`);
 
   if (typeof (searchResult.has_aura) === 'boolean' && searchResult.has_aura === true) {
     const miscellaneousItemClone = document.importNode(listPropertyItemTemplate.content, true);
-    const miscellaneousItem = miscellaneousItemClone.querySelector(`li:first-of-type`);
+    const miscellaneousItem = miscellaneousItemClone.querySelector(`li`);
     miscellaneousItem.append('Aura')
     miscellaneousList.append(miscellaneousItemClone);
   }
 
   if (typeof (searchResult.is_ladder_only) === 'boolean' && searchResult.is_ladder_only === true) {
     const miscellaneousItemClone = document.importNode(listPropertyItemTemplate.content, true);
-    const miscellaneousItem = miscellaneousItemClone.querySelector(`li:first-of-type`);
+    const miscellaneousItem = miscellaneousItemClone.querySelector(`li`);
     miscellaneousItem.append('Ladder')
     miscellaneousList.append(miscellaneousItemClone);
   }
 
   if (miscellaneousList.children.length > 0) {
-    const miscellaneousTitle = miscellaneousClone.querySelector(`dt:first-of-type`);
+    const miscellaneousTitle = miscellaneousClone.querySelector(`dt`);
     miscellaneousTitle.append('Miscellaneous');
     description.append(miscellaneousClone);
   }
 }
 
 const _appendStats = function (rowClone, searchResult, statItemTemplate) {
-  const statList = rowClone.querySelector(`tr:first-of-type > td:nth-of-type(2) > ul:first-of-type`);
+  const statList = rowClone.querySelector(`td:nth-of-type(2) ul`);
 
   searchResult.stats.forEach((stat) => {
     const statItemClone = document.importNode(statItemTemplate.content, true);
-    const statItem = statItemClone.querySelector(`li:first-of-type`);
+    const statItem = statItemClone.querySelector(`li`);
     statItem.append(stat)
     statList.append(statItemClone);
   });
