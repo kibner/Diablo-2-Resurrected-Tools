@@ -59,12 +59,12 @@ const _replaceSearchResults = function (
   }
 }
 
-function _appendName(rowClone, searchResult) {
+const _appendName = function (rowClone, searchResult) {
   const name = rowClone.querySelector(`tr:first-of-type > td:first-of-type > strong:first-of-type`);
   name.append(searchResult.name);
 }
 
-function _appendRunes(listPropertyTemplate, searchResult, listPropertyItemTemplate, description) {
+const _appendRunes = function (listPropertyTemplate, searchResult, listPropertyItemTemplate, description) {
   const runeListClone = document.importNode(listPropertyTemplate.content, true);
   const runesTitle = runeListClone.querySelector(`dt:first-of-type`);
   runesTitle.append('Runes');
@@ -81,7 +81,7 @@ function _appendRunes(listPropertyTemplate, searchResult, listPropertyItemTempla
   description.append(runeListClone);
 }
 
-function _appendEquipment(listPropertyTemplate, searchResult, listPropertyItemTemplate, description) {
+const _appendEquipment = function (listPropertyTemplate, searchResult, listPropertyItemTemplate, description) {
   const equipmentListClone = document.importNode(listPropertyTemplate.content, true);
   const equipmentTitle = equipmentListClone.querySelector(`dt:first-of-type`);
   equipmentTitle.append('Equipment');
@@ -98,7 +98,7 @@ function _appendEquipment(listPropertyTemplate, searchResult, listPropertyItemTe
   description.append(equipmentListClone);
 }
 
-function _appendRequiredLevel(singlePropertyTemplate, searchResult, description) {
+const _appendRequiredLevel = function (singlePropertyTemplate, searchResult, description) {
   const requiredLevelClone = document.importNode(singlePropertyTemplate.content, true);
   const requiredLevelTitle = requiredLevelClone.querySelector(`dt:first-of-type`);
   requiredLevelTitle.append('Required level');
@@ -109,7 +109,7 @@ function _appendRequiredLevel(singlePropertyTemplate, searchResult, description)
   description.append(requiredLevelClone);
 }
 
-function _appendMiscellaneous(listPropertyTemplate, searchResult, listPropertyItemTemplate, description) {
+const _appendMiscellaneous = function (listPropertyTemplate, searchResult, listPropertyItemTemplate, description) {
   const miscellaneousClone = document.importNode(listPropertyTemplate.content, true);
   const miscellaneousList = miscellaneousClone.querySelector(`dd:first-of-type > ol:first-of-type`);
 
@@ -134,7 +134,7 @@ function _appendMiscellaneous(listPropertyTemplate, searchResult, listPropertyIt
   }
 }
 
-function _appendStats(rowClone, searchResult, statItemTemplate) {
+const _appendStats = function (rowClone, searchResult, statItemTemplate) {
   const statList = rowClone.querySelector(`tr:first-of-type > td:nth-of-type(2) > ul:first-of-type`);
 
   searchResult.stats.forEach((stat) => {
