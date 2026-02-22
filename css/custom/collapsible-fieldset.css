@@ -9,8 +9,7 @@ legend:has(.toggle-collapsible) {
 legend:has(.toggle-collapsible):focus,
 legend:has(.toggle-collapsible):focus-visible,
 legend:has(.toggle-collapsible):focus-within,
-legend:has(.toggle-collapsible):hover
-{
+legend:has(.toggle-collapsible):hover {
   outline: 2px solid;
   outline-offset: 2px;
 }
@@ -29,8 +28,8 @@ label:has(.toggle-collapsible)::before {
   border-bottom: 5px solid transparent;
   border-left: 5px solid currentColor;
   vertical-align: middle;
-  margin-left: .25em;
-  margin-right: .7rem;
+  margin-left: 0.25em;
+  margin-right: 0.7rem;
   transform: translateY(-2px);
 }
 
@@ -70,8 +69,8 @@ label:has(.toggle-collapsible:checked) {
 }
 
 @media print,
-(-webkit-min-device-pixel-ratio: 1.25),
-(min-resolution: 1.25dppx),
-(min-resolution: 120dpi) {
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
   /* Style adjustments for high resolution devices */
 }

@@ -1,5 +1,5 @@
 /* inspiration from https://www.scottohara.me/blog/2021/09/24/custom-radio-checkbox-again.html */
-input[type=checkbox] {
+input[type='checkbox'] {
   appearance: none;
   border: 1px solid;
   height: 1.5em;
@@ -11,12 +11,12 @@ input[type=checkbox] {
   margin-right: 0.25em;
 }
 
-input[type=checkbox][disabled],
-input[type=checkbox][aria-disabled=true] {
+input[type='checkbox'][disabled],
+input[type='checkbox'][aria-disabled='true'] {
   opacity: 0.4;
 }
 
-input[type=checkbox]::before {
+input[type='checkbox']::before {
   content: '';
   position: absolute;
   margin: auto;
@@ -27,18 +27,18 @@ input[type=checkbox]::before {
   top: 0;
 }
 
-input[type=checkbox] {
+input[type='checkbox'] {
   border-radius: 10%;
 }
 
-input[type=checkbox]:indeterminate::before,
-input[type=checkbox][aria-checked=mixed]::before {
+input[type='checkbox']:indeterminate::before,
+input[type='checkbox'][aria-checked='mixed']::before {
   border: 2px solid;
   height: 0;
   width: 40%;
 }
 
-input[type=checkbox]:checked::before {
+input[type='checkbox']:checked::before {
   border-right: 3px solid;
   border-bottom: 3px solid;
   height: 50%;
@@ -46,18 +46,18 @@ input[type=checkbox]:checked::before {
   transform: rotate(45deg) translateY(-20%) translateX(-10%);
 }
 
-input[type=checkbox]:hover {
+input[type='checkbox']:hover {
   background-color: #6e4d25;
 }
 
-input[type=checkbox]:focus,
-input[type=checkbox]:focus-visible,
-input[type=checkbox]:focus-within {
+input[type='checkbox']:focus,
+input[type='checkbox']:focus-visible,
+input[type='checkbox']:focus-within {
   outline: none;
 }
 
 @media (prefers-color-scheme: light) {
-  input[type=checkbox]:hover {
+  input[type='checkbox']:hover {
     background-color: #b3d4fc;
   }
 }
@@ -72,8 +72,8 @@ input[type=checkbox]:focus-within {
 }
 
 @media print,
-(-webkit-min-device-pixel-ratio: 1.25),
-(min-resolution: 1.25dppx),
-(min-resolution: 120dpi) {
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
   /* Style adjustments for high resolution devices */
 }
