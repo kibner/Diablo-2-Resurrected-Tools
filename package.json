@@ -9,6 +9,7 @@
     "diablo2resurrected",
     "runeword"
   ],
+  "type": "module",
   "license": "ISC",
   "author": "John D'Oriocourt",
   "scripts": {
