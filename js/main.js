@@ -59,9 +59,10 @@ import {
   };
 
   const _initializeFormInputs = function () {
-    AppendSocketFieldset(_runewordForm);
-    AppendEquipmentFieldset(_runewordForm);
-    AppendMiscellaneousFieldset(_runewordForm);
+    const searchElement = _runewordForm.getElementsByTagName('search')[0];
+    AppendSocketFieldset(searchElement);
+    AppendEquipmentFieldset(searchElement);
+    AppendMiscellaneousFieldset(searchElement);
   };
 
   const _initializeFormOutput = function () {
