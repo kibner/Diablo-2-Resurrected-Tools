@@ -18,15 +18,15 @@ const _getFieldsetComponent = function (name, labelText) {
 };
 
 const _toggleCollapsibleContent = function (name) {
-  const _SCREEN_READER_ONLY_CLASS_NAME = 'sr-only';
+  const _VISUALLY_HIDDEN_CLASS_NAME = 'visually-hidden';
   const collapsibleContent = _getCollapsibleContent(name);
 
-  if (collapsibleContent.classList.contains(_SCREEN_READER_ONLY_CLASS_NAME)) {
-    collapsibleContent.classList.remove(_SCREEN_READER_ONLY_CLASS_NAME);
+  if (collapsibleContent.classList.contains(_VISUALLY_HIDDEN_CLASS_NAME)) {
+    collapsibleContent.classList.remove(_VISUALLY_HIDDEN_CLASS_NAME);
     _setTabindexAttributeForAllFocusableNodes(collapsibleContent, 0);
   } else {
     _setTabindexAttributeForAllFocusableNodes(collapsibleContent, -1);
-    collapsibleContent.classList.add(_SCREEN_READER_ONLY_CLASS_NAME);
+    collapsibleContent.classList.add(_VISUALLY_HIDDEN_CLASS_NAME);
   }
 };
 
