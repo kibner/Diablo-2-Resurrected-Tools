@@ -6,7 +6,7 @@ class SiteHeader extends HTMLElement {
 
     let template = new DOMParser()
       .parseFromString(templateHtmlText, 'text/html')
-      .getElementsByTagName('template')[0];
+      .querySelector('template');
 
     let templateContent = template.content;
 

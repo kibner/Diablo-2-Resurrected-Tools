@@ -26,6 +26,8 @@ import {
 } from './components/fieldsetComponent';
 
 (function () {
+  const _runewordForm = document.getElementById('runeword-form');
+
   const _initializeApp = function () {
     _initializeFormInputs();
     _initializeFormOutput();
@@ -35,7 +37,7 @@ import {
   };
 
   const _initializeFormInputs = function () {
-    const searchElement = _runewordForm.getElementsByTagName('search')[0];
+    const searchElement = _runewordForm.querySelector('search');
     AppendSocketFieldset(searchElement);
     AppendEquipmentFieldset(searchElement);
     AppendMiscellaneousFieldset(searchElement);
@@ -84,6 +86,5 @@ import {
     };
   };
 
-  const _runewordForm = document.getElementById('runeword-form');
   _initializeApp();
 })();
