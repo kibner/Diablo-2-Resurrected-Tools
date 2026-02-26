@@ -26,30 +26,6 @@ import {
 } from './components/fieldsetComponent';
 
 (function () {
-  let _isInitialLoadComplete = false;
-  let _runewordForm;
-
-  // readystatechange as event listener to insert or modify the DOM before DOMContentLoaded
-  document.addEventListener('readystatechange', (event) => {
-    if (event.target.readyState === 'interactive') {
-      _initializeLoader();
-    } else if (event.target.readyState === 'complete') {
-      // loading with new version of Parcel seems to only trigger the 'complete' ready state, so I added a check to
-      // make sure that initialization still went through
-      if (_isInitialLoadComplete === false) {
-        _initializeLoader();
-      }
-
-      _initializeApp();
-    }
-  });
-
-  const _initializeLoader = function () {
-    _isInitialLoadComplete = false;
-    _runewordForm = document.getElementById('runeword-form');
-    _isInitialLoadComplete = true;
-  };
-
   const _initializeApp = function () {
     _initializeFormInputs();
     _initializeFormOutput();
@@ -107,4 +83,7 @@ import {
       miscellaneous: miscellaneous,
     };
   };
+
+  const _runewordForm = document.getElementById('runeword-form');
+  _initializeApp();
 })();
