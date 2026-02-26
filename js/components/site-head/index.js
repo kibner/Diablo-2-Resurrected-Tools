@@ -6,9 +6,6 @@ import templateHtmlText from 'bundle-text:./template.html';
     .getElementsByTagName('template')[0];
 
   let templateContent = template.content;
-
-  const shadowRoot = document
-    .querySelector('head');
-
-  shadowRoot.appendChild(document.importNode(templateContent, true));
+  const head = document.querySelector('head');
+  head.appendChild(document.importNode(templateContent, true));
 })();
