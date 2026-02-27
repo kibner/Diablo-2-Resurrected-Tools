@@ -1,12 +1,19 @@
 <template>
+  <script type="module" src="/js/components/socket-fieldset/index.js"></script>
   <script
     type="module"
     src="/js/components/equipment-fieldset/index.js"
   ></script>
+  <script
+    type="module"
+    src="/js/components/miscellaneous-fieldset/index.js"
+  ></script>
   <style></style>
   <form>
     <search>
+      <socket-fieldset></socket-fieldset>
       <equipment-fieldset></equipment-fieldset>
+      <miscellaneous-fieldset></miscellaneous-fieldset>
     </search>
   </form>
 </template>
