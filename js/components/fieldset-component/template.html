@@ -1,8 +1,4 @@
 <template>
-  <script
-    type="module"
-    src="/js/components/checkbox-component/index.js"
-  ></script>
   <style></style>
   <fieldset>
     <legend>
@@ -12,9 +8,11 @@
           class="toggle-collapsible visually-hidden"
           type="checkbox"
         />
-        <slot name="label-text"></slot>
+        <slot name="fieldset-name"></slot>
       </label>
     </legend>
-    <div class="collapsible-content"></div>
+    <div class="collapsible-content">
+      <slot name="fields"></slot>
+    </div>
   </fieldset>
 </template>
