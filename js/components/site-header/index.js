@@ -4,11 +4,11 @@ class SiteHeader extends HTMLElement {
   constructor() {
     super();
 
-    let template = new DOMParser()
+    const template = new DOMParser()
       .parseFromString(templateHtmlText, 'text/html')
       .querySelector('template');
 
-    let templateContent = template.content;
+    const templateContent = template.content;
 
     const shadowRoot = this.attachShadow({ mode: 'open' });
     shadowRoot.appendChild(document.importNode(templateContent, true));
