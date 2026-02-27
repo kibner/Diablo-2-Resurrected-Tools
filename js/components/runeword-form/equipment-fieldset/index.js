@@ -1,5 +1,5 @@
 import templateHtmlText from 'bundle-text:./template.html';
-import { Equipment } from '../../data/equipment_data/index.js';
+import { Equipment } from '../../../data/equipment_data/index.js';
 
 class EquipmentFieldset extends HTMLElement {
   constructor() {
