@@ -1,51 +1,5 @@
 <template>
-  <style>
-    header,
-    nav,
-    ol {
-      display: flex;
-    }
-
-    header {
-      max-width: 60em;
-      margin: auto;
-      align-items: baseline;
-    }
-
-    h1 {
-      font-size: larger;
-    }
-
-    nav {
-      justify-content: flex-end;
-      flex: 10;
-    }
-
-    ol {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      align-items: center;
-    }
-
-    li::after {
-      content: ' | ';
-      white-space: pre-wrap;
-    }
-
-    li:last-child::after {
-      content: none;
-    }
-
-    h2 {
-      display: contents;
-    }
-
-    h2,
-    li::after {
-      font-size: 100%;
-    }
-  </style>
+  <link blocking="render" href="template.css" rel="stylesheet" />
   <header>
     <h1>D2 Reference</h1>
     <nav>
