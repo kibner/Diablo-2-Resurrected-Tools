@@ -107,8 +107,8 @@ textarea {
  */
 
 .visually-hidden,
-/* added extra specificity for the toggle-collapsible elements  */
-  .visually-hidden.toggle-collapsible {
+  /* added extra specificity for the toggle-collapsible elements  */
+.visually-hidden.toggle-collapsible {
   border: 0;
   clip: rect(0, 0, 0, 0);
   height: 1px;
