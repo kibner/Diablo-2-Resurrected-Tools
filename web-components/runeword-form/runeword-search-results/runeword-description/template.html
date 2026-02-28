@@ -1,0 +1,21 @@
+<template>
+  <link blocking="render" href="/css/_bundle.css" rel="stylesheet" />
+  <link blocking="render" href="template.css" rel="stylesheet" />
+  <strong class="runeword-name font-size-larger font-weight-normal">
+    <slot name="runeword-name"></slot>
+  </strong>
+  <dl>
+    <dt>Runes</dt>
+    <dd>
+      <ol class="list-inline"></ol>
+    </dd>
+    <dt>Equipment</dt>
+    <dd>
+      <ol class="list-inline"></ol>
+    </dd>
+    <dt>Required level</dt>
+    <dd>
+      <slot name="required-level"></slot>
+    </dd>
+  </dl>
+</template>

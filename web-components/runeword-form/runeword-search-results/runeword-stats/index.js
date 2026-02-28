@@ -1,6 +1,6 @@
 import templateHtmlText from 'bundle-text:./template.html';
 
-class RunewordRow extends HTMLElement {
+class RunewordStats extends HTMLElement {
   constructor() {
     super();
 
@@ -15,4 +15,4 @@ class RunewordRow extends HTMLElement {
   }
 }
 
-customElements.define('runeword-row', RunewordRow);
+customElements.define('runeword-stats', RunewordStats);
