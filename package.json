@@ -29,9 +29,15 @@
     "@parcel/transformer-inline-string": "^2.16.4",
     "@parcel/transformer-webmanifest": "^2.16.4",
     "parcel": "^2.16.4",
-    "prettier": "3.8.1"
+    "prettier": "3.9.6"
   },
   "dependencies": {
-    "tabbable": "^6.4.0"
+    "tabbable": "^6.5.0"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.6.0": true,
+    "@swc/core@1.15.47": true,
+    "lmdb@2.8.5": true,
+    "msgpackr-extract@3.0.4": true
   }
 }
